@@ -5,3 +5,6 @@ Create log file;
 Create branch sql;
 Create branch backend;
 
+###### Sat Mar 28 16:14:29 CDT 2020
+Sql: Clear workspace
+backend: Clear workspace
