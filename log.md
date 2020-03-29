@@ -4,3 +4,6 @@
 Add log.md
 
 
+###### Sun Mar 29 15:10:58 CDT 2020
+Add MysqlConnector.php
+Append documentation: MysqlConnector
