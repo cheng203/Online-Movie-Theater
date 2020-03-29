@@ -7,3 +7,8 @@ sql: Clear workspace
 sql: ceate diagram
 
 sql: create sql file
+
+###### Sun Mar 29 08:24:55 CDT 2020
+sql: update diagram
+
+update sql file

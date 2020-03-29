@@ -91,7 +91,10 @@ create table if not exists `orders`(
     `order_id` int unsigned auto_increment,
     `create_time` timestamp default current_timestamp not null,
     `user_id` int unsigned not null,
-    `tickets_amount` smallint unsigned not null,
+    `number_tickets` smallint unsigned not null,
+    `number_goods` smallint unsigned not null,
+    `tickets_amount` int unsigned not null,
+    `goods_amount` int unsigned not null,
     `order_amount` int unsigned not null,
     `session_id` int unsigned not null, 
     foreign key(`user_id`) references `persons` (`person_id`),
@@ -110,4 +113,25 @@ create table if not exists `order_tickets_detail`(
     index (`order_id`),
     foreign key(`order_id`) references `orders` (`order_id`),
     foreign key(`price_set_id`, `ticket_type_id`) references `price_sets` (`price_set_id`, `ticket_type_id`)
+)engine=innodb default charset=utf8;
+
+create table if not exists `goods`(
+    `goods_id` tinyint unsigned auto_increment,
+    `goods_name` varchar(64) not null,
+    `price` smallint unsigned not null,
+    primary key (`goods_id`),
+    index (`price`),
+    index (`goods_name`)
+)engine=innodb default charset=utf8;
+
+create table if not exists `order_goods_detail`(
+    `order_good_detail_id` int unsigned auto_increment,
+    `order_id` int unsigned,
+    `goods_id` tinyint unsigned,
+    `amount` tinyint unsigned,
+    primary key(`order_good_detail_id`),
+    index (`order_id`),
+    foreign key(`order_id`) references `orders` (`order_id`),
+    foreign key(`goods_id`) references `goods` (`goods_id`)
+
 )engine=innodb default charset=utf8;
