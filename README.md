@@ -20,3 +20,6 @@ Shopping Page
 
 - layout and function are done and no js is done yet
 
+Movie Page
+- Finish the movie information body
+- Finish the movie photo, user review section

@@ -67,12 +67,12 @@
     <!-- navigation end -->
 
     <!-- movie information body starts -->
-    <div class="container">
+    <div class="container-fluid">
         <div class="row movie-info-body">
             <div>
                 <img class="left" src="img/doctorStrange-small.jpg" alt="docterStrange">
             </div>
-            <div>
+            <div width="100%">
                 <div class="movie-info-title">
                     <h3><span>Docter Strange</span> is now available</h3>
                 </div>
@@ -80,7 +80,7 @@
                     Release Date: <span>2020.03.29</span>
                 </div>
                 <div class="movie-info-title">
-                    Duration: <span>3 hrs</span>
+                    Duration: <span>3 hrs 0 mins</span>
                 </div>
                 <div class="movie-info-title">
                     Off Date: <span>2020.05.01</span>
@@ -96,14 +96,71 @@
                 </div>
                 <div class="movie-info-title">
                     <div class="dropdown">
-                        <button class="btn btn-primary movie-info-btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <!-- button for buy a ticket -->
+                        <button class="btn btn-primary movie-info-btn" type="button" data-toggle="collapse" data-target="#buyTicket" aria-expanded="false" aria-controls="collapseExample">
                             Buy A Ticket
                         </button>
-                        <div class="row collapse" id="collapseExample">
-                            <div class="card card-body movie-info-buy movie-info-buy-form">
+                        <!-- button for only admin editing content -->
+                        <button type="button" class="btn btn-primary movie-info-btn" data-toggle="modal" data-target="#adminEdit">
+                            Admin Edit
+                        </button>
+                        <!-- Editing information Modal Starts -->
+                        <div class="modal fade" id="adminEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg movie-modal" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">
+                                            Admin
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="movie-modal-div">
+                                            Movie name: <input type="text">
+                                        </div>
+                                        <div class="movie-modal-div">
+                                            Release Date: <input type="date">
+                                        </div>
+                                        <div class="movie-modal-div">
+                                            Duration: <input type="text">hrs<input type="text">mins
+                                        </div>
+                                        <div class="movie-modal-div">
+                                            Off Date: <input type="date">
+                                        </div>
+                                        <div class="movie-modal-div">
+                                            Categories:
+                                            <input type="checkbox" id="Magical">Action
+                                            <input type="checkbox" id="Comedies">Comedies
+                                            <input type="checkbox" id="Romantic">Romantic
+                                            <input type="checkbox" id="Adventure">Adventure
+                                            <input type="checkbox" id="Scientific">Scientific
+                                        </div>
+                                        <div class="movie-modal-div">
+                                            Director: <input type="text">
+                                        </div>
+                                        <div class="movie-modal-div">
+                                            Rate: <input type="text">%
+                                        </div>
+                                        <div class="movie-modal-div">
+                                            Availale Time and Theater: <input type="time">
+                                        </div>
+                                    </div>
+                                    <div class=" modal-footer ">
+                                        <button type="button " class="btn btn-secondary " data-dismiss="modal ">Close</button>
+                                        <button type="button " class="btn btn-primary ">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Editing information Modal ends -->
+                        <!-- buy a ticket collapse starts -->
+                        <div class="row collapse " id="buyTicket">
+                            <div class="card card-body movie-info-buy movie-info-buy-form ">
                                 <form>
-                                    Date: <input id="datepicker" width="276" />
-                                    <div class="movie-info-form-select">
+                                    Date: <input id="datepicker " width="276 " />
+                                    <div class="movie-info-form-select ">
                                         Availale Time:
                                         <select>
                                             <option>--none--</option>
@@ -112,8 +169,8 @@
                                             <option>8:40pm</option>
                                         </select>
                                     </div>
-                                    <div class="movie-info-form-select">
-                                        Adult ($<span id="adult-price">13.99</span>):
+                                    <div class="movie-info-form-select ">
+                                        Adult ($<span id="adult-price ">13.99</span>):
                                         <select>
                                             <option>0</option>
                                             <option>1</option>
@@ -122,8 +179,8 @@
                                             <option>4</option>
                                         </select>
                                     </div>
-                                    <div class="movie-info-form-select">
-                                        Senior ($<span id="senior-price">8.99</span>):
+                                    <div class="movie-info-form-select ">
+                                        Senior ($<span id="senior-price ">8.99</span>):
                                         <select>
                                             <option>0</option>
                                             <option>1</option>
@@ -132,8 +189,8 @@
                                             <option>4</option>
                                         </select>
                                     </div>
-                                    <div class="movie-info-form-select">
-                                        Child ($<span id="child-price">13.99</span>):
+                                    <div class="movie-info-form-select ">
+                                        Child ($<span id="child-price ">13.99</span>):
                                         <select>
                                             <option>0</option>
                                             <option>1</option>
@@ -142,12 +199,13 @@
                                             <option>4</option>
                                         </select>
                                     </div>
-                                    <div class="movie-info-form-select">
-                                        <button class="btn btn-primary movie-info-btn" type="button">Add to Cart</button>
+                                    <div class="movie-info-form-select ">
+                                        <button class="btn btn-primary movie-info-btn " type="button ">Add to Cart</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
+                        <!-- buy a ticket collapse ends -->
                     </div>
                 </div>
             </div>
@@ -159,7 +217,7 @@
     <div>
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active movie-subcontent"><a href="#photo" aria-controls="home" role="tab" data-toggle="tab">Photo</a></li>
+            <li role="presentation " class="active movie-subcontent"><a href="#photo" aria-controls="home" role="tab" data-toggle="tab">Photo</a></li>
             <li role="presentation" class="movie-subcontent"><a href="#userReview" aria-controls="profile" role="tab" data-toggle="tab">User Reviews</a></li>
         </ul>
         <!-- Tab panes -->
@@ -181,7 +239,7 @@
                             <img class="movie-photo" src="img/doctorStrange-small.jpg">
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <a class="nav-link" href="#">
                             <img class="movie-photo" src="img/doctorStrange-small.jpg">
                         </a>
@@ -201,11 +259,11 @@
     <!-- movie photo and user review ends -->
 
     <!-- Media start-->
-    <div class="container">
+    <div class="container-fluid ">
         <div class="row">
             <ul class="nav justify-content-center media-div">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">
+                    <a class="nav-link active " href="#">
                         <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
                     </a>
                 </li>
@@ -220,7 +278,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link " href="#">
                         <i class="fa fa-weixin fa-2x" aria-hidden="true"></i>
                     </a>
                 </li>
@@ -230,7 +288,7 @@
     <!-- Media end -->
 
     <!-- footer start-->
-    <div class="container footer-background">
+    <div class="container-fluid footer-background">
         <div class="row">
             <div class="col-md-4 footer-div">
                 <h4 class="footer-title-style">Location</h4>

@@ -21,6 +21,14 @@
     border: none;
 }
 
+.movie-modal {
+    color: black;
+}
+
+.movie-modal-div {
+    padding: 4px 4px;
+}
+
 .movie-info-buy {
     padding: 10px 20px;
     width: 650px;
