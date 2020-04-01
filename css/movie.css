@@ -1,0 +1,63 @@
+.movie-info-body {
+    background: rgb(32, 6, 11);
+    background: linear-gradient(90deg, rgba(32, 6, 11, 1) 11%, rgba(15, 121, 209, 1) 64%, rgba(29, 88, 99, 1) 100%);
+}
+
+.left {
+    width: 400px;
+}
+
+.movie-info-title {
+    color: white;
+    padding: 5px 20px;
+}
+
+.movie-info-tomato {
+    width: 25px;
+}
+
+.movie-info-btn {
+    background-image: -webkit-linear-gradient(169deg, #5560ff 17%, #aa52a1 63%, #ff4343 100%);
+    border: none;
+}
+
+.movie-modal {
+    color: black;
+}
+
+.movie-modal-div {
+    padding: 4px 4px;
+}
+
+.movie-info-buy {
+    padding: 10px 20px;
+    width: 650px;
+}
+
+.movie-info-buy-form {
+    background-color: transparent;
+    border: none;
+}
+
+.movie-info-form-select {
+    padding: 4px 0px;
+}
+
+.movie-photo {
+    width: 250px;
+    margin: 0;
+}
+
+.movie-subcontent {
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px 20px 10px 10px;
+}
+
+.movie-user-review-user {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-bottom: 1px solid white;
+}
