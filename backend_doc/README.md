@@ -6,14 +6,17 @@ Provide api for frontend in same server.
 src path: ```./core/* ```
 
 1. Class: MysqlConnector;
-
+2. User: UserSql;
 
 TODO:
 - [x] Wrapperedd Database Connector
-
+- [x] User create/find/manipulate object
+- [ ] Movie manager  
 
 ## External Class/Function
 src path: ```./external/* ```
+1. Register.php: providing api for registerring user
+
 
 TODO:
 - [x] User Login/Register
