@@ -13,7 +13,7 @@ TODO:
 
 
 ## External Class/Function
-src path: ```./* ```
+src path: ```./external/* ```
 
 TODO:
 - [ ] User Login/Register

@@ -1,8 +1,8 @@
 # Internal/Core Class/Function
-src path: ```./core/* ```
+src path: ```core/* ```
 
 ## 1. class MysqlConnector
-src path: ```./core/MysqlConnector.php```
+src path: ```core/MysqlConnector.php```
 
 ### Constructor:
 
@@ -40,8 +40,8 @@ Return Value:
 ### Example
 
 ```php
-include_once('./core/MysqlConnector.php');
-$conn = new MysqlConnector("localhost", "root", "root", "HW3");
+include_once('core/MysqlConnector.php');
+$conn = new MysqlConnector("localhost", "root", "root", "test");
 $result = $conn->query("select * from babynames where year=2010");
 while($r = mysqli_fetch_assoc($result)){
     $arr[] = $r; 
@@ -50,8 +50,8 @@ echo json_encode($arr);
 ```
 
 ```php
-include_once('./core/MysqlConnector.php');
-$conn = new MysqlConnector("localhost", "root", "root", "HW3");
+include_once('core/MysqlConnector.php');
+$conn = new MysqlConnector("localhost", "root", "root", "test");
 $result = $conn->query_json("select * from babynames where year=2010");
 echo $result;
 ```
