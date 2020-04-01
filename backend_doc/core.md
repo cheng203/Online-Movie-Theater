@@ -101,8 +101,28 @@ echo $register->findEmail("aaa@aaa.com");
 // [{"person_id":"233","username":"user1","email":"aaa@aaa.com"}]
 ```
 
+**3. ```insertUser(int $person_type, string $username, string $password_hash, string $email)```**
+Parameters: 
+- ```$person_type```: 0: administrator, 1: normal user
+- ```$username```: user name
+- ```$password_hash```: hashed password
+- ```$email```: email
 
+Return Value:
+- ```false```: Query error
+- ```true```: Insertion success
 
+#### Example
+Called by php
+```php
+include_once('/core/UserSql.php');
+$register = new UserSql();
+$person_type = 1;
+$username = "admin";
+$password_hash = "abc";
+$email = "aaa@aaa.com";
+$register->insertUser($person_type, $username, $password_hash, $email);
+```
 
 
 <!-- ## 2. class UserSql

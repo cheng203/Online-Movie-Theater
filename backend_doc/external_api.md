@@ -23,7 +23,7 @@ Called by ajax
         dataType: "text",
         data: { "person_type":1, "username": "user1", "password_hash": "hasaaha", "email": "aaa@aaa.com"},
         success: function (data) {
-            console.log(data);
+            console.log(data); // data will be 10, 11 or 12
         },
         error: function () {
             console.log("error");
