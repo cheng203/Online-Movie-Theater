@@ -20,7 +20,7 @@ create table if not exists `movies`(
 
 create table if not exists `rooms`(
     `room_id` tinyint unsigned auto_increment,
-    `room_name` varchar(64),
+    `room_name` varchar(64) not null unique,
     `capacity` tinyint,
     primary key (`room_id`)
 )engine=innodb default charset=utf8;
@@ -52,7 +52,7 @@ create table if not exists `sessions`(
 
 create table if not exists `ticket_types`(
     `ticket_type_id` tinyint unsigned auto_increment,
-    `ticket_name` varchar(128) not null,
+    `ticket_name` varchar(128) not null unique,
     primary key (`ticket_type_id`)
 )engine=innodb default charset=utf8;
 insert into `ticket_types` values(null, 'adult');
@@ -70,7 +70,7 @@ create table if not exists `ticket_price`(
 
 create table if not exists `picture_types`(
     `picture_type_id` tinyint unsigned auto_increment,
-    `picture_type_name` varchar(128) not null,
+    `picture_type_name` varchar(128) not null unique,
     primary key (`picture_type_id`)
 )engine=innodb default charset=utf8;
 insert into `picture_types` values(null, 'poster');
@@ -91,9 +91,9 @@ create table if not exists `picture_path`(
 create table if not exists `persons`(
     `person_id` int unsigned auto_increment,
     `person_type` tinyint unsigned,
-    `username` varchar (64),
+    `username` varchar (64) unique,
     `password_hash` char(64),
-    `email` varchar (128),
+    `email` varchar (128) unique,
     primary key (`person_id`),
     index (`username`),
     index (`email`)
@@ -124,7 +124,7 @@ create table if not exists `order_tickets_detail`(
 
 create table if not exists `goods`(
     `goods_id` tinyint unsigned auto_increment,
-    `goods_name` varchar(64) not null,
+    `goods_name` varchar(64) not null unique,
     `price` decimal(8,2) unsigned not null,
     primary key (`goods_id`),
     index (`price`),
