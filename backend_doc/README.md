@@ -16,7 +16,7 @@ TODO:
 src path: ```./external/* ```
 
 TODO:
-- [ ] User Login/Register
+- [x] User Login/Register
 - [ ] Customer: movie info and price info query
 - [ ] Customer: goods info query
 - [ ] Customer: order create/query
