@@ -25,13 +25,17 @@ class MysqlConnector{
     function query_json($sql){
         $result = $this->query($sql);
         if($result){
-            while($r = mysqli_fetch_assoc($result)){
-                $arr[] = $r; 
+            if($result->num_rows>0){
+                while($r = mysqli_fetch_assoc($result)){
+                    $arr[] = $r; 
+                }
+                return json_encode($arr);
             }
-            return json_encode($arr);
+            else
+                return "";
         }
         else{
-            return "";
+            return false;
         }
     }
 }
