@@ -90,10 +90,10 @@ create table if not exists `picture_path`(
 
 create table if not exists `persons`(
     `person_id` int unsigned auto_increment,
-    `person_type` tinyint unsigned,
-    `username` varchar (64) unique,
-    `password_hash` char(64),
-    `email` varchar (128) unique,
+    `person_type` tinyint unsigned not null,
+    `username` varchar (64) unique not null check (`username`!="null"),
+    `password_hash` char(64) not null,
+    `email` varchar (128) unique not null,
     primary key (`person_id`),
     index (`username`),
     index (`email`)
