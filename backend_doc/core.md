@@ -69,7 +69,7 @@ Return Value:
 - ```false```: Query error
 - Empty string: If username don't exist
 - JSON string: If username exists
-  - For example: [{"person_id":"233","username":"user1","email":"aaa@aaa.com"}] 
+  - For example: [{"person_type":"1","person_id":"233","username":"user1","email":"aaa@aaa.com"}] 
 
 #### Example
 Called by php
@@ -90,7 +90,7 @@ Return Value:
 - ```false```: Query error
 - Empty string: If email don't exist
 - JSON string: If email exists
-  - For example: [{"person_id":"233","username":"user1","email":"aaa@aaa.com"}] 
+  - For example: [{"person_type":"1","person_id":"233","username":"user1","email":"aaa@aaa.com"}] 
 
 #### Example
 Called by php
@@ -124,6 +124,25 @@ $email = "aaa@aaa.com";
 $register->insertUser($person_type, $username, $password_hash, $email);
 ```
 
+**4. ```checkPasswordHash(string $username, string $password_hash_input)```**
+Parameters: 
+- ```$username```: user name
+- ```$password_hash```: hashed password
+
+Return Value:
+- ```false```: username does not exist or password is wrong
+- ```true```: username exists and password is rignt
+
+#### Example
+Called by php
+```php
+include_once('/core/UserSql.php');
+$register = new UserSql();
+$username = "admin";
+$password_hash = "abc";
+echo $register->checkPasswordHash($username, $password_hash);
+// true or false
+```
 
 <!-- ## 2. class UserSql
 ### Constructor:
