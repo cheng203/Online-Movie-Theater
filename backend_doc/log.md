@@ -13,3 +13,13 @@
 - Add register.php
 - Append documentation: Usersql
 - Append documentation: register
+
+###### Wed Apr 1 22:06:23 CDT 2020
+- Add login.php
+- Add logout.php
+- Append Usersql.php: function checkPasswordHash()
+- Append Usersql.php: function getUserType()
+- Append documentation Usersql: checkPasswordHash()
+- Append documentation Usersql: getUserType()
+- Append documentation: login
+- Append documentation: logout
