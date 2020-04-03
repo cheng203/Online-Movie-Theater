@@ -2,15 +2,18 @@
 include_once('../core/MovieSql.php');
 
 session_start();
+if(!isset($_SEESION["user_type"])){
+	die("You have no permission.");
+}
 
 $movieID = $_POST['movie_id'];
 $ticketTypeID=$_POST['ticket_type_id'];
 $query = new MovieSql();
-$result=$query->findMPrice($movieID,$ticketTypeID)//Find price of movie
+$result=$query->moviePrice($movieID,$ticketTypeID);//Find price of movie
 if($result!=""){
 	echo $result;
 }else{
-	echo "There is ERROR of the movieID or ticket_type_id";
+	echo "There is an ERROR";
 }
 
 
