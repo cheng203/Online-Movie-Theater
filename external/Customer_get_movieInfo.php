@@ -8,7 +8,7 @@ if(!isset($_SEESION["user_type"])){
 
 $movieID = $_POST['movie_id'];
 $query = new MovieSql();
-$result=$query->Movie_info($movieID);//Find info of movie
+$result=$query->findMovieByID($movieID);//Find info of movie
 if($result!=""){
 	echo $result;
 }else{

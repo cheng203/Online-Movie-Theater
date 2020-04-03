@@ -8,7 +8,7 @@ if(!isset($_SEESION["user_type"])||$_SEESION["user_type"]!=0){
 $movieID = $_POST['movie_id'];
 
 $query = new MovieSql();
-$result=$query->deleteMovie($movieID);
+$result=$query->deleteMovieByID($movieID);
 if($result===TRUE){
 	echo "Movie deleted successfully";
 }else{

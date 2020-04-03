@@ -19,7 +19,7 @@ $url=$_POST['url'];
 
 
 $query = new MovieSql();
-$result=$query->modifyMovie($movieID,$name,$type_name,$release_date,$off_date,$director,$info,$duration,$rating,$url);
+$result=$query->modifyMovieByID($movieID,$name,$type_name,$release_date,$off_date,$director,$info,$duration,$rating,$url);
 if($result===TRUE){
 	echo "Movie updated successfully";
 }else{

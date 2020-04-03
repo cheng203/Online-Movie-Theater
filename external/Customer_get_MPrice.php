@@ -9,7 +9,7 @@ if(!isset($_SEESION["user_type"])){
 $movieID = $_POST['movie_id'];
 $ticketTypeID=$_POST['ticket_type_id'];
 $query = new MovieSql();
-$result=$query->moviePrice($movieID,$ticketTypeID);//Find price of movie
+$result=$query->findMoviePriceByID($movieID,$ticketTypeID);//Find price of movie
 if($result!=""){
 	echo $result;
 }else{
