@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Our Theater</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/search.css">
+</head>
+
+<body class="background">
+    <!-- navigation start -->
+    <nav class="navbar navbar-expand-lg navbar-dark background nav-text">
+        <a class="navbar-brand" href="#">Welcome</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="nav-left">
+            <!-- nav left part -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">See A Movie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Food & Drinks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Our Theater</a>
+                </li>
+            </ul>
+        </div>
+        <!-- nav right part -->
+        <div class="collapse navbar-collapse ml-auto" id="nav-right">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" data-toggle="modal" data-target="#myModal" id="signIn">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-user" aria-hidden="true"> Sign In</i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="shopping.html">
+                        <i class="fa fa-shopping-cart shopping-icon" aria-hidden="true">
+                            <div class = "shopping-quantity">
+                                0
+                            </div>
+                        </i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- login modal window starts -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!--modal header-->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">
+                            Welcome to our theater！
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <!--modal body-->
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <!--user input-->
+                            <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label">
+                                    Username
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="username" placeholder="username" required="required">
+                                </div>
+                            </div>
+                            <!--password input-->
+                            <div class="form-group">
+                                <label for="password" class="col-sm-2 control-label">
+                                    password
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="password" placeholder="password" required="required">
+                                </div>
+                            </div>
+                            <!-- Sign up -->
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <a class="login-a" href="#">
+                                Don't have an account? Sign up here first
+                            </a>
+                                </div>
+                            </div>
+                            <!--login-->
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-default">
+                                    Log In
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal window ends -->
+    </nav>
+    <!-- navigation end -->
+
+    <!-- movie category search body starts -->
+    <div class="container-fluid">
+        <div class="row movie-category-body">
+            <ul class="nav">
+                <li class="nav-item nav-link movie-search-link" style="font-weight: bold;">Category: </li>
+                <li class="nav-item"><a class="nav-link active movie-search-link" href="#">All</a></li>
+                <li class="nav-item"><a class="nav-link movie-search-link" href="#">Scientific</a></li>
+                <li class="nav-item"><a class="nav-link movie-search-link" href="#">Magic</a></li>
+                <li class="nav-item"><a class="nav-link movie-search-link" href="#">Nature</a></li>
+                <li class="nav-item"><a class="nav-link movie-search-link" href="#">Romance</a></li>
+                <li class="nav-item"><a class="nav-link movie-search-link" href="#">Adventure</a></li>
+            </ul>
+            <nav class="navbar navbar-light ml-auto">
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </nav>
+        </div>
+    </div>
+    <!-- movie category search body ends -->
+
+    <!-- movie list body starts -->
+    <div class="container-fluid">
+        <ul>
+            <li class=" clearfix movie-list-body-li">
+                <div style="float: left;">
+                    <img src="img/warCraft-small.jpg">
+                </div>
+                Warcraft (alternatively known as Warcraft: The Beginning)[4] is a 2016 American action fantasy film directed by Duncan Jones and written by Charles Leavitt and Jones. Based on the video game series of the same name, the film stars Travis Fimmel, Paula
+                Patton, Ben Foster, Dominic Cooper, Toby Kebbell, Ben Schnetzer, Robert Kazinsky, Clancy Brown, and Daniel Wu. The film portrays the initial encounters between the humans and the orcs and takes place in a variety of locations established
+                in the video game series.[5]
+                <div>
+                    <button class="btn btn-light">Buy A Ticket</button>
+                </div>
+
+            </li>
+            <li class="clearfix movie-list-body-li">
+                <div style="float: left;">
+                    <img src="img/warCraft-small.jpg">
+                </div>
+                Warcraft (alternatively known as Warcraft: The Beginning)[4] is a 2016 American action fantasy film directed by Duncan Jones and written by Charles Leavitt and Jones. Based on the video game series of the same name, the film stars Travis Fimmel, Paula
+                Patton, Ben Foster, Dominic Cooper, Toby Kebbell, Ben Schnetzer, Robert Kazinsky, Clancy Brown, and Daniel Wu. The film portrays the initial encounters between the humans and the orcs and takes place in a variety of locations established
+                in the video game series.[5]
+                <div>
+                    <button class="btn btn-light">Buy A Ticket</button>
+                </div>
+            </li>
+            <li class="clearfix movie-list-body-li">
+                <div style="float: left;">
+                    <img src="img/warCraft-small.jpg">
+                </div>
+                Warcraft (alternatively known as Warcraft: The Beginning)[4] is a 2016 American action fantasy film directed by Duncan Jones and written by Charles Leavitt and Jones. Based on the video game series of the same name, the film stars Travis Fimmel, Paula
+                Patton, Ben Foster, Dominic Cooper, Toby Kebbell, Ben Schnetzer, Robert Kazinsky, Clancy Brown, and Daniel Wu. The film portrays the initial encounters between the humans and the orcs and takes place in a variety of locations established
+                in the video game series.[5]
+                <div>
+                    <button class="btn btn-light">Buy A Ticket</button>
+                </div>
+            </li>
+        </ul>
+        <!-- page split starts -->
+        <nav aria-label="Search for more movie result ">
+            <ul class="pagination justify-content-center ">
+                <li class="page-item ">
+                    <a class="page-link " href="# " aria-label="Previous ">
+                        <span aria-hidden="true ">&laquo;</span>
+                        <span class="sr-only ">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item "><a class="page-link " href="# ">1</a></li>
+                <li class="page-item "><a class="page-link " href="# ">2</a></li>
+                <li class="page-item "><a class="page-link " href="# ">3</a></li>
+                <li class="page-item ">
+                    <a class="page-link " href="# " aria-label="Next ">
+                        <span aria-hidden="true ">&raquo;</span>
+                        <span class="sr-only ">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- page split ends -->
+    </div>
+    <!-- movie list body starts -->
+
+    <!-- Media start-->
+    <div class="container-fluid ">
+        <div class="row ">
+            <ul class="nav justify-content-center media-div ">
+                <li class="nav-item ">
+                    <a class="nav-link active " href="# ">
+                        <i class="fa fa-facebook-official fa-2x " aria-hidden="true "></i>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="# ">
+                        <i class="fa fa-instagram fa-2x " aria-hidden="true "></i>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="# ">
+                        <i class="fa fa-twitter-square fa-2x " aria-hidden="true "></i>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="# ">
+                        <i class="fa fa-weixin fa-2x " aria-hidden="true "></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Media end -->
+
+    <!-- footer start-->
+    <div class="container-fluid footer-background ">
+        <div class="row ">
+            <div class="col-md-4 footer-div ">
+                <h4 class="footer-title-style ">Location</h4>
+                <p class="footer-body-style ">800 W Campbell Rd, Richardson, TX 75080</p>
+            </div>
+            <div class="col-md-4 footer-div ">
+                <h4 class="footer-title-style ">Contact</h4>
+                <p class="footer-body-style ">Phone:(972) 883-2111</p>
+                <p class="footer-body-style ">Email: movieTheater@utdallas.edu</p>
+            </div>
+            <div class="col-md-4 footer-div ">
+                <h4 class="footer-title-style ">Services</h4>
+                <p class="footer-body-style ">Movie, Food, Entertainment and Enjoy</p>
+            </div>
+        </div>
+    </div>
+    <!-- footer end -->
+
+</body>
+
+</html>

@@ -9,6 +9,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="css/shopcart.css">
+    <script src="js/shopcart.js"></script>
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <title>Shopping Cart</title>
 </head>
@@ -40,11 +41,6 @@
                 <li class="nav-item" data-toggle="modal" data-target="#myModal" id="signIn">
                     <a class="nav-link" href="#">
                         <i class="fa fa-user" aria-hidden="true"> Username</i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-film" aria-hidden="true"> Showtimes</i>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -82,11 +78,14 @@
                                         <div class="py-2 text-uppercase">Quantity</div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Cost</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
                                         <div class="py-2 text-uppercase">Remove</div>
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="product_info">
                                 <tr>
                                     <th scope="row" class="border-0">
                                         <div class="p-2">
@@ -96,60 +95,160 @@
                                             </div>
                                         </div>
                                     </th>
-                                    <td class="border-0 align-middle"><strong>$79.00</strong></td>
-                                    <td class="border-0 align-middle">
-                                        <div class="p-num">
-                                            <div class="quantity-form">
-                                                <a href="javascript:;" class="decrement">-</a>
-                                                <input type="text" class="itxt" value="1">
-                                                <a href="javascript:;" class="increment">+</a>
-                                            </div>
-                                        </div>
+                                    <!-- display price -->
+                                    <td class="border-0 align-middle unit-price">
+                                        <ul class="price-display">
+                                            <li class="senior-price">Senior: $<strong>79.00</strong></li>
+                                            <li class="adult-price">Adult: $<strong>79.00</strong></li>
+                                            <li class="child-price">Child: $<strong>79.00</strong></li>
+                                        </ul>
                                     </td>
-                                    <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                                    <!-- display add/decrease button -->
+                                    <td class="border-0 align-middle">
+                                        <ul class="quantity-display">
+                                            <li>
+                                                <div class="p-num">
+                                                    <div class="quantity-form">
+                                                        <a href="javascript:;" class="decrement">-</a>
+                                                        <input type="text" class="itxt senior-count" value="0">
+                                                        <a href="javascript:;" class="increment">+</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="p-num">
+                                                    <div class="quantity-form">
+                                                        <a href="javascript:;" class="decrement">-</a>
+                                                        <input type="text" class="itxt adult-count" value="0">
+                                                        <a href="javascript:;" class="increment">+</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="p-num">
+                                                    <div class="quantity-form">
+                                                        <a href="javascript:;" class="decrement">-</a>
+                                                        <input type="text" class="itxt child-count" value="0">
+                                                        <a href="javascript:;" class="increment">+</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <!-- display cost -->
+                                    <td class="border-0 align-middle cost">$0</td>
+                                    <!-- display delete button -->
+                                    <td class="border-0 align-middle">
+                                        <a href="#" class="text-dark"><i class="fa fa-trash"></i></a>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">
+                                    <th scope="row" class="border-0">
                                         <div class="p-2">
-                                            <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-3_cexmhn.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
+                                            <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-1_zrifhn.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
                                             <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0"><a href="#" class="text-dark d-inline-block">Lumix camera lense</a></h5><span class="text-muted font-weight-normal font-italic">Category: Electronics</span>
+                                                <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">Timex Unisex Originals</a></h5><span class="text-muted font-weight-normal font-italic d-block">Category: Watches</span>
                                             </div>
                                         </div>
                                     </th>
-                                    <td class="align-middle"><strong>$79.00</strong></td>
-                                    <td class="align-middle">
-                                        <div class="p-num">
-                                            <div class="quantity-form">
-                                                <a href="javascript:;" class="decrement">-</a>
-                                                <input type="text" class="itxt" value="1">
-                                                <a href="javascript:;" class="increment">+</a>
-                                            </div>
-                                        </div>
+                                    <!-- display price -->
+                                    <td class="border-0 align-middle unit-price">
+                                        <ul class="price-display">
+                                            <li class="senior-price">Senior: $<strong>79.00</strong></li>
+                                            <li class="adult-price">Adult: $<strong>79.00</strong></li>
+                                            <li class="child-price">Child: $<strong>79.00</strong></li>
+                                        </ul>
                                     </td>
-                                    <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a>
+                                    <!-- display add/decrease button -->
+                                    <td class="border-0 align-middle">
+                                        <ul class="quantity-display">
+                                            <li>
+                                                <div class="p-num">
+                                                    <div class="quantity-form">
+                                                        <a href="javascript:;" class="decrement">-</a>
+                                                        <input type="text" class="itxt senior-count" value="0">
+                                                        <a href="javascript:;" class="increment">+</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="p-num">
+                                                    <div class="quantity-form">
+                                                        <a href="javascript:;" class="decrement">-</a>
+                                                        <input type="text" class="itxt adult-count" value="0">
+                                                        <a href="javascript:;" class="increment">+</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="p-num">
+                                                    <div class="quantity-form">
+                                                        <a href="javascript:;" class="decrement">-</a>
+                                                        <input type="text" class="itxt child-count" value="0">
+                                                        <a href="javascript:;" class="increment">+</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </td>
+                                    <!-- display cost -->
+                                    <td class="border-0 align-middle cost">$0</td>
+                                    <!-- display delete button -->
+                                    <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">
+                                    <th scope="row" class="border-0">
                                         <div class="p-2">
-                                            <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-2_qxjis2.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
+                                            <img src="https://res.cloudinary.com/mhmd/image/upload/v1556670479/product-1_zrifhn.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
                                             <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block">Gray Nike running shoe</a></h5><span class="text-muted font-weight-normal font-italic">Category: Fashion</span>
+                                                <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">Timex Unisex Originals</a></h5><span class="text-muted font-weight-normal font-italic d-block">Category: Watches</span>
                                             </div>
                                         </div>
-                                        <td class="align-middle"><strong>$79.00</strong></td>
-                                        <td class="align-middle">
-                                            <div class="p-num">
-                                                <div class="quantity-form">
-                                                    <a href="javascript:;" class="decrement">-</a>
-                                                    <input type="text" class="itxt" value="1">
-                                                    <a href="javascript:;" class="increment">+</a>
+                                    </th>
+                                    <!-- display price -->
+                                    <td class="border-0 align-middle unit-price">
+                                        <ul class="price-display">
+                                            <li class="senior-price">Senior: $<strong>79.00</strong></li>
+                                            <li class="adult-price">Adult: $<strong>79.00</strong></li>
+                                            <li class="child-price">Child: $<strong>79.00</strong></li>
+                                        </ul>
+                                    </td>
+                                    <!-- display add/decrease button -->
+                                    <td class="border-0 align-middle">
+                                        <ul class="quantity-display">
+                                            <li>
+                                                <div class="p-num">
+                                                    <div class="quantity-form">
+                                                        <a href="javascript:;" class="decrement">-</a>
+                                                        <input type="text" class="itxt senior-count" value="0">
+                                                        <a href="javascript:;" class="increment">+</a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a>
-                                        </td>
+                                            </li>
+                                            <li>
+                                                <div class="p-num">
+                                                    <div class="quantity-form">
+                                                        <a href="javascript:;" class="decrement">-</a>
+                                                        <input type="text" class="itxt adult-count" value="0">
+                                                        <a href="javascript:;" class="increment">+</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="p-num">
+                                                    <div class="quantity-form">
+                                                        <a href="javascript:;" class="decrement">-</a>
+                                                        <input type="text" class="itxt child-count" value="0">
+                                                        <a href="javascript:;" class="increment">+</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <!-- display cost -->
+                                    <td class="border-0 align-middle cost">$0</td>
+                                    <!-- display delete button -->
+                                    <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -164,11 +263,11 @@
                     <div class="p-4">
                         <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
                         <ul class="list-unstyled mb-4">
-                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>$390.00</strong></li>
-                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong>$10.00</strong></li>
+                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong class="order-total">$0</strong></li>
+                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong class="ship-total">$10.00</strong></li>
                             <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>$0.00</strong></li>
                             <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                                <h5 class="font-weight-bold">$400.00</h5>
+                                <h5 class="font-weight-bold sum-total">$0</h5>
                             </li>
                         </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
                     </div>

@@ -11,9 +11,6 @@
     <link rel="stylesheet" type="text/css" href="css/movie.css">
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <script src="js/movie.js"></script>
-    <!-- import datepicker plugin through website -->
-    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
     <title>Welcome to Our Theater</title>
 </head>
@@ -48,11 +45,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-film" aria-hidden="true"> Showtimes</i>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="shopping.html">
                         <i class="fa fa-shopping-cart shopping-icon" aria-hidden="true">
                         <div class = "shopping-quantity">
@@ -73,26 +65,28 @@
                 <img class="left" src="img/doctorStrange-small.jpg" alt="docterStrange">
             </div>
             <div width="100%">
-                <div class="movie-info-title">
-                    <h3><span>Docter Strange</span> is now available</h3>
-                </div>
-                <div class="movie-info-title">
-                    Release Date: <span>2020.03.29</span>
-                </div>
-                <div class="movie-info-title">
-                    Duration: <span>3 hrs 0 mins</span>
-                </div>
-                <div class="movie-info-title">
-                    Off Date: <span>2020.05.01</span>
-                </div>
-                <div class="movie-info-title">
-                    Categories: <span>Magical</span>
-                </div>
-                <div class="movie-info-title">
-                    Director: <span>Yibo Cheng</span>
-                </div>
-                <div class="movie-info-title">
-                    <img class="movie-info-tomato" src="img/icon/tomato.png">: <span>100%</span>
+                <div class="movie-info">
+                    <div class="movie-info-title">
+                        <h3><span>Docter Strange</span> is now available</h3>
+                    </div>
+                    <div class="movie-info-title">
+                        Release Date: <span>2020-03-29</span>
+                    </div>
+                    <div class="movie-info-title">
+                        Duration: <span>120</span>mins
+                    </div>
+                    <div class="movie-info-title">
+                        Off Date: <span>2020-05-01</span>
+                    </div>
+                    <div class="movie-info-title">
+                        Categories: <span>Action</span>
+                    </div>
+                    <div class="movie-info-title">
+                        Director: <span>Yibo Cheng</span>
+                    </div>
+                    <div class="movie-info-title">
+                        <img class="movie-info-tomato" src="img/icon/tomato.png">: <span>100%</span>
+                    </div>
                 </div>
                 <div class="movie-info-title">
                     <div class="dropdown">
@@ -101,7 +95,7 @@
                             Buy A Ticket
                         </button>
                         <!-- button for only admin editing content -->
-                        <button type="button" class="btn btn-primary movie-info-btn" data-toggle="modal" data-target="#adminEdit">
+                        <button type="button" class="btn btn-primary movie-info-btn admin-edit" data-toggle="modal" data-target="#adminEdit">
                             Admin Edit
                         </button>
                         <!-- Editing information Modal Starts -->
@@ -117,35 +111,36 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="movie-modal-div">
-                                            Movie name: <input type="text">
-                                        </div>
-                                        <div class="movie-modal-div">
-                                            Release Date: <input type="date">
-                                        </div>
-                                        <div class="movie-modal-div">
-                                            Duration: <input type="text">hrs<input type="text">mins
-                                        </div>
-                                        <div class="movie-modal-div">
-                                            Off Date: <input type="date">
-                                        </div>
-                                        <div class="movie-modal-div">
-                                            Categories:
-                                            <input type="checkbox" id="Magical">Action
-                                            <input type="checkbox" id="Comedies">Comedies
-                                            <input type="checkbox" id="Romantic">Romantic
-                                            <input type="checkbox" id="Adventure">Adventure
-                                            <input type="checkbox" id="Scientific">Scientific
-                                        </div>
-                                        <div class="movie-modal-div">
-                                            Director: <input type="text">
-                                        </div>
-                                        <div class="movie-modal-div">
-                                            Rate: <input type="text">%
-                                        </div>
-                                        <div class="movie-modal-div">
-                                            Availale Time and Theater: <input type="time">
-                                        </div>
+                                        <form class="movie-info-change">
+                                            <div class="movie-modal-div">
+                                                Movie name: <input class="movie-name" type="text">
+                                            </div>
+                                            <div class="movie-modal-div">
+                                                Release Date: <input class="release-date" type="date">
+                                            </div>
+                                            <div class="movie-modal-div">
+                                                Duration: <input class="duration" type="text"> mins
+                                            </div>
+                                            <div class="movie-modal-div">
+                                                Off Date: <input class="off-date" type="date">
+                                            </div>
+                                            <div class="movie-modal-div">
+                                                Categories:
+                                                <div class="category">
+                                                    <input type="checkbox" id="Magical" value="Action">Action
+                                                    <input type="checkbox" id="Comedies" value="Comedies">Comedies
+                                                    <input type="checkbox" id="Romantic" value="Romantic">Romantic
+                                                    <input type="checkbox" id="Adventure" value="Adventure">Adventure
+                                                    <input type="checkbox" id="Scientific" value="Scientific">Scientific
+                                                </div>
+                                            </div>
+                                            <div class="movie-modal-div">
+                                                Director: <input class="director" type="text">
+                                            </div>
+                                            <div class="movie-modal-div">
+                                                Rate: <input class="rate" type="text">%
+                                            </div>
+                                        </form>
                                     </div>
                                     <div class=" modal-footer ">
                                         <button type="button " class="btn btn-secondary " data-dismiss="modal ">Close</button>
@@ -159,7 +154,7 @@
                         <div class="row collapse " id="buyTicket">
                             <div class="card card-body movie-info-buy movie-info-buy-form ">
                                 <form>
-                                    Date: <input id="datepicker " width="276 " />
+                                    Date: <input type="date" width="276 " />
                                     <div class="movie-info-form-select ">
                                         Availale Time:
                                         <select>
