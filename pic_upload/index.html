@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+    <script src="upload.js"></script>
+
+    <title>Upload Files</title>
+  </head>
+
+  <body>
+      <form id="image_form" action="process.php" method="post" enctype="multipart/form-data">
+        <input id="files" type="file" accept="image/*" name="image" multiple />
+        <input type="submit" value="Upload">
+      </form>
+
+      <div id = "output"></div>
+
+  </body>
+</html>
