@@ -9,7 +9,7 @@ Usage:
 
 Default:
 
-The picture will be stored in /upload folder on server.
+The picture will be stored in /uploads folder on server.
 
 ## Html Part
 
