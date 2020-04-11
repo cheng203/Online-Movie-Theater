@@ -13,6 +13,10 @@ $duration=$_POST['duration'];
 $rating=$_POST['rating'];
 $url=$_POST['url'];
 
+// if(((!isset($_SESSION['user_type'])||$_SESSION['user_type']!=0))){
+//     die("You have no perssiom to add movie.");
+// }
+
 
 $query = new MovieSql();
 $result=$query->addMovie($name,$type_name,$release_date,$off_date,$director,$info,$duration,$rating,$url);

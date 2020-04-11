@@ -29,8 +29,6 @@ Class MovieSql{
      
         $sql = sprintf("INSERT into movies values(null, '%s', '%s', '%s', '%s','%s','%s','%s','%s','%s')",$name,$type_name,$release_date,$off_date,$director,$info,$duration,$rating,$url);
         return $this->conn->query($sql);
-   
-       
     }
     function deleteMovieByID($movieID){
     	$sql = sprintf("DELETE from movies WHERE movie_id = '%s'", $movieID);
