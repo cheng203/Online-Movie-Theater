@@ -1,9 +1,9 @@
 <?php 
 include_once('../core/MysqlConnector.php');
 session_start();
-if(!isset($_SESSION['user_type'])||$_SESSION['user_type']!=0){
-    die("You have no perssiom to upload images.");
-}
+// if(!isset($_SESSION['user_type'])||$_SESSION['user_type']!=0){
+//     die("You have no perssiom to upload images.");
+// }
 
 $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt'); // valid extensions
 $path = '../uploads/'; // upload directory
