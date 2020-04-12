@@ -1,4 +1,11 @@
 <?php 
+include_once('../core/MovieSql.php');
+session_start();
+
+if(!isset($_SEESION["user_type"])||$_SEESION["user_type"]!=0){
+	die("You have no permission to upload image.");
+}
+
 $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt'); // valid extensions
 $path = '../uploads/'; // upload directory
 if($_FILES['image']){
@@ -28,9 +35,6 @@ function processImage($img, $tmp){
     } 
     return false;
 }
-
-echo var_dump($_FILES);
-
 
 
 ?>
