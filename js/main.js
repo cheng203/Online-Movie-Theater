@@ -1,7 +1,4 @@
 $(document).ready(function() {
-    // $("#carousel").carousel({
-    //     interval: 2000
-    // }, 'cycle');
     $("#signIn").on("click", function() {
         $("#myModal").attr("aria-hidden", "false")
     })

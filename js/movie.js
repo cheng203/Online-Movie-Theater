@@ -14,7 +14,6 @@ $(document).ready(function() {
         var director = res[5];
         var rate = res[6];
         var movie_url = $(".left").attr("src");
-        console.log(movie_url);
         $(".movie-name").val(movie_name);
         $(".release-date").val(release);
         $(".duration").val(duration);
@@ -27,6 +26,49 @@ $(document).ready(function() {
         })
         $(".director").val(director);
         $(".rate").val(rate);
-        $(".movie-url").val(movie_url);
+        $(".movie-url").html(movie_url);
+    })
+
+    //once admin click save changes, send data back to backend
+    $(".edit-movie-save-change").on("click", function() {
+        var movie_name = $(".movie-name").val();
+        var release = $(".release-date").val();
+        var duration = $(".duration").val();
+        var off_date = $(".off-date").val();
+        var category = "";
+        $.each($("input[name='movie-category']:checked"), function() {
+            category = $(this).val();
+        })
+        var director = $(".director").val();
+        var rate = $(".rate").val();
+        var url = $(".movie-url").html();
+        // only name of the updated image is returned
+        var update_img = $(".updated_infoImg")[0].files[0].name;
+
+        //create JSON data format send
+        var sendData = {
+            movie_name: movie_name,
+            release: release,
+            duration: duration,
+            off_date: off_date,
+            category: category,
+            director: director,
+            rate: rate,
+            url: url,
+            update_img: update_img
+        };
+        $.ajax({
+            url: "admin_edit_movie_info.php",
+            type: "POST",
+            data: sendData,
+            dataType: "json",
+            success: function(data) {
+                console.log("successfully");
+            },
+            error: function() {
+                console.log("Error");
+            }
+        })
+
     })
 })
