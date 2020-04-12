@@ -5,6 +5,9 @@ $(document).ready(function() {
     $("#signIn").on("click", function() {
         $("#myModal").attr("aria-hidden", "false")
     })
+    $("#signUp").on("click", function() {
+        $("#myModal").css("display", "none");
+    })
     $(".carousel-control-prev").on("click", function() {
         $("#carousel").carousel("prev")
     })

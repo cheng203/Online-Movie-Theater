@@ -12,7 +12,9 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <script src="js/main.js"></script>
-
+    <script src="js/login.js"></script>
+    <script src="js/jQuery.md5.js"></script>
+    <script src="js/register.js"></script>
     <title>Welcome to Movie Theater</title>
 </head>
 
@@ -30,10 +32,10 @@
                     <a class="nav-link" href="#">See A Movie</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Food & Drinks</a>
+                    <a class="nav-link" href="#food">Food & Drinks</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Our Theater</a>
+                    <a class="nav-link" href="#footer">Our Theater</a>
                 </li>
             </ul>
         </div>
@@ -57,7 +59,7 @@
             </ul>
         </div>
         <!-- login modal window starts -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <!--modal header-->
@@ -82,7 +84,7 @@
                             <!--password input-->
                             <div class="form-group">
                                 <label for="password" class="col-sm-2 control-label">
-                                    password
+                                    Password
                                 </label>
                                 <div class="col-sm-10">
                                     <input type="password" class="form-control" id="password" placeholder="password" required="required">
@@ -91,18 +93,21 @@
                             <!-- Sign up -->
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <a class="login-a" href="#">
-                                Don't have an account? Sign up here first
-                            </a>
+                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#sign-Up" id="signUp">
+                                        Don't have an account? Sign up here first!
+                                      </button>
                                 </div>
                             </div>
                             <!--login-->
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default">
+                                    <button type="submit" class="btn btn-default sign-in">
                                     Log In
                                     </button>
                                 </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary signin-close" data-dismiss="modal">Close</button>
                             </div>
                         </form>
                     </div>
@@ -110,6 +115,59 @@
             </div>
         </div>
         <!-- modal window ends -->
+        <!-- sign up modal window starts -->
+        <div class="modal fade" id="sign-Up" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sign Up First</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="signup-close" aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- sign up username starts -->
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label">
+                                Username
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="signup-username" placeholder="username" required="required">
+                                <span class="error" id="username-err"></span>
+                            </div>
+                        </div>
+                        <!-- sign up username ends -->
+                        <!-- sign up password starts -->
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2 control-label">
+                                Password
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="signup-password" placeholder="password" required="required">
+                                <span class="error" id="password-err"></span>
+                            </div>
+                        </div>
+                        <!-- sign up password ends -->
+                        <!-- sign up email starts -->
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">
+                                Email
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="signup-email" placeholder="email" required="required">
+                                <span class="error" id="email-err"></span>
+                            </div>
+                        </div>
+                        <!-- sign up email ends -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary signup-close" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default signup-btn">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- sign up modal window ends -->
     </nav>
     <!-- navigation end -->
 
@@ -255,7 +313,7 @@
     <!-- user recommendation end -->
 
     <!-- Food & Drink start -->
-    <div class="container-fluid food-background">
+    <div class="container-fluid food-background" id="food">
         <div class="row">
             <div class="col-md-4">
                 <div class="card card-style">
@@ -321,7 +379,7 @@
     <!-- Media end -->
 
     <!-- footer start-->
-    <div class="container-fluid footer-background">
+    <div class="container-fluid footer-background" id="footer">
         <div class="row">
             <div class="col-md-4 footer-div">
                 <h4 class="footer-title-style">Location</h4>

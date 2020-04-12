@@ -2,10 +2,6 @@
     line-height: 24px;
 }
 
-.btn-default {
-    border: 2px solid black
-}
-
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
     width: 40px;
@@ -26,29 +22,6 @@
 
 .recommendation-li a {
     color: white;
-}
-
-.food-background {
-    background-image: radial-gradient(circle at right bottom, rgba(54, 124, 192, 0.8) 10%, rgb(0, 0, 0) 70%);
-    padding-top: 3rem;
-}
-
-.card-style {
-    width: 18rem;
-    margin: 0 auto;
-    background-color: transparent;
-}
-
-.card-text {
-    color: #fff;
-}
-
-.card-body {
-    padding: 20px 0 0 0;
-}
-
-.card-style {
-    border: 0px;
 }
 
 .btn-primary {

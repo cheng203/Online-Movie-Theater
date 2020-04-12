@@ -13,6 +13,8 @@ $(document).ready(function() {
         var category = res[4];
         var director = res[5];
         var rate = res[6];
+        var movie_url = $(".left").attr("src");
+        console.log(movie_url);
         $(".movie-name").val(movie_name);
         $(".release-date").val(release);
         $(".duration").val(duration);
@@ -25,5 +27,6 @@ $(document).ready(function() {
         })
         $(".director").val(director);
         $(".rate").val(rate);
+        $(".movie-url").val(movie_url);
     })
 })
