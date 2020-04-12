@@ -26,6 +26,17 @@ upload_max_filesize = 8M
 3. Change the relative path of ```upload.php``` in html part.
    - For example, html file which is in root directory: ```action="./image_upload/upload.php"```
 
+About ajax response:
+- If there's no permission
+  - string: You have no perssiom to upload images.
+- If no image has been uploaded
+  - JSON string: []
+- If image uploaded success
+  - JSON string: [{'image' : 'img11.png'},{'image' : img22.png'}]
+  - The value of 'image' is the image file name on your client
+
+
+
 Default:
 
 The picture will be stored in /uploads folder on server.
