@@ -1,4 +1,18 @@
 $(document).ready(function (e) {
+    // $.ajax({
+    //     type: "POST",
+    //     url: "../external/login.php",
+    //     dataType: "text",
+    //     data: { "person_type":0, "username": "normal", "password_hash": "normal", "email": "aasa@aaa.com"},
+    //     success: function (data) {
+    //         $("#output").append("<p>" + data + "</p>");
+    //     },
+    //     error: function () {
+    //         console.log("error");
+    //     }
+    // })
+
+
     $(".image_form").on('submit',(function(e) {
         var formData = new FormData();
         var images = $(this).children(".images_input")[0].files;
@@ -14,13 +28,8 @@ $(document).ready(function (e) {
             cache: false,
             processData:false,
             success: function(data){
-                if(data=='invalid'){
-                    console.log("Invalid Image");
-                }
-                else{
-                    $("#output").append(data);
-                    $(".image_form")[0].reset(); 
-                }
+                console.log(data);
+                $(".image_form")[0].reset(); 
             },
             error: function(e) {
                 console.log("error");
