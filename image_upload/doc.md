@@ -1,6 +1,25 @@
 # Doc
 
-Usage:
+## Feature
+- Can upload images through html front page to server;
+- Can upload multiple images at a time;
+- Support image formats: ``jpeg``, ``jpg``, ``png``, ``gif``, ``bmp`` , ``pdf`` , ``doc`` , ``ppt``;
+- Images will be saved in folder on server which you assigned in php script;
+- The name of uploaded images will be saved on database(default table: image_library)
+
+
+
+Attention: default upload size limit in php.int is 2MB. So if you want to upload images, you should modify php.ini on your server.
+
+```
+upload_max_filesize = 2M
+```
+change 2M to any size you want. 
+```
+upload_max_filesize = 8M
+```
+
+## Usage:
 
 1. Copy html code;
 2. Include javascript file ```/image_upload/upload.js``` in your html file;
@@ -11,8 +30,9 @@ Default:
 
 The picture will be stored in /uploads folder on server.
 
-## Html Part
 
+
+## Html Part
 ```html
 <form class="image_form" action="process.php" method="post" enctype="multipart/form-data">
 <input class="images_input" type="file" name="image" accept="image/*"  multiple="true"/>
