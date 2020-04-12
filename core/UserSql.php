@@ -1,5 +1,5 @@
 <?php
-include_once('../core/MysqlConnector.php');
+include_once('MysqlConnector.php');
 
 Class UserSql{
     private $conn;
