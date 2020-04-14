@@ -1,28 +1,25 @@
 $(document).ready(function (e) {
-    // $.ajax({
-    //     type: "POST",
-    //     url: "../external/login.php",
-    //     dataType: "text",
-    //     data: { "person_type":0, "username": "normal", "password_hash": "normal", "email": "aasa@aaa.com"},
-    //     success: function (data) {
-    //         $("#output").append("<p>" + data + "</p>");
-    //     },
-    //     error: function () {
-    //         console.log("error");
-    //     }
-    // })
-
-
-    $(".image_form").on('submit',(function(e) {
+    var path = $(".image_upload").attr("path");
+    if(path.charAt(path.length-1)!="/"){
+        path = path + "/";
+    }
+    path = path + 'image_upload/upload.php';//relative path to upload.php
+    var form = $("<form/>").attr("class", "image_form")
+                           .attr("action", path)
+                           .attr("method", "post")
+                           .attr("enctype", "multipart/form-data")
+                           .append('<input class="images_input" type="file" name="image" accept="image/*"  multiple="true"/><input type="submit" value="Upload"><p class="hint"></p>');
+    $(".image_upload").append(form);
+    $(".image_upload").on('submit', 'form', function(e){
         var formData = new FormData();
-        var images = $(this).children(".images_input")[0].files;
+        var images = $(this).find(".images_input")[0].files;
         for(var i=0;i<images.length;i++){
             formData.append('image[]',images[i]);
         }
         e.preventDefault();
         $(".hint").html(" ");
         $.ajax({
-            url: $(this).attr("action"),
+            url: path,
             type: "POST",
             data:  formData,
             contentType: false,
@@ -34,12 +31,18 @@ $(document).ready(function (e) {
             },
             success: function(data){
                 var date = new Date();
-                $(".hint").html(date.toLocaleString()+"&nbsp&nbsp&nbsp"+data+" images uploaded successfully.");
-                $(".image_form")[0].reset(); 
+                if(data != "You have no perssiom to upload images."){
+                    $(".hint").html(date.toLocaleString()+"&nbsp&nbsp&nbsp"+data+" images uploaded successfully.");
+                }
+                else{
+                    $(".hint").html(data);
+                }
+                $(".image_form")[0].reset();
             },
             error: function(e) {
                 console.log("error");
             }          
         });
-    }));
+
+    });
 });
