@@ -1,16 +1,23 @@
-<?php 
+<?php
+use Thumb\Thumb;
 include_once('../core/MysqlConnector.php');
+include_once('./thumb.php');
 session_start();
 // if(!isset($_SESSION['user_type'])||$_SESSION['user_type']!=0){
 //     die("You have no perssiom to upload images.");
 // }
+$_SESSION["image_count"] = 0;// number of images uploaded successfully
 
 $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt'); // valid extensions
 $path = '../uploads/'; // upload directory
+$thumbPath = '../uploads/thumb/';
+$thumbWidth = 200;
+$thumbHeight = 200;
 
 if(isset($_FILES['image'])){
     if(!is_dir($path)){
         mkdir($path,0700);
+        mkdir($path.'thumb/', 0700);
     }
     $returnJson = "[";
     $size = count($_FILES['image']['name']);
@@ -23,10 +30,11 @@ if(isset($_FILES['image'])){
         echo substr($returnJson, 0, -1) . "]";
     }
     else echo "[]";
+    echo $_SESSION["image_count"];
 }
 
 function processImage($img, $tmp){
-    global $valid_extensions, $path, $returnJson;
+    global $valid_extensions, $path, $returnJson, $thumbHeight, $thumbWidth, $thumbPath;
     // get uploaded file's extension
     $ext = strtolower(pathinfo($img, PATHINFO_EXTENSION));
     // can upload same image using rand function
@@ -36,7 +44,10 @@ function processImage($img, $tmp){
         $path = $path.strtolower($final_image); 
         if(move_uploaded_file($tmp,$path)) {
             if(imagePathToDatabase($final_image)){
+                //output thumb
+                Thumb::out($path, $thumbPath.'thumb-'.$final_image, $thumbWidth, $thumbHeight, 'middle');
                 $returnJson = $returnJson . sprintf("{'image' : '%s'},", $img);
+                $_SESSION["image_count"] += 1;
             }
         }
     } 

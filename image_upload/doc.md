@@ -3,18 +3,21 @@
 ## Feature
 - Can upload images through html front page to server;
 - Can upload multiple images at a time;
-- Support image formats: ``jpeg``, ``jpg``, ``png``, ``gif``, ``bmp`` , ``pdf`` , ``doc`` , ``ppt``;
+- Corresponding thumb image will be created in ```%upload_directory%/thumb```;
+- Image name will be generated according to the format ```%current_timestamp%-%image_count_in database%-%image_name%```, such as ```1586833429-56-poster.png```;
+- Thumb image name will be ```thumb-%saved_image_name%```, such as ```thumb-1586833429-56-poster.png```;
+- Support image formats: ``jpeg``, ``jpg``, ``png``, ``gif``;
 - Images will be saved in folder on server which you assigned in php script;
 - The name of uploaded images will be saved on database(default table: image_library)
 
 
 
-Attention: default upload size limit in php.int is 2MB. So if you want to upload images, you should modify php.ini on your server.
+Attention: default upload size limit in php.int is 2MB. So if you want to upload images over 2MB, you should modify php.ini file on your server.
 
 ```
 upload_max_filesize = 2M
 ```
-change 2M to any size you want. 
+change 2M to any size you want, such as 8M(8MB).
 ```
 upload_max_filesize = 8M
 ```
@@ -29,11 +32,13 @@ upload_max_filesize = 8M
 About ajax response:
 - If there's no permission
   - string: You have no perssiom to upload images.
-- If no image has been uploaded
+- Else
+  - Number of images uploaded successfully.
+<!-- - If no image has been uploaded
   - JSON string: []
 - If image uploaded success
   - JSON string: [{'image' : 'img11.png'},{'image' : img22.png'}]
-  - The value of 'image' is the image file name on your client
+  - The value of 'image' is the image file name on your client -->
 
 
 
@@ -45,9 +50,10 @@ The picture will be stored in /uploads folder on server.
 
 ## Html Part
 ```html
-<form class="image_form" action="process.php" method="post" enctype="multipart/form-data">
-<input class="images_input" type="file" name="image" accept="image/*"  multiple="true"/>
-<input type="submit" value="Upload">
+<form class="image_form" action="upload.php" method="post" enctype="multipart/form-data">
+    <input class="images_input" type="file" name="image" accept="image/*"  multiple="true"/>
+    <input type="submit" value="Upload">
+    <p class="hint"></p>
 </form>
 ```
 
@@ -64,6 +70,7 @@ $(document).ready(function (e) {
             formData.append('image[]',images[i]);
         }
         e.preventDefault();
+        $(".hint").html(" ");
         $.ajax({
             url: $(this).attr("action"),
             type: "POST",
@@ -71,14 +78,14 @@ $(document).ready(function (e) {
             contentType: false,
             cache: false,
             processData:false,
+            beforeSend: function(){
+                var date = new Date();
+                $(".hint").html(date.toLocaleString()+"&nbsp&nbsp&nbsp"+"under uploading...");
+            },
             success: function(data){
-                if(data=='invalid'){
-                    console.log("Invalid Image");
-                }
-                else{
-                    $("#output").append(data);
-                    $(".image_form")[0].reset(); 
-                }
+                var date = new Date();
+                $(".hint").html(date.toLocaleString()+"&nbsp&nbsp&nbsp"+data+" images uploaded successfully.");
+                $(".image_form")[0].reset(); 
             },
             error: function(e) {
                 console.log("error");
@@ -91,34 +98,8 @@ $(document).ready(function (e) {
 
 You can set up destination directory on server.
 
+This php script uses Thumb plugin by ```Dejan  QQ: 673008865```.
+
 ```php
-<?php 
-$valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt'); // valid extensions
 $path = '../uploads/'; // upload directory
-if($_FILES['image']){
-    $size = count($_FILES['image']['name']);
-    for($i = 0; $i < $size; $i++){
-        $img = $_FILES['image']['name'][$i];
-        $tmp = $_FILES['image']['tmp_name'][$i];
-        processImage($img, $tmp);
-    }
-}
-function processImage($img, $tmp){
-    global $valid_extensions, $path;
-    // get uploaded file's extension
-    $ext = strtolower(pathinfo($img, PATHINFO_EXTENSION));
-    // can upload same image using rand function
-    $final_image = time() . '-' . $img;
-    // check's valid format
-    echo $ext;
-    echo " ".in_array($ext, $valid_extensions);
-    if(in_array($ext, $valid_extensions)){ 
-        $path = $path.strtolower($final_image); 
-        if(move_uploaded_file($tmp,$path)) {
-            return true;
-        }
-    } 
-    return false;
-}
-?>
 ```
