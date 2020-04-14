@@ -6,6 +6,18 @@
     font-size: 16px;
 }
 
+.signin-show {
+    display: none;
+}
+
+.add-delete-movie {
+    display: none;
+}
+
+.user-show {
+    display: none;
+}
+
 .btn-default {
     border: 2px solid black
 }

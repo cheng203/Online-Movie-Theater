@@ -181,11 +181,11 @@
                                             <div class="movie-modal-div">
                                                 Categories:
                                                 <div class="category">
-                                                    <input type="checkbox" id="Magical" value="Action">Action
-                                                    <input type="checkbox" id="Comedies" value="Comedies">Comedies
-                                                    <input type="checkbox" id="Romantic" value="Romantic">Romantic
-                                                    <input type="checkbox" id="Adventure" value="Adventure">Adventure
-                                                    <input type="checkbox" id="Scientific" value="Scientific">Scientific
+                                                    <input type="checkbox" id="Magical" value="Action" name="movie-category">Action
+                                                    <input type="checkbox" id="Comedies" value="Comedies" name="movie-category">Comedies
+                                                    <input type="checkbox" id="Romantic" value="Romantic" name="movie-category">Romantic
+                                                    <input type="checkbox" id="Adventure" value="Adventure" name="movie-category">Adventure
+                                                    <input type="checkbox" id="Scientific" value="Scientific" name="movie-category">Scientific
                                                 </div>
                                             </div>
                                             <div class="movie-modal-div">
@@ -195,13 +195,14 @@
                                                 Rate: <input class="rate" type="text">%
                                             </div>
                                             <div class="movie-modal-div">
-                                                Picture URL: <input class="movie-url" type="text">
+                                                Picture URL: <b class="movie-url"></b>
+                                                <br> Upload New Picture: <input class="updated_infoImg" type="file" name="image" accept="image/*" />
                                             </div>
                                         </form>
                                     </div>
                                     <div class=" modal-footer ">
-                                        <button type="button " class="btn btn-secondary " data-dismiss="modal ">Close</button>
-                                        <button type="button " class="btn btn-primary ">Save changes</button>
+                                        <button type="button " class="btn btn-secondary " data-dismiss="modal">Close</button>
+                                        <button type="button " class="btn btn-primary edit-movie-save-change">Save changes</button>
                                     </div>
                                 </div>
                             </div>

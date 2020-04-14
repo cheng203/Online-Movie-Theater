@@ -1,4 +1,4 @@
-$(document).ready(function (e) {
+$(document).ready(function(e) {
     // $.ajax({
     //     type: "POST",
     //     url: "../external/login.php",
@@ -13,18 +13,18 @@ $(document).ready(function (e) {
     // })
 
 
-    $(".image_form").on('submit',(function(e) {
+    $(".image_form").on('submit', (function(e) {
         var formData = new FormData();
         var images = $(this).children(".images_input")[0].files;
-        for(var i=0;i<images.length;i++){
-            formData.append('image[]',images[i]);
+        for (var i = 0; i < images.length; i++) {
+            formData.append('image[]', images[i]);
         }
         e.preventDefault();
         $(".hint").html(" ");
         $.ajax({
             url: $(this).attr("action"),
             type: "POST",
-            data:  formData,
+            data: formData,
             contentType: false,
             cache: false,
             processData:false,
@@ -39,7 +39,7 @@ $(document).ready(function (e) {
             },
             error: function(e) {
                 console.log("error");
-            }          
+            }
         });
     }));
 });
