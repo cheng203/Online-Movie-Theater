@@ -3,9 +3,9 @@ use Thumb\Thumb;
 include_once('../../core/MysqlConnector.php');
 include_once('./thumb.php');
 session_start();
-// if(!isset($_SESSION['user_type'])||$_SESSION['user_type']!=0){
-//     die("You have no perssiom to upload images.");
-// }
+if(!isset($_SESSION['user_type'])||$_SESSION['user_type']!=0){
+    die("You have no perssiom to upload images.");
+}
 $_SESSION["image_count"] = 0;// number of images uploaded successfully
 
 $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt'); // valid extensions
