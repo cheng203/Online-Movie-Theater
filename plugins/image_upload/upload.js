@@ -4,7 +4,7 @@ $(document).ready(function (e) {
         path = path + "/";
     }
     path = path + 'image_upload/upload.php';//relative path to upload.php
-    var form = $("<form/>").attr("class", "image_form")
+    var form = $("<form/>").addClass("image_form")
                            .attr("action", path)
                            .attr("method", "post")
                            .attr("enctype", "multipart/form-data")
@@ -13,6 +13,8 @@ $(document).ready(function (e) {
     $(".image_upload").on('submit', 'form', function(e){
         var formData = new FormData();
         var images = $(this).find(".images_input")[0].files;
+        var hint = $(this).find(".hint")[0];
+        var thisForm = $(this);
         for(var i=0;i<images.length;i++){
             formData.append('image[]',images[i]);
         }
@@ -27,17 +29,17 @@ $(document).ready(function (e) {
             processData:false,
             beforeSend: function(){
                 var date = new Date();
-                $(".hint").html(date.toLocaleString()+"&nbsp&nbsp&nbsp"+"under uploading...");
+                $(hint).html(date.toLocaleString()+"&nbsp&nbsp&nbsp"+"under uploading...");
             },
             success: function(data){
                 var date = new Date();
                 if(data != "You have no perssiom to upload images."){
-                    $(".hint").html(date.toLocaleString()+"&nbsp&nbsp&nbsp"+data+" images uploaded successfully.");
+                    $(hint).html(date.toLocaleString()+"&nbsp&nbsp&nbsp"+data+" images uploaded successfully.");
                 }
                 else{
-                    $(".hint").html(data);
+                    $(hint).html(data);
                 }
-                $(".image_form")[0].reset();
+                thisForm[0].reset();
             },
             error: function(e) {
                 console.log("error");
