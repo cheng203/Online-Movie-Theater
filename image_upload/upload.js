@@ -20,6 +20,7 @@ $(document).ready(function (e) {
             formData.append('image[]',images[i]);
         }
         e.preventDefault();
+        $(".hint").html(" ");
         $.ajax({
             url: $(this).attr("action"),
             type: "POST",
@@ -27,8 +28,13 @@ $(document).ready(function (e) {
             contentType: false,
             cache: false,
             processData:false,
+            beforeSend: function(){
+                var date = new Date();
+                $(".hint").html(date.toLocaleString()+"&nbsp&nbsp&nbsp"+"under uploading...");
+            },
             success: function(data){
-                console.log(data);
+                var date = new Date();
+                $(".hint").html(date.toLocaleString()+"&nbsp&nbsp&nbsp"+data+" images uploaded successfully.");
                 $(".image_form")[0].reset(); 
             },
             error: function(e) {
