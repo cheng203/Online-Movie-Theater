@@ -12,7 +12,7 @@ $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , '
 $path = '../../uploads/'; // upload directory
 $thumbPath = '../../uploads/thumb/';
 $thumbWidth = 200;
-$thumbHeight = 200;
+$thumbHeight = 400;
 
 if(isset($_FILES['image'])){
     if(!is_dir($path)){
@@ -41,11 +41,10 @@ function processImage($img, $tmp){
     $final_image = time() . '-'. imageCount() . '-' . $img;
     // check's valid format
     if(in_array($ext, $valid_extensions)){ 
-        $path = $path.strtolower($final_image); 
-        if(move_uploaded_file($tmp,$path)) {
+        if(move_uploaded_file($tmp,$path.$final_image)) {
             if(imagePathToDatabase($final_image)){
                 //output thumb
-                Thumb::out($path, $thumbPath.'thumb-'.$final_image, $thumbWidth, $thumbHeight, 'middle');
+                Thumb::out($path.$final_image, $thumbPath.'thumb-'.$final_image, $thumbWidth, $thumbHeight);
                 $returnJson = $returnJson . sprintf("{'image' : '%s'},", $img);
                 $_SESSION["image_count"] += 1;
             }
