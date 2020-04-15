@@ -1,6 +1,9 @@
 # Plugins Documentation
+Catalog:
+[TOC]
 
-## Image Upload Plugin
+
+## 1. Image Upload Plugin
 
 ### Feature
 - Can upload images through html front page to server;
@@ -14,15 +17,19 @@
 
 
 
-Attention: default upload size limit in php.ini is 2MB. So if you want to upload images over 2MB, you should modify php.ini file on your server.
+Attention: php.ini determines three upload limits. So if you want to upload many files with big size, you should modify php.ini by searching the corresponding statement.
 
-```
-upload_max_filesize = 2M
-```
-change 2M to any size you want, such as 8M(8MB).
-```
-upload_max_filesize = 8M
-```
+1. POST data size limit
+  - default: 8MB
+  - ```post_max_size = 8M``` -> ```post_max_size = 100M```
+2. Single file size limit
+  - default: 2MB
+  - ```upload_max_filesize = 2M``` -> ```upload_max_filesize = 10M```
+
+3. File number limit in one POST request
+  - default: 20
+  - ```max_file_uploads = 20``` -> ```max_file_uploads = 40```
+
 
 ### Usage:
 1. Include ```upload.js```
@@ -65,3 +72,33 @@ Thumb by ```Dejan  QQ: 673008865```: https://github.com/aileshe/Thumb
 
 
 ## Image Select Plugin
+
+### Feature
+- Select&locate image in server
+- Acquire id and file name of image
+- Select image by list of thumbs
+- Multiple instances of plugin can exist in same html 
+
+### Usage:
+1. Include ```select.js```
+   - <script src="./plugins/image_select/select.js"></script>
+2. Create a element with plugin as type and image_select as class
+   
+```html
+<plugin class="image_select" path="./plugins"></plugin>
+```
+- path: relative path to folder plugins
+  - For example, in index.html: ```path="./plugins"```
+3. In the image library, click the check box of image to be selected, then click ```Confirm``` button
+4. If you want to clear previous select, click ```Cancel``` in the media library.
+
+After selection, you will get
+
+1. Names of files will be displayed;
+2. Important: a list of image id will saved as a attribute in this plugin element. You can get the value of attribute ```imgidlist``` and send it to server ,then server can locate the image you want by those id.
+   - Such as: ```<plugin class="image_select" path="./plugins" image_list=" " style="display: block;" imgidlist="132,138">...</plugin>```
+
+### Extended Example
+- Example: 给电影设置轮播图
+
+在插入图片选择插件后, 为这个电影选择一个轮播图. 选好图片之后, 这个插件元素就有一个 ```imgidlist```的属性. 最后在提交的ajax中, 包装这个数据, 比如 ```data: {"轮播图": $(this).attr("imgidlist"), ...其他信息}```.
