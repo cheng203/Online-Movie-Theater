@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
-
+    $("#signUp").on("click", function() {
+        $("#myModal").css("display", "none");
+    });
     //once sign up is selected, sign-up modal will pop up and hide the first modal
     $(".signup-btn").on("click", function() {
         var username = $("#signup-username").val();

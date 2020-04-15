@@ -1,22 +1,5 @@
 $(document).ready(function() {
-    //if delete
-    $(".movie-delete-button").on("click", function() {
-        var movie_edit_name = $("#added-movie-name").val();
-        $.ajax({
-            type: "POST",
-            url: "external/adminDelete.php",
-            dataType: "text",
-            data: { "movie_name": movie_edit_name },
-            success: function(data) {
-                alert("Movie deleted successfully");
-            },
-            error: function() {
-                alert("Movie does not exist");
-            }
-        })
-        $("#edit-movie").modal("hide");
-    });
-    // if add
+    // For admin to add movie
     $(".movie-add-button").on("click", function() {
         var movie_edit_name = $("#added-movie-name").val();
         var release_date = $("#added-movie-release-date").val();

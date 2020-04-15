@@ -4,13 +4,16 @@ $(document).ready(function() {
     if (username == null || username == "") {
         $(".signin-show").show();
         $(".user-show").hide();
+        $(".add-movie").hide();
+        $(".add-image").hide();
     } else {
         if (user_type == 0) {
             $(".signin-show").hide();
             $(".user-show").show();
             var user = "Welcome, Admin " + username;
             $(".username-login").html(user);
-            $(".add-delete-movie").show();
+            $(".add-movie").show();
+            $(".add-image").show();
         } else {
             $(".signin-show").hide();
             $(".user-show").show();

@@ -11,13 +11,17 @@
 
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/common.css">
-    <script src="js/main.js"></script>
-    <script src="js/login.js"></script>
+
+    <script src="js/common/login.js"></script>
     <script src="js/jQuery.md5.js"></script>
-    <script src="js/register.js"></script>
+    <script src="js/common/register.js"></script>
     <script src="js/userLoad.js"></script>
-    <script src="js/logout.js"></script>
-    <script src="js/admin_edit.js"></script>
+    <script src="js/common/logout.js"></script>
+    <script src="js/common/admin_edit.js"></script>
+    <script src="plugins/image_upload/upload.js"></script>
+    <script src="js/common/index_select_room.js"></script>
+    <script src="js/common/add-food.js"></script>
+
     <title>Welcome to Movie Theater</title>
 </head>
 
@@ -61,10 +65,16 @@
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                     </a>
                 </li>
-                <!-- for user to add or delete a movie -->
-                <li class="nav-item add-delete-movie" data-toggle="modal" data-target="#edit-movie" id="edit">
+                <!-- for admin to add or delete a movie -->
+                <li class="nav-item add-movie" data-toggle="modal" data-target="#edit-movie" id="edit">
                     <a class="nav-link" href="#">
                         <i class="fa fa-pencil-square-o" aria-hidden="true">Edit</i>
+                    </a>
+                </li>
+                <!-- for admin to add image to the system -->
+                <li class="nav-item add-image" data-toggle="modal" data-target="#edit-image">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-file-image-o" aria-hidden="true">Image</i>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -193,7 +203,7 @@
             <div class="modal-dialog  modal-lg" style="pointer-events: auto" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add or Delete a Movie Here</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Add a Movie Here</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="signup-close" aria-hidden="true">&times;</span>
                         </button>
@@ -325,13 +335,34 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary movie-delete-button">Delete</button>
                     <button type="button" class="btn btn-secondary movie-add-button">Add</button>
                 </div>
             </div>
         </div>
         </div>
         <!-- for admin to add a move ends -->
+        <!-- for admin to add image starts -->
+        <div class="modal fade" id="edit-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Please Upload Image Here</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        Select pictures you would like to upload
+                        <plugin class="image_upload" path="./plugins/image_upload/upload.js"></plugin>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- for admin to add image ends -->
     </nav>
     <!-- navigation end -->
 
@@ -394,8 +425,6 @@
         <div>
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="recommendation-li active"><a href="#new" aria-controls="new" role="tab" data-toggle="tab">What's New</a></li>
-                <li role="presentation" class="recommendation-li"><a href="#coming" aria-controls="coming" role="tab" data-toggle="tab">Coming Next</a></li>
-                <li role="presentation" class="recommendation-li"><a href="#top" aria-controls="top" role="tab" data-toggle="tab">Top Select</a></li>
             </ul>
         </div>
         <!-- Nav panel -->
@@ -424,54 +453,6 @@
                     </li>
                 </ul>
             </div>
-            <div role="tabpanel" class="tab-pane" id="coming">
-                <ul class="nav justify-content-center">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            <img class="recommendation-img" src="img/spiderMan-small.jpg">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <img class="recommendation-img" src="img/spiderMan-small.jpg">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <img class="recommendation-img" src="img/spiderMan-small.jpg">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <img class="recommendation-img" src="img/spiderMan-small.jpg">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="top">
-                <ul class="nav justify-content-center">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            <img class="recommendation-img" src="img/warCraft-small.jpg">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <img class="recommendation-img" src="img/warCraft-small.jpg">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <img class="recommendation-img" src="img/warCraft-small.jpg">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <img class="recommendation-img" src="img/warCraft-small.jpg">
-                        </a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
     <!-- user recommendation end -->
@@ -485,7 +466,7 @@
                     <div class="card-body">
                         <h5 class="card-title card-text">Popcorn</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Add To Cart</a>
+                        <button class="btn btn-primary food-plan">Add To Cart</button>
                     </div>
                 </div>
             </div>
@@ -495,7 +476,7 @@
                     <div class="card-body card-text">
                         <h5 class="card-title">Drink</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Add To Cart</a>
+                        <button class="btn btn-primary food-plan">Add To Cart</button>
                     </div>
                 </div>
             </div>
@@ -503,9 +484,9 @@
                 <div class="card card-style">
                     <img src="img/popcorn.jpg" class="card-img-top" alt="... ">
                     <div class="card-body ">
-                        <h5 class="card-title card-text ">Popcorn & Drinks</h5>
+                        <h5 class="card-title card-text">Popcorn & Drinks</h5>
                         <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="# " class="btn btn-primary ">Add To Cart</a>
+                        <button class="btn btn-primary food-plan">Add To Cart</button>
                     </div>
                 </div>
             </div>

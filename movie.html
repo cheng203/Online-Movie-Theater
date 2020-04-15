@@ -10,7 +10,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="css/movie.css">
     <link rel="stylesheet" type="text/css" href="css/common.css">
-    <script src="js/movie.js"></script>
+    <script src="js/movie/movie.js"></script>
+    <script src="js/movie/user_buy_ticket.js"></script>
 
     <title>Welcome to Our Theater</title>
 </head>
@@ -202,6 +203,7 @@
                                     </div>
                                     <div class=" modal-footer ">
                                         <button type="button " class="btn btn-secondary " data-dismiss="modal">Close</button>
+                                        <button type="button " class="btn btn-primary edit-movie-delete">Delete</button>
                                         <button type="button " class="btn btn-primary edit-movie-save-change">Save changes</button>
                                     </div>
                                 </div>
@@ -212,48 +214,45 @@
                         <div class="row collapse " id="buyTicket">
                             <div class="card card-body movie-info-buy movie-info-buy-form ">
                                 <form>
-                                    Date: <input type="date" width="276 " />
-                                    <div class="movie-info-form-select ">
+                                    Date: <input class="user-choose-date" type="date" width="276 " />
+                                    <div class="movie-info-form-select">
                                         Availale Time:
-                                        <select>
+                                        <select class="user-select-date">
                                             <option>--none--</option>
-                                            <option>12:40pm</option>
-                                            <option>4:40pm</option>
-                                            <option>8:40pm</option>
                                         </select>
                                     </div>
                                     <div class="movie-info-form-select ">
                                         Adult ($<span id="adult-price ">13.99</span>):
-                                        <select>
-                                            <option>0</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
+                                        <select class="adult-ticket-number">
+                                            <option value='0'>0</option>
+                                            <option value='1'>1</option>
+                                            <option value='2'>2</option>
+                                            <option value='3'>3</option>
+                                            <option value='4'>4</option>
                                         </select>
                                     </div>
                                     <div class="movie-info-form-select ">
                                         Senior ($<span id="senior-price ">8.99</span>):
-                                        <select>
-                                            <option>0</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
+                                        <select class="senior-ticket-number">
+                                            <option value='0'>0</option>
+                                            <option value='1'>1</option>
+                                            <option value='2'>2</option>
+                                            <option value='3'>3</option>
+                                            <option value='4'>4</option>
                                         </select>
                                     </div>
                                     <div class="movie-info-form-select ">
                                         Child ($<span id="child-price ">13.99</span>):
-                                        <select>
-                                            <option>0</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
+                                        <select class="child-ticket-number">
+                                            <option value='0'>0</option>
+                                            <option value='1'>1</option>
+                                            <option value='2'>2</option>
+                                            <option value='3'>3</option>
+                                            <option value='4'>4</option>
                                         </select>
                                     </div>
                                     <div class="movie-info-form-select ">
-                                        <button class="btn btn-primary movie-info-btn " type="button ">Add to Cart</button>
+                                        <button class="btn btn-primary movie-info-btn" type="button" id="submit-ticket">Add to Cart</button>
                                     </div>
                                 </form>
                             </div>
@@ -266,12 +265,11 @@
     </div>
     <!-- movie information body ends -->
 
-    <!-- movie photo and user review starts -->
+    <!-- movie photo starts -->
     <div>
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation " class="active movie-subcontent"><a href="#photo" aria-controls="home" role="tab" data-toggle="tab">Photo</a></li>
-            <li role="presentation" class="movie-subcontent"><a href="#userReview" aria-controls="profile" role="tab" data-toggle="tab">User Reviews</a></li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
@@ -299,17 +297,9 @@
                     </li>
                 </ul>
             </div>
-            <div role="tabpanel" class="tab-pane" id="userReview">
-                <div class="movie-user-review-user">
-                    <span>Username</span>, <span>Date Leaved Message</span>
-                </div>
-                <div class="movie-user-review-user">
-                    淡黄的长裙，蓬松的头发
-                </div>
-            </div>
         </div>
     </div>
-    <!-- movie photo and user review ends -->
+    <!-- movie photo ends -->
     <!-- Food & Drink start -->
     <div class="container-fluid food-background" id="food">
         <div class="row">
