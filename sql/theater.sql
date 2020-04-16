@@ -8,7 +8,6 @@ create table if not exists `movies`(
    `info` varchar(512) not null,
    `duration` smallint unsigned not null,
    `rating` tinyint unsigned,
-   `url` varchar(512) unique,
    primary key ( `movie_id` ),
    index(`release_date`),
    index(`off_date`),
@@ -133,7 +132,9 @@ create table if not exists `goods`(
     `goods_id` tinyint unsigned auto_increment,
     `goods_name` varchar(64) not null unique,
     `price` decimal(8,2) unsigned not null,
+    `image_id` int unsigned not null, 
     primary key (`goods_id`),
+    foreign key (`image_id`) references `image_library` (`image_id`),
     index (`price`),
     index (`goods_name`)
 )engine=innodb default charset=utf8;
