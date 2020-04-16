@@ -1,7 +1,4 @@
-# External API
-src path: ```external/*```
-
-Called by http request(eg. jQeury)
+# API about login&register
 
 ## 1. register.php
 src path: ```external/register.php```
@@ -86,35 +83,3 @@ Called by ajax
             console.log("error");
         }
     })
-```
-
-
-<!-- ## 1. register.php
-src path: ```external/login.php```
-
-To register a user. 
-### Require and Response
-- Requirire: person_type, username, password_hash and email
-- person_type:  1: admin, 2: normal user
-- Response(status_code):
-  - 10: username or email exists
-  - 11: success
-  - 12: (server or query) error 
-
-### example
-Called by ajax
-
-```javascript
-    $.ajax({
-        type: "POST",
-        url: "external/register.php",
-        dataType: "text",
-        data: { "person_type":1, "username": "user1", "password_hash": "hasaaha", "email": "aaa@aaa.com"},
-        success: function (data) {
-            console.log(data); // data will be 10, 11 or 12
-        },
-        error: function () {
-            console.log("error");
-        }
-    })
-``` -->
