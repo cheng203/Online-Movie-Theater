@@ -5,7 +5,7 @@ $(document).ready(function() {
         .addClass("select_hint")
         .css("display", "inline")
         .css("font-size", "12px");;
-    $(".image_select").attr("image_list", " ").append(btn).append(hint).css("display", "block");
+    $(".image_select").append(btn).append(hint).css("display", "block");
     $(".select_submit").on("click", function() {
         createMediaDiv($(this).parent());
         getImageData($(this).parent());
