@@ -30,19 +30,20 @@ $(document).ready(function() {
         })
         //once admin click delete, send movie name back to backend
     $(".edit-movie-delete").on("click", function() {
-            var movie_name = localStorage.getItem("movie_name");
-            var sendData = {
+            var movie_name = localStorage.getItem("movie-name");
+            var sendData = [{
                 "movie_name": movie_name
-            }
+            }];
             $.ajax({
                 type: "post",
-                url: "core/deleteMovie.php",
+                url: "...........",
                 data: sendData,
                 success: function() {
-                    console.log("you have successfullt delete item");
+                    localStorage.setItem("movie-name", "");
+                    window.location.href = "index.html";
                 },
                 error: function() {
-                    console.log("Deletion failed");
+                    console.log("failed");
                 }
             })
         })
@@ -58,29 +59,24 @@ $(document).ready(function() {
         })
         var director = $(".director").val();
         var rate = $(".rate").val();
-        var url = $(".movie-url").html();
-        // only name of the updated image is returned
-        var update_img = $(".updated_infoImg")[0].files[0].name;
 
         //create JSON data format send
-        var sendData = {
-            movie_name: movie_name,
-            release: release,
-            duration: duration,
-            off_date: off_date,
-            category: category,
-            director: director,
-            rate: rate,
-            url: url,
-            update_img: update_img
-        };
+        var sendData = [{
+            "movie-name": movie_name,
+            "release": release,
+            "duration": duration,
+            "off-date": off_date,
+            "category": category,
+            "director": director,
+            "rate": rate
+        }];
         $.ajax({
-            url: "admin_edit_movie_info.php",
+            url: "...........",
             type: "POST",
             data: sendData,
             dataType: "json",
             success: function(data) {
-                console.log("successfully");
+                window.location.href = "../movie-page-template.html";
             },
             error: function() {
                 console.log("Error");

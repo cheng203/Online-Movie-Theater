@@ -34,7 +34,7 @@ $(document).ready(function() {
         }
 
         // hash the password
-        password = password = $.md5(password);
+        password = $.md5(password);
 
         // sending user info back to register.php
         $.ajax({
@@ -48,7 +48,16 @@ $(document).ready(function() {
                 "email": email
             },
             success: function(data) {
-                console.log(data); // data will be 10, 11 or 12
+                var num = data;
+                if (num == 10) {
+                    alert("Username or email has already exist. Please try again")
+                }
+                if (num == 11) {
+                    localStorage.setItem("username", username);
+                    // here we assume that only regular user could register
+                    localStorage.setItem("user-type", 1);
+                    window.location.href = "index.html";
+                }
             },
             error: function() {
                 console.log("error");

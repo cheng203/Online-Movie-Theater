@@ -3,24 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
+
+    <!-- shared js -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
 
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <!-- shared customerized css -->
     <link rel="stylesheet" type="text/css" href="css/common.css">
 
+    <!-- private customerized css  -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <!-- shared customerized js -->
     <script src="js/common/login.js"></script>
-    <script src="js/jQuery.md5.js"></script>
+    <script src="js/common/jQuery.md5.js"></script>
     <script src="js/common/register.js"></script>
-    <script src="js/userLoad.js"></script>
+    <script src="js/common/userLoad.js"></script>
     <script src="js/common/logout.js"></script>
     <script src="js/common/admin_edit.js"></script>
-    <script src="plugins/image_upload/upload.js"></script>
-    <script src="js/common/index_select_room.js"></script>
     <script src="js/common/add-food.js"></script>
+    <script src="js/common/index_select_room.js"></script>
+    <script src="plugins/image_select/select.js"></script>
+    <script src="plugins/image_upload/upload.js"></script>
+
+    <!-- private customerized js -->
+    <script src="js/main/carousel-control.js"></script>
 
     <title>Welcome to Movie Theater</title>
 </head>
@@ -282,7 +293,7 @@
                                 Front Image
                             </label>
                             <div>
-                                <input class="added-movie-frontImg" type="file" name="image" accept="image/*" />
+                                <plugin id="movie-front-img" class="image_select" path="../"></plugin>
                             </div>
                         </div>
                         <!-- add movie display mid img -->
@@ -291,7 +302,7 @@
                                 Movie Info Image
                             </label>
                             <div>
-                                <input class="added-movie-infoImg" type="file" name="image" accept="image/*" />
+                                <plugin id="movie-info-img" class="image_select" path="../"></plugin>
                             </div>
                         </div>
                         <!-- add movie stage img -->
@@ -300,7 +311,7 @@
                                 Movie Stage Image
                             </label>
                             <div>
-                                <input class="added-movie-stageImg" type="file" name="image" accept="image/*" multiple="true" />
+                                <plugin id="movie-stage-img" class="image_select" path="../"></plugin>
                             </div>
                         </div>
                         <!-- add shopping cart img -->
@@ -309,7 +320,7 @@
                                 Movie Shopping Cart Image
                             </label>
                             <div>
-                                <input class="added-movie-shopImg" type="file" name="image" accept="image/*" multiple="true" />
+                                <plugin id="movie-shop-image" class="image_select" path="../"></plugin>
                             </div>
                         </div>
                         <!-- add movie show time -->
@@ -357,7 +368,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-secondary">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -381,28 +391,24 @@
                         <a href="#"><img src="img/docterStrange.jpg" class="d-block w-100" alt="haha"></a>
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Docter Strange</h5>
-                            <p>The man with dark magic</p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <a href="#"><img src="img/avenrage.jpg" class="d-block w-100" alt="haha"></a>
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Avenragers</h5>
-                            <p>.......</p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <a href="#"><img src="img/spiderMan.jpg" class="d-block w-100" alt="haha"></a>
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Spider Man</h5>
-                            <p>.......</p>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <a href="#"><img src="img/warCraft.jpg" class="d-block w-100" alt="haha"></a>
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Warcraft</h5>
-                            <p>.......</p>
                         </div>
                     </div>
                 </div>
@@ -432,7 +438,7 @@
             <div role="tabpanel" class="tab-pane active" id="new">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link" href="#">
                             <img class="recommendation-img" src="img/doctorStrange-small.jpg">
                         </a>
                     </li>

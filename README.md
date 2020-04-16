@@ -56,3 +56,4 @@ TODO List
       3. API for search button, should return
          1. movie middle image url
          2. movie descriotion (maybe)
+

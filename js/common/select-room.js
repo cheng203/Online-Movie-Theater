@@ -2,8 +2,8 @@ $(document).ready(function() {
     var room_option = "";
     var time_option = "";
     $.ajax({
-        type: 'get',
-        url: 'core/getRoom.php',
+        type: 'post',
+        url: '.......',
         success: function(data) {
             for (var i = 0; i < data.length; i++) {
                 room_option += '<option value = "' + data[i].room + '">' + data[i].room + '</option>';
@@ -18,9 +18,13 @@ $(document).ready(function() {
     // if room is selected, get information for available time
     $("#added-movie-room").on("change", function() {
         var pid = this.value;
+        var sendData = [{
+            "room": pid
+        }]
         $.ajax({
-            type: 'get',
-            url: 'core/getTime.php',
+            type: 'post',
+            url: '......',
+            data: sendData,
             success: function(data) {
                 for (var i = 0; i < data.length; i++) {
                     time_option += '<option value = "' + data[i].time + '">' + data[i].time + '</option>';
