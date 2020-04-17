@@ -1,0 +1,110 @@
+function pagination(data) {
+    var dataL = data.length; //length of data received
+    var numItem = 3; //number of item display in each page
+    var pageNum = 0;
+
+    if (dataL % numItem == 0) {
+        pageNum = dataL / numItem;
+    } else {
+        pageNum = parseInt(dataL / numItem) + 1;
+    }
+    // if need more than one page to display result, then add pre first. Next will be added at the end
+    if (data.length > 3) {
+        $(".pagination").append(
+            '<li class="page-item prev-item"><a class="page-link" href="#" value = "prev">Previous</a></li>'
+        );
+    }
+    for (var i = 0; i < pageNum; i++) {
+        if (i == 0) {
+            $(".pagination").append(
+                '<li class="page-item active"><a class="page-link" href="#" value = ' + (i + 1) + '>' + (i + 1) + '</a></li>'
+            );
+        } else {
+            $(".pagination").append(
+                '<li class="page-item"><a class="page-link" href="#" value = "' + (i + 1) + '">' + (i + 1) + '</a></li>'
+            );
+        }
+
+    }
+    if (data.length > 3) {
+        $(".pagination").append(
+            '<li class="page-item next-item"><a class="page-link" href="#" value= "next">Next</a></li>'
+        );
+    }
+    var text = $(".pagination").find(".active").text();
+    var numLength = numItem * text + 3 > dataL ? dataL : numItem * text + 3;
+    for (var i = numItem * text; i < numLength; i++) {
+        $(".movie-list-body").append(
+            '<li class=" clearfix movie-list-body-li">' +
+            '<div style="float: left;">' +
+            '<img style="width: 344px" src="' + data[i].url + '">' +
+            '<button class="btn btn-light value="' + data[i].movie_name + '">Go to Movie</button>' +
+            '</div>' +
+            '</li>'
+        )
+    }
+
+}
+
+function display(data, text) {
+    //if index == prev
+    if (text == "Previous") {
+        text = parseInt($(".pagination").find(".active").text()) - 1;
+        if (text <= 0) {
+            return;
+        } else {
+            // used to add active class to selected one
+            $(".pagination .active").removeClass("active");
+            $(".pagination .page-item").filter(function() {
+                if ($(this).text() == text) {
+                    return $(this);
+                }
+            }).addClass("active");
+            addPicture(data, text);
+        }
+    } else if (text == "Next") {
+        text = parseInt($(".pagination").find(".active").text()) + 1;
+        console.log(text);
+        var prev_index = $(".pagination").find(".next-item").prev().text();
+        console.log(prev_index + " 我是之前的一个");
+        if (text > prev_index) {
+            return;
+        } else {
+            // used to add active class to selected one
+            $(".pagination .active").removeClass("active");
+            $(".pagination .page-item").filter(function() {
+                if ($(this).text() == text) {
+                    return $(this);
+                }
+            }).addClass("active");
+            addPicture(data, text);
+        }
+    } else {
+        // used to add active class to selected one
+        $(".pagination .active").removeClass("active");
+        $(".pagination .page-item").filter(function() {
+            if ($(this).text() == text) {
+                return $(this);
+            }
+        }).addClass("active");
+        addPicture(data, text);
+    }
+}
+
+function addPicture(data, text) {
+    $(".movie-list-body").empty();
+    text = text - 1;
+    var dataL = data.length; //length of data received
+    var numItem = 3; //number of item display in each page
+    var numLength = numItem * text + 3 > dataL ? dataL : numItem * text + 3;
+    for (var i = numItem * text; i < numLength; i++) {
+        $(".movie-list-body").append(
+            '<li class=" clearfix movie-list-body-li">' +
+            '<div style="float: left;">' +
+            '<img style="width: 344px" src="' + data[i].url + '">' +
+            '<button class="btn btn-light value="' + data[i].movie_name + '">Go to Movie</button>' +
+            '</div>' +
+            '</li>'
+        )
+    }
+}

@@ -274,3 +274,116 @@ File path: js/shopping/checkout.js
     3. type: post
     4. url: need to fill ?????
     5: expect to get data back indicate if added movie ticket exceed available seats
+
+
+File Name: search-initial.js
+File Path: js/search/search-initial.js
+    1. This file is used to initialize the search page
+        1. To get movie type array
+            1. type: POST
+            2. url: "........"
+            3. expected return data
+                [
+                    {  
+                    "type": Scientific
+                    },
+                    {  
+                    "type": Magical
+                    },
+                    {  
+                    "type": ....
+                    }
+                ]
+        2. To get all movie list had in DB for initilizing page (all will be by default)
+            1. type: POST
+            2. url: "........"
+            3. expected return data
+                [
+                    {
+                        "movie_name": ...,
+                        "url": .....
+                    },
+                    {
+                        "movie_name": ...,
+                        "url": .....
+                    },
+                    {
+                        "movie_name": ...,
+                        "url": .....
+                    }
+                ]
+
+
+File Name: seach-by-name
+File Path: js/search/search-by-name.js
+    1. This file is used for user to type movie name and search
+    2. section 1 is to get real-time result back while user type
+        1. sendData:
+            {
+                "key": key  // here key means few word, like doc, db should return docter strange 用正则表达式来判断
+            }
+        2. type: POST
+        3. url: "......."
+        4. expected return type in json
+            [
+                {
+                    "movie_name": name
+                },
+                {
+                    "movie_name": name
+                },
+                {
+                    "movie_name": name
+                }
+            ]
+    3. section 2 is to get searched movie back
+        1. sendData:
+            {
+                "key": key  // key is movie name
+            }
+        2. type: POST
+        3. url: "......"
+        4. expected return type in json
+            here should notice, if not found a record, please send back a empty json array []
+            else 
+            [
+               {
+                   "movie_name": movie,
+                   "url": url;
+               } 
+            ]
+
+
+File Name: search-by-category
+File Path: js/search/search-by-category
+    1. This file is used to get same type movie list
+    2. sendData
+        {
+            "type": category // category is string, like Scientiic
+        }
+    3. url: "................"
+    4. type: POST
+    5. expected return data in json
+        [
+            {
+                "movie-name": "spider",
+                "url": "img/doctorStrange-small.jpg"
+            },
+            {
+                "movie-name": "spider",
+                "url": "img/spiderMan-small.jpg"
+            },
+            {
+                "movie-name": "spider",
+                "url": "img/spiderMan-small.jpg"
+            },
+            {
+                "movie-name": "spider",
+                "url": "img/spiderMan-small.jpg"
+            },
+            {
+                "movie-name": "spider",
+                "url": "img/spiderMan-small.jpg"
+            },
+        ]
+        url should be the full image url

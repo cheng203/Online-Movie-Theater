@@ -18,3 +18,12 @@
 .movie-list-body-li button {
     margin: 10px 15px;
 }
+
+.user-search {
+    position: relative;
+}
+
+.search-name {
+    position: absolute;
+    display: none;
+}
