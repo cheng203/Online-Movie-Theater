@@ -140,6 +140,10 @@ create table if not exists `goods`(
     index (`price`),
     index (`goods_name`)
 )engine=innodb default charset=utf8;
+insert into `goods` values(null, 'pop', '15', '1');
+insert into `goods` values(null, 'drink', '10', '1');
+insert into `goods` values(null, 'pop+drink', '20', '1');
+
 
 create table if not exists `order_goods_detail`(
     `order_id` int unsigned not null,
