@@ -38,6 +38,23 @@ class MysqlConnector{
             return false;
         }
     }
+
+    function get_insert_id($sql){
+        $conn = mysqli_connect($this->servername, $this->username, $this->password, $this->dbname);
+        if(!$conn){
+            die("Connection failed: " . mysqli_connect_error());
+        }
+        $result = mysqli_query($conn, $sql);
+        if($result==true){
+            $last_id = mysqli_insert_id($conn);
+            
+        }else{
+            $last_id= 0;
+        }
+        $conn->close();
+        return $last_id;
+
+    }
 }
 
 

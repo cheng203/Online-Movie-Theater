@@ -54,8 +54,17 @@ Class RoomSql{
 
     }
 
+    function modifyRoomByDate($room_id,$date,$time_flag){
+       
+       $sql = sprintf("UPDATE rooms_by_date SET time_flag='%s' WHERE room_id='%s' and date='%s'", $time_flag,$room_id,$date);
+        return $this->conn->query($sql);
+        
+
+    }
+
     function initRoomsByDate($room_id,$date){
-        $time_flag="000000";
+        $time_flag="000000000000000000000000000000000000000000000000";
+        //$time_flag="000000";
         $sql = sprintf("INSERT into rooms_by_date values('%s', '%s', '%s')",$room_id,$date,$time_flag);
         return $this->conn->query($sql);
 
