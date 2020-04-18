@@ -78,10 +78,11 @@ create table if not exists `image_types`(
     `image_type_name` varchar(128) not null unique,
     primary key (`image_type_id`)
 )engine=innodb default charset=utf8;
-insert into `image_types` values(null, 'poster');
-insert into `image_types` values(null, 'cover');
-insert into `image_types` values(null, 'thumbnail');
-insert into `image_types` values(null, 'stills');
+insert into `image_types` values(null, 'carousel');
+insert into `image_types` values(null, 'search');
+insert into `image_types` values(null, 'movie');
+insert into `image_types` values(null, 'cart');
+insert into `image_types` values(null, 'stage');
 
 create table if not exists `movie_images`(
     `movie_id` int unsigned not null,
