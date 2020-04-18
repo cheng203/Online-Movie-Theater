@@ -1,16 +1,36 @@
 $(document).ready(function() {
+    initSelector();
+});
+
+function generateSelector(path){
+    var selector = $("<plugin/>").attr("path", path).addClass("image_select");
     var btn = $("<button/>").html("Select")
-        .addClass("select_submit")
+    .addClass("select_submit");
     var hint = $("<p/>").html("")
         .addClass("select_hint")
         .css("display", "inline")
-        .css("font-size", "12px");;
+        .css("font-size", "12px");
+    $(selector).append(btn).append(hint).css("display", "block");
+    $(selector).find(".select_submit").on("click", function() {
+        createMediaDiv($(this).parent());
+        getImageData($(this).parent());
+    });
+    return selector;
+}
+
+function initSelector(){
+    var btn = $("<button/>").html("Select")
+        .addClass("select_submit");
+    var hint = $("<p/>").html("")
+        .addClass("select_hint")
+        .css("display", "inline")
+        .css("font-size", "12px");
     $(".image_select").append(btn).append(hint).css("display", "block");
     $(".select_submit").on("click", function() {
         createMediaDiv($(this).parent());
         getImageData($(this).parent());
     });
-});
+}
 
 function createMediaDiv(selector) {
     var imgLib = $("<div/>").html("Please select image(s)")
@@ -30,7 +50,7 @@ function createMediaDiv(selector) {
 }
 
 function getImageData(selector) {
-    var path = $(".image_select").attr("path");
+    var path = $(selector).attr("path");
     if (path.charAt(path.length - 1) != "/") {
         path = path + "/";
     }
@@ -41,11 +61,14 @@ function getImageData(selector) {
         url: path,
         dataType: "text",
         success: function(data) {
-            var imgDisplay = selector.find(".img_display");
-            var imgArr = JSON.parse(data);
-            $.each(imgArr, function(i, img) {
-                imgDisplay.append(imgBlock(img.image_id, img.image_name));
-            });
+            if(data!="   "){
+                var imgDisplay = selector.find(".img_display");
+                var imgArr = JSON.parse(data);
+                $.each(imgArr, function(i, img) {
+                    imgDisplay.append(imgBlock(img.image_id, img.image_name));
+                });
+            }
+            else($(selector).find(".imgLib").prepend("<p>No images available.</p>"));
         },
         error: function() {
             console.log("error");

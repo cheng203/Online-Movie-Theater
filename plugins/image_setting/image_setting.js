@@ -1,10 +1,7 @@
-$(document).ready(function(){
-
-
-
-
-
-
+$(document).ready(function() {
+    initSetting();
 });
 
-
+function initSetting(){
+    
+}
