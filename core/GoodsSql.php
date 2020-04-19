@@ -27,7 +27,7 @@ Class GoodsSql{
     function addGoods($goods_name,$price)
     {
      
-        $sql = sprintf("INSERT into goods values(null, '%s', '%f')",$goods_name,$price);
+        $sql = sprintf("INSERT into goods values(null, '%s', '%f', '1')",$goods_name,$price);
         return $this->conn->query($sql);
    
        
