@@ -12,7 +12,7 @@ Jump to: [Login&Register Documentation](./login&register.md)
 3. ```logout.php```
 
 ### 2. Movie API
-Jump to: [Movie Api Documentation](./login&register.md)
+Jump to: [Movie Api Documentation](./movie.md)
 
 1. ```listMovies.php```
 2. ```addMoive.php```
@@ -21,145 +21,25 @@ Jump to: [Movie Api Documentation](./login&register.md)
 5. ```findMovie.php```
 6. ```getMoviePrice.php```
 7. ```setMoviePrices.php```
+8. ```getMovieImages.php```
+
+### 3. Goods API
+Jump to: [Goods Api Documentation](./goods.md)
+
+1. ```listGoods.php```
+2. ```getGoodsPriceByID```
+3. ```addGoods.php```
+4. ```deleteGoods.php```
+5. ```modifyGoods.php```
 
 
 > 下面的还没统一修改
 
-## 8. Customer_get_MPrice.php
-
-src path: ```external/Customer_get_MPrice.php```
-
-Customer gets the price of a movie.
-### Require and Response
-- Requirire: movie_id,ticket_type_id
-- Response: json string
--```[{"price":"30.00"}]
-```
-
-### example
-
-Called by ajax
-```javascript
-$.ajax({
-        type: "POST",
-        url: "external/Customer_get_MPrice.php",
-        data: { "movie_id":"9","ticket_type_id":"1"},
-        success: function (data) {
-            console.log(data); 
-        },
-        error: function () {
-            console.log("error");
-        }
-    })
-    ````
 
 
-## 9. Admin_add_goods.php
-
-src path: ```external/Admin_add_goods.php```
-
-Add the info of goods.
-### Require and Response
-- Requirire: goods_name,price
-- Response: "Goods Added Successfully" or "Error"
 
 
-### example
 
-Called by ajax
-```javascript
-  $.ajax({
-        type: "POST",
-        url: "external/Admin_add_goods.php",
-        data: { "goods_name":"water","price":"14"},
-        success: function (data) {
-            console.log(data); 
-        },
-        error: function () {
-            console.log("error");
-        }
-    })
-    ```
-## 10. Admin_deleteGoods.php
-
-src path: ```external/Admin_deleteGoods.php```
-
-Delete the info of goods.
-### Require and Response
-- Requirire: goods_id
-- Response: "Goods deleted Successfully" or "Error"
-
-
-### example
-
-Called by ajax
-```javascript
- $.ajax({
-        type: "POST",
-        url: "external/Admin_deleteGoods.php",
-        data: { "goods_id":"1"},
-        success: function (data) {
-            console.log(data); 
-        },
-        error: function () {
-            console.log("error");
-        }
-    })
-    ````
-
-## 11. Admin_modify_goods.php
-
-src path: ```external/Admin_modify_goods.php```
-
-Modify the info of goods.
-### Require and Response
-- Requirire: goods_id,goods_name,price
-- Response: "Goods Updated Successfully" or "Error"
-
-
-### example
-
-Called by ajax
-```javascript  
-$.ajax({
-        type: "POST",
-        url: "external/Admin_modify_goods.php",
-        data: { "goods_id":"2","goods_name":"water","price":"23"},
-        success: function (data) {
-            console.log(data); 
-        },
-        error: function () {
-            console.log("error");
-        }
-    })
-````
-## 12. Customer_get_goods_price.php
-
-src path: ```external/Customer_get_goods_price.php```
-
-Customer gets the price of goods.
-### Require and Response
-- Requirire: goods_id
-- Response: json string
--```[{"price":"23.00"}]
-```
-
-### example
-
-Called by ajax
-```javascript
- $.ajax({
-        type: "POST",
-        url: "external/Customer_get_goods_price.php",
-        data: { "goods_id":"2",},
-        success: function (data) {
-            console.log(data); 
-        },
-        error: function () {
-            console.log("error");
-        }
-    })
-    `````
 ## 13. Find_Room_ByName.php
 
 src path: ```external/Find_Room_ByName.php```
@@ -168,7 +48,9 @@ Find the info of a room by room_name.
 ### Require and Response
 - Requirire: room_name
 - Response: json string
--```[{"room_id":"1","room_name":"aaa","capacity":"30"}]
+-
+```
+[{"room_id":"1","room_name":"aaa","capacity":"30"}]
 ```
 
 
@@ -187,7 +69,7 @@ $.ajax({
             console.log("error");
         }
     })
-````
+```
 ## 14. Find_Room_ByID.php
 
 src path: ```external/Find_Room_ByID.php```

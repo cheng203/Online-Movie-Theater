@@ -24,7 +24,10 @@ Fetch all movies.
 ### Require and Response
 - Require: none
 - Response: 
-  - json string ```[{"movie_id":"1","name":"foo","type_name":"Sci","release_date":"2020-03-04","off_date":"2020-05-15","director":"Trump","info":"asasas","duration":"120","rating":"10"},{"movie_id":"2","name":"foo2","type_name":"Sci","release_date":"2020-01-04","off_date":"2020-01-15","director":"Trump","info":"asa\u554asas","duration":"240","rating":"10"}]```
+  - json string 
+  ```[{"movie_id":"1","name":"foo","type_name":"Sci","release_date":"2020-03-04","off_date":"2020-05-15","director":"Trump","info":"asasas","duration":"120","rating":"10"},
+  {"movie_id":"2","name":"foo2","type_name":"Sci","release_date":"2020-01-04","off_date":"2020-01-15","director":"Trump","info":"asa\u554asas","duration":"240","rating":"10"}]
+  ```
   - If no movie: "No Movie"
 
 ### example
@@ -195,6 +198,56 @@ Called by ajax
         url: "external/movie_api/setMoviePrices.php",
         dataType: "text",
         data: {"movie_id": 1, "adult_price": 60, "senior_price": 35, "children_price": 20},
+        success: function (data) {
+            console.log(data);
+        },
+        error: function () {
+            console.log("error");
+        }
+    })
+```
+
+## 8. getMovieImages.php
+
+src path: ```external/movie_api/getMovieImages.php``
+
+Get image list of movie by movie ID
+### Require and Response
+- Require: movie_id
+- Response: 
+  - success: 
+    - No Images: ```No Images```
+    - Images got: 
+```
+[{"movie_id":"4","name":"Foo1","image_type_name":"carousel","image_id":"2","image_name":"1587244121-1-2018-06-12.png"},
+{"movie_id":"4","name":"Foo1","image_type_name":"cart","image_id":"7","image_name":"1587246179-6-2018-10-10 (1).png"},
+{"movie_id":"4","name":"Foo1","image_type_name":"movie","image_id":"8","image_name":"1587246179-7-2018-10-10.png"},
+{"movie_id":"4","name":"Foo1","image_type_name":"search","image_id":"3","image_name":"1587244121-2-2018-09-06 (1).png"},
+{"movie_id":"4","name":"Foo1","image_type_name":"stage","image_id":"2","image_name":"1587244121-1-2018-06-12.png"},
+{"movie_id":"4","name":"Foo1","image_type_name":"stage","image_id":"4","image_name":"1587244287-3-2018-05-28 (1).png"},
+{"movie_id":"4","name":"Foo1","image_type_name":"stage","image_id":"9","image_name":"1587246179-8-2020-01-15 (1).png"}]
+```
+  - failaure: ```"error"```
+
+In response, ```image_name``` can be directly used by html to fetch the image path. Format is:
+```
+/uploads/%image_name%
+```
+In index.html, image path is
+```
+./uploads/%image_name%
+```
+
+
+### example
+
+Called by ajax
+```javascript
+    $.ajax({
+        type: "POST",
+        url: "external/movie_api/getMovieImages.php",
+        dataType: "text",
+        data: {"movie_id": 4},
         success: function (data) {
             console.log(data);
         },

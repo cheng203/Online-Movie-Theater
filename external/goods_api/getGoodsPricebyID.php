@@ -1,8 +1,8 @@
 <?php
-include_once('../core/GoodsSql.php');
+include_once('../../core/GoodsSql.php');
 
 session_start();
-//if(!isset($_SEESION["user_type"])){
+//if(!isset($_SESSION["user_type"])){
 	//die("You have no permission.");
 //}
 
@@ -15,8 +15,4 @@ if($result!=""){
 }else{
 	echo "There is an ERROR";
 }
-
-
-
-
 ?>
