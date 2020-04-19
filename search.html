@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Our Theater</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/search.css">
+    <script src="js/search/pagination.js"></script>
+    <script src="js/search/search-by-category.js"></script>
+    <!-- <script src="js/search/search-by-name.js"></script> -->
+</head>
+
+<body class="background">
+    <!-- navigation start -->
+    <nav class="navbar navbar-expand-lg navbar-dark background nav-text">
+        <a class="navbar-brand" href="#">Welcome</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="nav-left">
+            <!-- nav left part -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">See A Movie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#food">Food & Drinks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#footer">Our Theater</a>
+                </li>
+            </ul>
+        </div>
+        <!-- nav right part -->
+        <div class="collapse navbar-collapse ml-auto" id="nav-right">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" data-toggle="modal" data-target="#myModal" id="signIn">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-user" aria-hidden="true"> Sign In</i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="shopping.html">
+                        <i class="fa fa-shopping-cart shopping-icon" aria-hidden="true">
+                            <div class = "shopping-quantity">
+                                0
+                            </div>
+                        </i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- login modal window starts -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!--modal header-->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">
+                            Welcome to our theater！
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <!--modal body-->
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <!--user input-->
+                            <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label">
+                                    Username
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="username" placeholder="username" required="required">
+                                </div>
+                            </div>
+                            <!--password input-->
+                            <div class="form-group">
+                                <label for="password" class="col-sm-2 control-label">
+                                    password
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="password" placeholder="password" required="required">
+                                </div>
+                            </div>
+                            <!-- Sign up -->
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <a class="login-a" href="#">
+                                Don't have an account? Sign up here first
+                            </a>
+                                </div>
+                            </div>
+                            <!--login-->
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-default">
+                                    Log In
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal window ends -->
+    </nav>
+    <!-- navigation end -->
+
+    <!-- movie category search body starts -->
+    <div class="container-fluid">
+        <div class="row movie-category-body">
+            <ul class="nav">
+                <li class="nav-item nav-link movie-search-link" style="font-weight: bold;">Category: </li>
+                <li class="nav-item"><a class="nav-link active movie-search-link" href="#">All</a></li>
+                <li class="nav-item"><a class="nav-link movie-search-link" href="#">Scientific</a></li>
+                <li class="nav-item"><a class="nav-link movie-search-link" href="#">Magic</a></li>
+                <li class="nav-item"><a class="nav-link movie-search-link" href="#">Nature</a></li>
+                <li class="nav-item"><a class="nav-link movie-search-link" href="#">Romance</a></li>
+                <li class="nav-item"><a class="nav-link movie-search-link" href="#">Adventure</a></li>
+            </ul>
+            <nav class="navbar navbar-light ml-auto">
+                <form class="form-inline">
+                    <div>
+                        <input class="form-control mr-sm-2 user-search" type="search" placeholder="Search" aria-label="Search">
+                        <ul class="list-group search-name">
+                        </ul>
+                    </div>
+                    <button class=" btn btn-outline-success my-2 my-sm-0 search-submit" type="submit ">Search</button>
+                </form>
+            </nav>
+        </div>
+    </div>
+    <!-- movie category search body ends -->
+
+    <!-- movie list body starts -->
+    <div class="container-fluid ">
+        <ul class="movie-list-body ">
+            <!-- <li class=" clearfix movie-list-body-li ">
+                <div style="float: left; ">
+                    <img src="img/warCraft-small.jpg ">
+                    <button class="btn btn-light ">Buy A Ticket</button>
+                </div>
+            </li>
+            <li class="clearfix movie-list-body-li ">
+                <div style="float: left; ">
+                    <img src="img/warCraft-small.jpg ">
+                    <button class="btn btn-light ">Buy A Ticket</button>
+                </div>
+            </li>
+            <li class="clearfix movie-list-body-li ">
+                <div style="float: left; ">
+                    <img src="img/warCraft-small.jpg ">
+                    <button class="btn btn-light ">Buy A Ticket</button>
+                </div>
+            </li> -->
+        </ul>
+        <!-- page split starts -->
+        <div>
+            <ul class="pagination justify-content-center">
+                <!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+            </ul>
+        </div>
+        < <!-- page split ends -->
+    </div>
+    <!-- movie list body starts -->
+    <!-- Food & Drink start -->
+    <div class="container-fluid food-background " id="food ">
+        <div class="row ">
+            <div class="col-md-4 ">
+                <div class="card card-style ">
+                    <img src="img/popcorn.jpg " class="card-img-top " alt="... ">
+                    <div class="card-body ">
+                        <h5 class="card-title card-text ">Popcorn</h5>
+                        <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="# " class="btn btn-primary ">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="card card-style ">
+                    <img src="img/popcorn.jpg " class="card-img-top " alt="... ">
+                    <div class="card-body card-text ">
+                        <h5 class="card-title ">Drink</h5>
+                        <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="# " class="btn btn-primary ">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="card card-style ">
+                    <img src="img/popcorn.jpg " class="card-img-top " alt="... ">
+                    <div class="card-body ">
+                        <h5 class="card-title card-text ">Popcorn & Drinks</h5>
+                        <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="# " class="btn btn-primary ">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Food & Drink ends -->
+    <!-- Media start-->
+    <div class="container-fluid ">
+        <div class="row ">
+            <ul class="nav justify-content-center media-div ">
+                <li class="nav-item ">
+                    <a class="nav-link active " href="# ">
+                        <i class="fa fa-facebook-official fa-2x " aria-hidden="true "></i>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="# ">
+                        <i class="fa fa-instagram fa-2x " aria-hidden="true "></i>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="# ">
+                        <i class="fa fa-twitter-square fa-2x " aria-hidden="true "></i>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="# ">
+                        <i class="fa fa-weixin fa-2x " aria-hidden="true "></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Media end -->
+
+    <!-- footer start-->
+    <div class="container-fluid footer-background " id="footer ">
+        <div class="row ">
+            <div class="col-md-4 footer-div ">
+                <h4 class="footer-title-style ">Location</h4>
+                <p class="footer-body-style ">800 W Campbell Rd, Richardson, TX 75080</p>
+            </div>
+            <div class="col-md-4 footer-div ">
+                <h4 class="footer-title-style ">Contact</h4>
+                <p class="footer-body-style ">Phone:(972) 883-2111</p>
+                <p class="footer-body-style ">Email: movieTheater@utdallas.edu</p>
+            </div>
+            <div class="col-md-4 footer-div ">
+                <h4 class="footer-title-style ">Services</h4>
+                <p class="footer-body-style ">Movie, Food, Entertainment and Enjoy</p>
+            </div>
+        </div>
+    </div>
+    <!-- footer end -->
+
+</body>
+
+</html>

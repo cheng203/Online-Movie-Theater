@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/movie.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <script src="js/movie/movie.js"></script>
+    <script src="js/movie/user_buy_ticket.js"></script>
+
+    <title>Welcome to Our Theater</title>
+</head>
+
+<body class="background">
+    <!-- navigation start -->
+    <nav class="navbar navbar-expand-lg navbar-dark background nav-text">
+        <a class="navbar-brand" href="#">Welcome</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav-left">
+            <!-- nav left part -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">See A Movie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#food">Food & Drinks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#footer">Our Theater</a>
+                </li>
+            </ul>
+        </div>
+        <!-- nav right part -->
+        <div class="collapse navbar-collapse ml-auto" id="nav-right">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" data-toggle="modal" data-target="#myModal" id="signIn">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-user" aria-hidden="true"> Sign In</i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="shopping.html">
+                        <i class="fa fa-shopping-cart shopping-icon" aria-hidden="true">
+                        <div class = "shopping-quantity">
+                            0
+                        </div>
+                    </i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- login modal window starts -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!--modal header-->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">
+                            Welcome to our theater！
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <!--modal body-->
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <!--user input-->
+                            <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label">
+                                    Username
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="username" placeholder="username" required="required">
+                                </div>
+                            </div>
+                            <!--password input-->
+                            <div class="form-group">
+                                <label for="password" class="col-sm-2 control-label">
+                                    password
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="password" placeholder="password" required="required">
+                                </div>
+                            </div>
+                            <!-- Sign up -->
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <a class="login-a" href="#">
+                                Don't have an account? Sign up here first
+                            </a>
+                                </div>
+                            </div>
+                            <!--login-->
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-default">
+                                    Log In
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal window ends -->
+    </nav>
+    <!-- navigation end -->
+
+    <!-- movie information body starts -->
+    <div class="container-fluid">
+        <div class="row movie-info-body">
+            <div>
+                <img class="left" src="img/doctorStrange-small.jpg" alt="docterStrange">
+            </div>
+            <div width="100%">
+                <div class="movie-info">
+                    <div class="movie-info-title">
+                        <h3><span>Docter Strange</span> is now available</h3>
+                    </div>
+                    <div class="movie-info-title">
+                        Release Date: <span>2020-03-29</span>
+                    </div>
+                    <div class="movie-info-title">
+                        Duration: <span>120</span>mins
+                    </div>
+                    <div class="movie-info-title">
+                        Off Date: <span>2020-05-01</span>
+                    </div>
+                    <div class="movie-info-title">
+                        Categories: <span>Action</span>
+                    </div>
+                    <div class="movie-info-title">
+                        Director: <span>Yibo Cheng</span>
+                    </div>
+                    <div class="movie-info-title">
+                        <img class="movie-info-tomato" src="img/icon/tomato.png">: <span>100%</span>
+                    </div>
+                </div>
+                <div class="movie-info-title">
+                    <div class="dropdown">
+                        <!-- button for buy a ticket -->
+                        <button class="btn btn-primary movie-info-btn" type="button" data-toggle="collapse" data-target="#buyTicket" aria-expanded="false" aria-controls="collapseExample">
+                            Buy A Ticket
+                        </button>
+                        <!-- button for only admin editing content -->
+                        <button type="button" class="btn btn-primary movie-info-btn admin-edit" data-toggle="modal" data-target="#adminEdit">
+                            Admin Edit
+                        </button>
+                        <!-- Editing information Modal Starts -->
+                        <div class="modal fade" id="adminEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg movie-modal" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">
+                                            Admin
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="movie-info-change">
+                                            <div class="movie-modal-div">
+                                                Movie name: <input class="movie-name" type="text">
+                                            </div>
+                                            <div class="movie-modal-div">
+                                                Release Date: <input class="release-date" type="date">
+                                            </div>
+                                            <div class="movie-modal-div">
+                                                Duration: <input class="duration" type="text"> mins
+                                            </div>
+                                            <div class="movie-modal-div">
+                                                Off Date: <input class="off-date" type="date">
+                                            </div>
+                                            <div class="movie-modal-div">
+                                                Categories:
+                                                <div class="category">
+                                                    <input type="checkbox" id="Magical" value="Action" name="movie-category">Action
+                                                    <input type="checkbox" id="Comedies" value="Comedies" name="movie-category">Comedies
+                                                    <input type="checkbox" id="Romantic" value="Romantic" name="movie-category">Romantic
+                                                    <input type="checkbox" id="Adventure" value="Adventure" name="movie-category">Adventure
+                                                    <input type="checkbox" id="Scientific" value="Scientific" name="movie-category">Scientific
+                                                </div>
+                                            </div>
+                                            <div class="movie-modal-div">
+                                                Director: <input class="director" type="text">
+                                            </div>
+                                            <div class="movie-modal-div">
+                                                Rate: <input class="rate" type="text">%
+                                            </div>
+                                            <div class="movie-modal-div">
+                                                Picture URL: <b class="movie-url"></b>
+                                                <br> Upload New Picture: <input class="updated_infoImg" type="file" name="image" accept="image/*" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class=" modal-footer ">
+                                        <button type="button " class="btn btn-secondary " data-dismiss="modal">Close</button>
+                                        <button type="button " class="btn btn-primary edit-movie-delete">Delete</button>
+                                        <button type="button " class="btn btn-primary edit-movie-save-change">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Editing information Modal ends -->
+                        <!-- buy a ticket collapse starts -->
+                        <div class="row collapse " id="buyTicket">
+                            <div class="card card-body movie-info-buy movie-info-buy-form ">
+                                <form>
+                                    Date: <input class="user-choose-date" type="date" width="276 " />
+                                    <div class="movie-info-form-select">
+                                        Availale Time:
+                                        <select class="user-select-date">
+                                            <option>--none--</option>
+                                        </select>
+                                    </div>
+                                    <div class="movie-info-form-select ">
+                                        Adult ($<span id="adult-price ">13.99</span>):
+                                        <select class="adult-ticket-number">
+                                            <option value='0'>0</option>
+                                            <option value='1'>1</option>
+                                            <option value='2'>2</option>
+                                            <option value='3'>3</option>
+                                            <option value='4'>4</option>
+                                        </select>
+                                    </div>
+                                    <div class="movie-info-form-select ">
+                                        Senior ($<span id="senior-price ">8.99</span>):
+                                        <select class="senior-ticket-number">
+                                            <option value='0'>0</option>
+                                            <option value='1'>1</option>
+                                            <option value='2'>2</option>
+                                            <option value='3'>3</option>
+                                            <option value='4'>4</option>
+                                        </select>
+                                    </div>
+                                    <div class="movie-info-form-select ">
+                                        Child ($<span id="child-price ">13.99</span>):
+                                        <select class="child-ticket-number">
+                                            <option value='0'>0</option>
+                                            <option value='1'>1</option>
+                                            <option value='2'>2</option>
+                                            <option value='3'>3</option>
+                                            <option value='4'>4</option>
+                                        </select>
+                                    </div>
+                                    <div class="movie-info-form-select ">
+                                        <button class="btn btn-primary movie-info-btn" type="button" id="submit-ticket">Add to Cart</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- buy a ticket collapse ends -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- movie information body ends -->
+
+    <!-- movie photo starts -->
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation " class="active movie-subcontent"><a href="#photo" aria-controls="home" role="tab" data-toggle="tab">Photo</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="photo">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <img class="movie-photo" src="img/doctorStrange-small.jpg">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <img class="movie-photo" src="img/doctorStrange-small.jpg">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <img class="movie-photo" src="img/doctorStrange-small.jpg">
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">
+                            <img class="movie-photo" src="img/doctorStrange-small.jpg">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- movie photo ends -->
+    <!-- Food & Drink start -->
+    <div class="container-fluid food-background" id="food">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-style">
+                    <img src="img/popcorn.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title card-text">Popcorn</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-style">
+                    <img src="img/popcorn.jpg" class="card-img-top" alt="...">
+                    <div class="card-body card-text">
+                        <h5 class="card-title">Drink</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-style">
+                    <img src="img/popcorn.jpg" class="card-img-top" alt="... ">
+                    <div class="card-body ">
+                        <h5 class="card-title card-text ">Popcorn & Drinks</h5>
+                        <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="# " class="btn btn-primary ">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Food & Drink ends -->
+    <!-- Media start-->
+    <div class="container-fluid ">
+        <div class="row">
+            <ul class="nav justify-content-center media-div">
+                <li class="nav-item">
+                    <a class="nav-link active " href="#">
+                        <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#">
+                        <i class="fa fa-weixin fa-2x" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Media end -->
+
+    <!-- footer start-->
+    <div class="container-fluid footer-background" id="footer">
+        <div class="row">
+            <div class="col-md-4 footer-div">
+                <h4 class="footer-title-style">Location</h4>
+                <p class="footer-body-style">800 W Campbell Rd, Richardson, TX 75080</p>
+            </div>
+            <div class="col-md-4 footer-div">
+                <h4 class="footer-title-style">Contact</h4>
+                <p class="footer-body-style">Phone:(972) 883-2111</p>
+                <p class="footer-body-style">Email: movieTheater@utdallas.edu</p>
+            </div>
+            <div class="col-md-4 footer-div">
+                <h4 class="footer-title-style">Services</h4>
+                <p class="footer-body-style">Movie, Food, Entertainment and Enjoy</p>
+            </div>
+        </div>
+    </div>
+    <!-- footer end -->
+</body>
+
+</html>

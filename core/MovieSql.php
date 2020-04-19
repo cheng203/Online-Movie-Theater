@@ -81,7 +81,36 @@ Class MovieSql{
         return $this->conn->query_json($sql);
     }
 
+    function getMovieImages($movieID){
+        $sql = sprintf("select `movie_id`, `name`, `image_type_name`, `image_id`, `image_name` from movie_images natural join image_types natural join image_library natural join movies where movie_id = '%s'", $movieID);
+        return $this->conn->query_json($sql);
+    }
 
+    function setMovieImages($movieID, $imageArr){
+        $sql = sprintf("delete from `movie_images` where movie_id = '%s'", $movieID);
+        if(!$this->conn->query($sql)){
+            return false;
+        }
+        else{
+            foreach($imageArr as $imageTypeID=>$imageIDList){
+                $imageIDArr = explode(",", $imageIDList);
+                
+                foreach($imageIDArr as $index=>$imageID){
+                    $sql = sprintf("insert into `movie_images` values ('%s', '%s', '%s')", $movieID, $imageTypeID, $imageID);
+
+                    if(!$this->conn->query($sql)){
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    function getImageTypes(){
+        $sql = sprintf("select * from `image_types` where 1");
+        return $this->conn->query_json($sql);
+    }
 
 }
 

@@ -1,0 +1,29 @@
+.movie-category-body {
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+}
+
+.movie-search-link {
+    padding: 15px 16px;
+    color: white;
+}
+
+.movie-list-body-li {
+    color: white;
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.movie-list-body-li button {
+    margin: 10px 15px;
+}
+
+.user-search {
+    position: relative;
+}
+
+.search-name {
+    position: absolute;
+    display: none;
+}

@@ -9,16 +9,16 @@
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
     <script src="script_test.js"></script>
+    <script src="./plugins/image_upload/upload.js"></script>
+    <script src="./plugins/image_select/select.js"></script>
+    <script src="./plugins/image_setting/image_setting.js"></script>
 
 </head>
 <body>
-    Username: <input type = "text" name="username"></input>
-    Password: <input type = "text" name="password"></input>
-    <button id = "login">login</button>
-    
-    <button id = "fetch_movies">List Movies </button>
-    <div id = "output"></div>
-
+    <dic id = "output"></dic>
+    <plugin class="image_upload" path="./plugins"></plugin>
+    <plugin class="image_select" path="./plugins"></plugin>
+    <plugin class="image_setting" path="./plugins"></plugin>
 
 
 </body>
