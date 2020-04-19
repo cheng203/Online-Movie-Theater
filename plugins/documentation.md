@@ -13,6 +13,7 @@
 - Support image formats: ``jpeg``, ``jpg``, ``png``, ``gif``;
 - Images will be saved in folder on server which you assigned in php script;
 - The name of uploaded images will be saved on database(default table: image_library)
+- Needs administrator authority
 
 
 
@@ -87,6 +88,7 @@ Thumb by ```Dejan  QQ: 673008865```: https://github.com/aileshe/Thumb
 - Acquire id and file name of image
 - Select image by list of thumbs
 - Multiple instances of plugin can exist in same html 
+- Needs administrator authority
 
 ### Usage:
 1. Include ```select.js```
@@ -121,6 +123,9 @@ After selection, you will get
 
 ### Feature
 - Can set images for movies and goods
+- Integrate image uploader
+- Based on image_upload and image_select plugins
+- Needs administrator authority
 
 ### Usage:
 1. Include ```select.js```, ```upload.js``` and ```image_setting.js```
@@ -138,6 +143,6 @@ After selection, you will get
 
    - In jqeury:
 ```javascript
-var selector = generateSelector(path);
-$("div").append(selector);
+var setter = generateImageSetter(path);
+$("div").append(setter);
 ```
