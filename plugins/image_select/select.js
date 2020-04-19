@@ -1,16 +1,36 @@
 $(document).ready(function() {
+    initSelector();
+});
+
+function generateSelector(path){
+    var selector = $("<plugin/>").attr("path", path).addClass("image_select");
     var btn = $("<button/>").html("Select")
-        .addClass("select_submit")
+    .addClass("select_submit");
     var hint = $("<p/>").html("")
         .addClass("select_hint")
         .css("display", "inline")
-        .css("font-size", "12px");;
-    $(".image_select").append(btn).append(hint).css("display", "block");
-    $(".select_submit").on("click", function() {
+        .css("font-size", "10px");
+    $(selector).append(btn).append(hint).css("display", "block");
+    $(selector).find(".select_submit").on("click", function() {
         createMediaDiv($(this).parent());
         getImageData($(this).parent());
     });
-});
+    return selector;
+}
+
+function initSelector(){
+    var btn = $("<button/>").html("Select")
+        .addClass("select_submit");
+    var hint = $("<p/>").html("")
+        .addClass("select_hint")
+        .css("display", "inline")
+        .css("font-size", "12px");
+    $("plugin.image_select").append(btn).append(hint).css("display", "block");
+    $(".select_submit").on("c", function() {
+        createMediaDiv($(this).parent());
+        getImageData($(this).parent());
+    });
+}
 
 function createMediaDiv(selector) {
     var imgLib = $("<div/>").html("Please select image(s)")
@@ -19,8 +39,9 @@ function createMediaDiv(selector) {
         .css("border", "solid")
         .css("border-width", "2px")
         .css("border-color", "#bebebe")
+        .css("background-color", "#FFFFFF")
         .addClass("imgLib")
-        // .center();
+        .center();
     var imgDisplay = $("<div/>").addClass("img_display").css("float", "left").css("overflow", "auto").css("height", "770px");
     imgLib.append("<button class='imgLibConfirm' style='float: right'>Confirm</button>")
         .append("<button class='imgLibCancel' style='float: right'>Cancel</button>")
@@ -30,7 +51,7 @@ function createMediaDiv(selector) {
 }
 
 function getImageData(selector) {
-    var path = $(".image_select").attr("path");
+    var path = $(selector).attr("path");
     if (path.charAt(path.length - 1) != "/") {
         path = path + "/";
     }
@@ -41,11 +62,14 @@ function getImageData(selector) {
         url: path,
         dataType: "text",
         success: function(data) {
-            var imgDisplay = selector.find(".img_display");
-            var imgArr = JSON.parse(data);
-            $.each(imgArr, function(i, img) {
-                imgDisplay.append(imgBlock(img.image_id, img.image_name));
-            });
+            if(data!="   "){
+                var imgDisplay = selector.find(".img_display");
+                var imgArr = JSON.parse(data);
+                $.each(imgArr, function(i, img) {
+                    imgDisplay.append(imgBlock(img.image_id, img.image_name));
+                });
+            }
+            else($(selector).find(".imgLib").prepend("<p>No images available.</p>"));
         },
         error: function() {
             console.log("error");
@@ -53,8 +77,8 @@ function getImageData(selector) {
     })
 
     $(".imgLibCancel").on("click", function() {
-        $($(this).parent().parent().children(".select_hint")).html("");
-        $($(this).parent().parent().children(".select_hint")).removeAttr("imgIdList");
+        //$($(this).parent().parent().children(".select_hint")).html("");
+        //$($(this).parent().parent().children(".select_hint")).removeAttr("imgIdList");
         $(this).parent().remove();
     });
     $(".imgLibConfirm").on("click", function() {
@@ -79,7 +103,7 @@ function getImageData(selector) {
 }
 
 jQuery.fn.center = function() {
-    this.css("position", "absolute");
+    this.css("position", "fixed");
     this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
         $(window).scrollTop()) + "px");
     this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) +
@@ -93,7 +117,7 @@ function imgBlock(imgId, imgName) {
         .css("padding", "24px")
         .css("height", "auto")
         .addClass("img_block");
-    var path = $(".image_select").attr("path");
+    var path = $("plugin.image_select").attr("path");
     if (path.charAt(path.length - 1) != "/") {
         path = path + "/";
     }
