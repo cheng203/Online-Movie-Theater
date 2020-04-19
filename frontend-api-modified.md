@@ -71,10 +71,23 @@ File path: js/common/admin_edit.js
                 { "stage-image": stage_image },
                 { "shop-image": shop_image },
                 { "room": room },
-                { "time": time }
+                { "time": [
+                            {
+                                "movie-time-flag":  000000000000111100000000,
+                                "group": "1"
+                            },
+                            {
+                                "movie-time-flag":  000000000000111100000000,
+                                "group": "2"
+                            },
+                            {
+                                "movie-time-flag":  000000000000111100000000,
+                                "group": "3"
+                            }
+                          ]}
             ]
             //each image keys' value will be an array of image id
-            //time in this format: xx:xx am/pm
+            //time in this format: 48 bit string
         4. No need to send information back
 
 
@@ -101,14 +114,17 @@ File path: js/common/select-room.js
      ////  1. sendData format (json)// "sendData"
             [
                 "room_id": 1
-                "date": "2020-01-01"
+                "start_date": movie_start_date,    //form: year/month/day
+                "end_date": movie_end_date
             ]
      ////   2. url: external/Find_room_by_date.php 
             3. type: post
      ////   4. expected return data type (json)
             [
                 {
-                    "time_flag": "000000000000000000000000000000000000000000000"
+                    "date": 2020-04-13,
+                    "time_flag": "000000000000000000000000000000000000000000000",
+                    "group": 1
                 }
             ]
 
@@ -187,23 +203,38 @@ File path: js/movie/user-buy-ticket.js
             'adult_ticket_number': adult_ticket,
             'senior_ticket_number': senior_ticket,
             'child_ticket_number': child_ticket
+            "time": [    //this time is the movie time user choose
+                {
+                    "session_id": .....,
+                    "movie_timeFlag": 0000000000001111000000000000,
+                }
+            ]
         }];
         2. type: post
         3. url: need to fill ???????
         4. no need to return back data
-    3. to get available time for that movie once time is selected
+    3. to get available time for that movie once date is selected
         1. sendData (json)
             [{
                 "movie_name": movie,
-                "date": date
+                "date": date  //year-month-day
             }]
         2. type: post
         3. url: need to fill ?????
         4. expected returned data format (json)
             [
-                {"time": 12:30pm},
-                {"time": 4:30pm},
-                {"time": 4:30pm}
+                {
+                    "session_id": 3,
+                    "movie_timeFlag": 000000000000
+                },
+                {
+                    "session_id": 3,
+                    "movie_timeFlag": 000000000000
+                },
+                {
+                    "session_id": 3,
+                    "movie_timeFlag": 000000000000
+                }
             ]
 
 
@@ -226,28 +257,17 @@ File path: js/shopping/shopping-initial.js
                 "senior_ticket_num": ....
                 "adult_ticket_num": .....
                 "child_ticket_num": ....
-            },
-            {
-                "movie_name": ...,
-                "url": ....,
-                "ticket_time": .... //date not including time
-                "senior_price": ......
-                "adult_price": ......
-                "child_price": .....
-                "senior_ticket_num": ....
-                "adult_ticket_num": .....
-                "child_ticket_num": ....
-            },
-            {
-                "movie_name": ...,
-                "url": ....,
-                "ticket_time": .... //date not including time
-                "senior_price": ......
-                "adult_price": ......
-                "child_price": .....
-                "senior_ticket_num": ....
-                "adult_ticket_num": .....
-                "child_ticket_num": ....
+            }，
+            { //这个是最后一个，命名还是按照之前的电影命名，但是后面跟的是food的内容
+                "movie_name": "",
+                "url": return that combo picture,
+                "ticket_time": ""
+                "senior_price": plan A price
+                "adult_price": plan B price
+                "child_price": plan C price
+                "senior_ticket_num": quantity of plan A
+                "adult_ticket_num": quantity of plan B
+                "child_ticket_num": quantity of plan C
             }
         ]
 

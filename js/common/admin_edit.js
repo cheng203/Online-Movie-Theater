@@ -17,7 +17,18 @@ $(document).ready(function() {
         var stage_image = $("#movie-stage-image").attr("imgIdList");
         var shop_image = $("#movie-shop-image").attr("imgIdList");
         var room = $(".added-movie-room").val();
-        var time = $(".added-movie-time option:selected").text();
+        var time = [];
+        // $("#added-movie-time").change(function() {
+        //     time = $("#added-movie-time option:selected").attr("value");
+        // });
+        $("#add-movie-show-time").find("select").each(function() {
+            var movie_time_flag = $(this).children("option:selected").attr("value");
+            var group_id = $(this).children("option:selected").attr("id");
+            time.push({
+                "movie-time-flag": movie_time_flag,
+                "group": group_id
+            })
+        })
 
         //create information send back to server
         var sendData = [
@@ -34,6 +45,7 @@ $(document).ready(function() {
             { "shop-image": shop_image },
             { "room": room },
             { "time": time }
+            //time here is a json array
         ];
 
 
