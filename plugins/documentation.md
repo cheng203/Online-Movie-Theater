@@ -1,7 +1,5 @@
 # Plugins Documentation
-Catalog:
 
-[TOC]
 
 
 ## 1. Image Upload Plugin
@@ -34,12 +32,22 @@ Attention: php.ini determines three upload limits. So if you want to upload many
 
 ### Usage:
 1. Include ```upload.js```
-   - <script src="./plugins/image_upload/upload.js"></script>
-2. Create a element with plugin as type and image_upload as class
+ ```html 
+  <script src="./plugins/image_upload/upload.js"></script>
+  ```
+2. Create a element with ```plugin``` as type and ```image_upload``` as class
    
 ```html
 <plugin class="image_upload" path="./plugins"></plugin>
 ```
+
+In jqeury:
+```javascript
+var uploader = generateUploader(path);
+$("div").append(uploader);
+```
+
+
 - path: relative path to folder plugins
   - For example, in index.html: ```path="./plugins"```
 
@@ -72,7 +80,7 @@ $path = '../../uploads/'; //upload directory relative to upload.php
 Thumb by ```Dejan  QQ: 673008865```: https://github.com/aileshe/Thumb
 
 
-## Image Select Plugin
+## 2. Image Select Plugin
 
 ### Feature
 - Select&locate image in server
@@ -82,24 +90,54 @@ Thumb by ```Dejan  QQ: 673008865```: https://github.com/aileshe/Thumb
 
 ### Usage:
 1. Include ```select.js```
-   - <script src="./plugins/image_select/select.js"></script>
-2. Create a element with plugin as type and image_select as class
+ 
+  ```html 
+  <script src="./plugins/image_select/select.js"></script>
+  ```
+- Create a element with ```plugin``` as type and ```image_select``` as class
    
 ```html
 <plugin class="image_select" path="./plugins"></plugin>
 ```
+
+- In jqeury:
+```javascript
+var selector = generateSelector(path);
+$("div").append(selector);
+```
+
 - path: relative path to folder plugins
   - For example, in index.html: ```path="./plugins"```
-3. In the image library, click the check box of image to be selected, then click ```Confirm``` button
-4. If you want to clear previous select, click ```Cancel``` in the media library.
+1. In the image library, click the check box of image to be selected, then click ```Confirm``` button
+2. If you want to clear previous select, click ```Cancel``` in the media library.
 
 After selection, you will get
 
 1. Names of files will be displayed;
 2. Important: a list of image id will saved as a attribute in this plugin element. You can get the value of attribute ```imgidlist``` and send it to server ,then server can locate the image you want by those id.
-   - Such as: ```<plugin class="image_select" path="./plugins" image_list=" " style="display: block;" imgidlist="132,138">...</plugin>```
+   - Such as: ```<plugin class="image_select" path="./plugins" style="display: block;" imgidlist="132,138">...</plugin>```
 
-### Extended Example
-- Example: 给电影设置轮播图
+## 3. Image Setting Plugin
 
-在插入图片选择插件后, 为这个电影选择一个轮播图. 选好图片之后, 这个插件元素就有一个 ```imgidlist```的属性. 最后在提交的ajax中, 包装这个数据, 比如 ```data: {"轮播图": $(this).attr("imgidlist"), ...其他信息}```.
+### Feature
+- Can set images for movies and goods
+
+### Usage:
+1. Include ```select.js```, ```upload.js``` and ```image_setting.js```
+  ```html
+      <script src="./plugins/image_upload/upload.js"></script>
+      <script src="./plugins/image_select/select.js"></script>
+      <script src="./plugins/image_setting/image_setting.js"></script>
+  ```
+
+   - In html: create a element with ```plugin``` as type and ```image_setting``` as class
+   
+```html
+<plugin class="image_setting" path="./plugins"></plugin>
+```
+
+   - In jqeury:
+```javascript
+var selector = generateSelector(path);
+$("div").append(selector);
+```

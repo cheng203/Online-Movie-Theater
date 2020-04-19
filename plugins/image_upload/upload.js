@@ -53,7 +53,7 @@ function generateUploader(path){
 }
 
 function initUploader(){
-    var path = $(".image_upload").attr("path");
+    var path = $("plugin.image_upload").attr("path");
     if (path&&path.charAt(path.length - 1) != "/") {
         path = path + "/";
     }
@@ -63,8 +63,8 @@ function initUploader(){
         .attr("method", "post")
         .attr("enctype", "multipart/form-data")
         .append('<input class="images_input" type="file" name="image" accept="image/*"  multiple="true"/><input type="submit" value="Upload"><p class="hint"></p>');
-    $(".image_upload").append(form);
-    $(".image_upload").on('submit', 'form', function(e) {
+    $("plugin.image_upload").append(form);
+    $("plugin.image_upload").on('submit', 'form', function(e) {
         var formData = new FormData();
         var images = $(this).find(".images_input")[0].files;
         var hint = $(this).find(".hint")[0];
