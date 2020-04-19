@@ -72,6 +72,7 @@ create table if not exists `image_library`(
     `image_name` varchar(128) not null unique,
     primary key (`image_id`)
 )engine=innodb default charset=utf8;
+insert into `image_library` values (null, "holder");
 
 create table if not exists `image_types`(
     `image_type_id` tinyint unsigned auto_increment,
