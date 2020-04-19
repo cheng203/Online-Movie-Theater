@@ -1,5 +1,5 @@
 <?php
-include_once('../core/GoodsSql.php');
+include_once('../../core/GoodsSql.php');
 
 session_start();
 
