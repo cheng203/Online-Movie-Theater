@@ -5,16 +5,18 @@ session_start();
 if(!isset($_SESSION["user_type"])||$_SESSION["user_type"]!=0){
 	die("You have no permission.");
 }
+$test = $_POST['sendData'];
+$data=json_decode($test);
 
-$movieID = $_POST['movie_id'];
-$name=$_POST['name'];
-$type_name=$_POST['type_name'];
-$release_date=$_POST['release_date'];
-$off_date=$_POST['off_date'];
-$director=$_POST['director'];
-$info=$_POST['info'];
-$duration=$_POST['duration'];
-$rating=$_POST['rating'];
+$movieID = $data->movie_id;
+$name=$data->name;
+$type_name=$data->type_name;
+$release_date=$data->release_date;
+$off_date=$data->off_date;
+$director=$data->director;
+$info=$data->info;
+$duration=$data->duration;
+$rating=$data->rating;
 
 
 $query = new MovieSql();

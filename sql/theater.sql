@@ -78,10 +78,11 @@ create table if not exists `image_types`(
     `image_type_name` varchar(128) not null unique,
     primary key (`image_type_id`)
 )engine=innodb default charset=utf8;
-insert into `image_types` values(null, 'poster');
-insert into `image_types` values(null, 'cover');
-insert into `image_types` values(null, 'thumbnail');
-insert into `image_types` values(null, 'stills');
+insert into `image_types` values(null, 'carousel');
+insert into `image_types` values(null, 'search');
+insert into `image_types` values(null, 'movie');
+insert into `image_types` values(null, 'cart');
+insert into `image_types` values(null, 'stage');
 
 create table if not exists `movie_images`(
     `movie_id` int unsigned not null,
@@ -139,6 +140,10 @@ create table if not exists `goods`(
     index (`price`),
     index (`goods_name`)
 )engine=innodb default charset=utf8;
+insert into `goods` values(null, 'pop', '15', '1');
+insert into `goods` values(null, 'drink', '10', '1');
+insert into `goods` values(null, 'pop+drink', '20', '1');
+
 
 create table if not exists `order_goods_detail`(
     `order_id` int unsigned not null,
