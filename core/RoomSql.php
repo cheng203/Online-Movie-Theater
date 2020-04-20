@@ -46,7 +46,7 @@ Class RoomSql{
             return $this->findRoomByDate($room_id,$date);
         }else{
             
-            $sql = sprintf("SELECT *  from rooms_by_date where room_id ='%s' and date = '%s' ", $room_id, $date);
+            $sql = sprintf("SELECT date, time_flag  from rooms_by_date where room_id ='%s' and date = '%s' ", $room_id, $date);
             $result = $this->conn->query_json($sql);
             return $result;
         }
@@ -54,6 +54,31 @@ Class RoomSql{
 
     }
 
+    function findRoomByStartEndDate($room_id,$start_date,$end_date){
+        $group_num =1;
+        $result=$this->findRoomByDate($room_id,$start_date);
+        $r=json_decode($result);
+        $group_time_flag=$r[0]->time_flag;
+        for($i=$start_date;$i<=$end_date;$i++){
+    
+            $r=$this->findRoomByDate($room_id,$i);
+
+            $rr=json_decode($r);
+            if($rr[0]->time_flag==$group_time_flag){
+                    $rr[0]->group=$group_num;
+            }else{
+                $group_time_flag=$rr[0]->time_flag;
+                $group_num++;
+               $rr[0]->group=$group_num;
+            }
+   
+    
+
+          $arr[] = $rr[0];
+         }
+         return json_encode($arr);
+    }
+ 
     function modifyRoomByDate($room_id,$date,$time_flag){
        
        $sql = sprintf("UPDATE rooms_by_date SET time_flag='%s' WHERE room_id='%s' and date='%s'", $time_flag,$room_id,$date);
