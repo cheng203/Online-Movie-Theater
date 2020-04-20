@@ -64,6 +64,11 @@ Class MovieSql{
         return $this->conn->query($sql);
     }
 
+    function addMovieGetID($name,$type_name,$release_date,$off_date,$director,$info,$duration,$rating){
+        $sql = sprintf("INSERT into movies values(null, '%s', '%s', '%s', '%s','%s','%s','%s','%s')",$name,$type_name,$release_date,$off_date,$director,$info,$duration,$rating);
+        return $this->conn->get_insert_id($sql);
+    }
+
     function deleteMovieByID($movieID){
     	$sql = sprintf("DELETE from movies WHERE movie_id = '%s'", $movieID);
         return $this->conn->query($sql);
@@ -78,6 +83,11 @@ Class MovieSql{
 
     function listMovies(){
         $sql = sprintf("select * from movies where 1");
+        return $this->conn->query_json($sql);
+    }
+
+    function SearchMovieNameStartByString($start_string){
+        $sql = sprintf("SELECT name from movies WHERE name LIKE '%%%s%%'",$start_string);
         return $this->conn->query_json($sql);
     }
 
@@ -111,6 +121,8 @@ Class MovieSql{
         $sql = sprintf("select * from `image_types` where 1");
         return $this->conn->query_json($sql);
     }
+
+
 
 }
 
