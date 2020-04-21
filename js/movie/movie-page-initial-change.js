@@ -36,6 +36,7 @@ $(document).ready(function() {
         data: sendData,
         success: function(data) {
             //this data should contain all the information about this image in json format;
+            var movie_id = data[0].id;
             var movie_name = data[0].name;
             var release_date = data[0].release_date;
             var duration = data[0].duration;
@@ -50,6 +51,8 @@ $(document).ready(function() {
             //change the left image in the information body
             $(".left").attr("src", img_url);
 
+            //add movie id to the title span
+            $("#movie-title").attr("value", movie_id);
             //get all span element first
             var span_elements = $(".movie-info").find("span");
             //change movie's name

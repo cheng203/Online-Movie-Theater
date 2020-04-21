@@ -25,10 +25,11 @@
     <script src="js/common/userLoad.js"></script>
     <script src="js/common/logout.js"></script>
     <script src="js/common/admin_edit.js"></script>
-    <script src="js/common/add-food.js"></script>
-    <script src="js/common/index_select_room.js"></script>
+    <!-- <script src="js/common/add-food.js"></script> -->
+    <!-- <script src="js/common/index_select_room.js"></script> -->
     <script src="plugins/image_select/select.js"></script>
     <script src="plugins/image_upload/upload.js"></script>
+    <script src="plugins/image_setting/image_setting.js"></script>
 
     <!-- private customerized js -->
     <script src="js/main/carousel-control.js"></script>
@@ -70,24 +71,38 @@
                         Username
                     </a>
                 </li>
+                <!-- for admin only -->
+                <li class="nav-item admin-edit">
+                    <div class="dropdown  dropdown-menu-right">
+                        <a class="nav-link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Edit 
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="dropdown-item add-movie" data-toggle="modal" data-target="#edit-movie" id="edit">
+                                <a href="#">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"> Add a Movie</i>
+                                </a>
+                            </li>
+                            <li class="dropdown-item add-image" data-toggle="modal" data-target="#add-image">
+                                <a href="#">
+                                    <i class="fa fa-file-image-o" aria-hidden="true"> Upload Images</i>
+                                </a>
+                            </li>
+                            <li class="dropdown-item edit-image" data-toggle="modal" data-target="#edit-image">
+                                <a href="#">
+                                    <i class="fa fa-file-image-o" aria-hidden="true"> Edit Images</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 <!-- click to logout -->
                 <li class="nav-item user-show logout">
                     <a class="nav-link" href="#">
-                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        <i class="fa fa-sign-out" aria-hidden="true">Sign Out</i>
                     </a>
                 </li>
-                <!-- for admin to add or delete a movie -->
-                <li class="nav-item add-movie" data-toggle="modal" data-target="#edit-movie" id="edit">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true">Edit</i>
-                    </a>
-                </li>
-                <!-- for admin to add image to the system -->
-                <li class="nav-item add-image" data-toggle="modal" data-target="#edit-image">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-file-image-o" aria-hidden="true">Image</i>
-                    </a>
-                </li>
+                <!-- direct to shopping cart -->
                 <li class="nav-item">
                     <a class="nav-link" href="shopping.html">
                         <i class="fa fa-shopping-cart shopping-icon" aria-hidden="true">
@@ -287,42 +302,6 @@
                                 <input type="text" class="form-control" id="added-movie-rate" placeholder="number in %">
                             </div>
                         </div>
-                        <!-- add movie carousel img -->
-                        <div class="form-group">
-                            <label for="movie-carouselLarge" class="control-label">
-                                Front Image
-                            </label>
-                            <div>
-                                <plugin id="movie-front-img" class="image_select" path="../"></plugin>
-                            </div>
-                        </div>
-                        <!-- add movie display mid img -->
-                        <div class="form-group">
-                            <label for="movie-infoMid" class="control-label">
-                                Movie Info Image
-                            </label>
-                            <div>
-                                <plugin id="movie-info-img" class="image_select" path="../"></plugin>
-                            </div>
-                        </div>
-                        <!-- add movie stage img -->
-                        <div class="form-group">
-                            <label for="movie-stageImg" class="control-label">
-                                Movie Stage Image
-                            </label>
-                            <div>
-                                <plugin id="movie-stage-img" class="image_select" path="../"></plugin>
-                            </div>
-                        </div>
-                        <!-- add shopping cart img -->
-                        <div class="form-group">
-                            <label for="movie-shopImg" class="control-label">
-                                Movie Shopping Cart Image
-                            </label>
-                            <div>
-                                <plugin id="movie-shop-image" class="image_select" path="../"></plugin>
-                            </div>
-                        </div>
                         <!-- add movie show time -->
                         <div class="form-group" id="add-movie-show-time">
                             <label for="movie-room" class="control-label">
@@ -353,7 +332,7 @@
         </div>
         <!-- for admin to add a move ends -->
         <!-- for admin to add image starts -->
-        <div class="modal fade" id="edit-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="add-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -373,6 +352,27 @@
             </div>
         </div>
         <!-- for admin to add image ends -->
+        <!-- for admin to edit images starts -->
+        <div class="modal fade" id="edit-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Please Upload Image Here</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        Select pictures you would like to change or add
+                        <plugin id="setting" class="image_setting" path="./plugins/image_setting/image_setting.js">Image Setting</plugin>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- for admin to edit images ends -->
     </nav>
     <!-- navigation end -->
 

@@ -82,13 +82,22 @@ File path: js/common/add-food.js
             {"info":"info"},
             { "time": [
             {"movie_time_flag":"000010000000000000000000000000000000000000000000","group":1},
+            ...........
+            //Yibo edit: movie_time_flag should be the time movie takes, something like this
+            000011111111000000000000000000000000000000000000000 so that you can just add it to the corresponding group.
+            ............
             {"movie_time_flag":"000010000000000000000000000000000000000000000000","group":2}
             ]
           }]
             //each image keys' value will be an array of image id
             //time in this format: xx:xx am/pm
     //// 4. No need to send information back:return movie_id or not??
-
+            ............
+            please return movie name
+            [
+                {"movie_name": name};
+            ]
+            ............
 
 ///File name: select-room.js(updated)
 File path: js/common/select-room.js
@@ -121,7 +130,16 @@ File path: js/common/select-room.js
             3. type: post
      ////   4. expected return data type (json)
             [
-                {"date":"2020-01-01","time_flag":"000110000000000000000000000000000000000000000001","group":1},{"date":"2020-01-02","time_flag":"110010000000000000000000000000000000000000000010","group":2}
+                {
+                    "date":"2020-01-01",
+                    "time_flag":"000110000000000000000000000000000000000000000001",
+                    "group":1
+                },
+                {
+                    "date":"2020-01-02",
+                    "time_flag":"110010000000000000000000000000000000000000000010",
+                    "group":2
+                }
             ]
 
 
@@ -137,7 +155,8 @@ File path: js/movie/movie-page-initial-change.js
             ]
         4. expected return data format (json)
             [
-                {
+                {   
+                    "movie_id": id
                     "movie_name": "spiderman",
                     "release_date": "2019-02-23",
                     "duration": 110,
@@ -169,11 +188,13 @@ File path: js/movie/movie.js
                 "name": name,
                 "release_date": release,
                 "duration": duration,
-                "off-date": off_date,
+                "off_date": off_date,
                 "type_name": category,
                 "director": director,
                 "rating": rate
-                "info":info
+                ..............
+                delete info attribute
+                ...............
             }]
            2. type: post
     ////   3. url: external/movie_api/ modifyMovie.php
@@ -274,10 +295,15 @@ File path: js/movie/user-buy-ticket.js
             "adult_ticket_num": "4".
             "senior_ticket_num": "1",
             "child_ticket_num": "1"
+
+            ........................
         }
         
         ]
 
+File Name: shopping-initials
+File Path: js/shopping/shopping-initails.js
+    1. This file is used to load 
 
 
 

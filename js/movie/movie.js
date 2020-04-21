@@ -30,9 +30,9 @@ $(document).ready(function() {
     });
     //once admin click delete, send movie name back to backend
     $(".edit-movie-delete").on("click", function() {
-        var movie_name = localStorage.getItem("movie-name");
+        var movie_id = localStorage.getItem("movie_id");
         var sendData = [{
-            "movie_name": movie_name
+            "movie_id": movie_id
         }];
         $.ajax({
             type: "post",
@@ -49,6 +49,7 @@ $(document).ready(function() {
     });
     //once admin click save changes, send data back to backend
     $(".edit-movie-save-change").on("click", function() {
+        var movie_id = $("#movie-title").attr("value");
         var movie_name = $(".movie-name").val();
         var release = $(".release-date").val();
         var duration = $(".duration").val();
@@ -62,13 +63,14 @@ $(document).ready(function() {
 
         //create JSON data format send
         var sendData = [{
-            "movie-name": movie_name,
-            "release": release,
+            "movie_id": movie_id,
+            "name": movie_name,
+            "release_date": release,
             "duration": duration,
-            "off-date": off_date,
-            "category": category,
+            "off_date": off_date,
+            "type_name": category,
             "director": director,
-            "rate": rate
+            "rating": rate
         }];
         $.ajax({
             url: "../external/movie_api/modifyMovie.php",

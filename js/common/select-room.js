@@ -22,13 +22,12 @@ $(document).ready(function() {
         var movie_end_date = $("#added-movie-off-date").val();
         var sendData = [{
             "room": pid,
-            //date in format: year / month / days
             "start_date": movie_start_date,
             "end_date": movie_end_date
         }]
         $.ajax({
             type: 'post',
-            url: '../external/Find_room_by_date.php',
+            url: '../external/room_session_api/Find_room_by_start_end_date.php',
             data: sendData,
             success: function(data) {
                 var segment = convert(data);

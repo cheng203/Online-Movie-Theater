@@ -11,11 +11,6 @@ $(document).ready(function() {
         })
         var director = $("#added-movie-director").val();
         var rate = $("#added-movie-rate").val();
-        var front_image = $("#movie-front-img").attr("imgIdList");
-        var info_image = $("#movie-info-image").attr("imgIdList");
-        //stage_image is an array;
-        var stage_image = $("#movie-stage-image").attr("imgIdList");
-        var shop_image = $("#movie-shop-image").attr("imgIdList");
         var room = $(".added-movie-room").val();
         var time = [];
         // $("#added-movie-time").change(function() {
@@ -32,17 +27,13 @@ $(document).ready(function() {
 
         //create information send back to server
         var sendData = [
-            { "movie-name": movie_name },
-            { "release-date": release_date },
+            { "movie_name": movie_name },
+            { "release_date": release_date },
             { "duration": duration },
-            { "off-date": off_date },
+            { "off_date": off_date },
             { "category": category },
             { "director": director },
             { "rate": rate },
-            { "front-image": front_image },
-            { "info-image": info_image },
-            { "stage-image": stage_image },
-            { "shop-image": shop_image },
             { "room": room },
             { "time": time }
             //time here is a json array
@@ -52,13 +43,15 @@ $(document).ready(function() {
         // send formData to backend
         $.ajax({
             type: "POST",
-            url: "adminEdit.php",
+            url: "../external/movie_api/Admin_add_session_byGroup.php",
             data: sendData,
             contentType: false,
             cache: false,
             processData: false,
-            success: function() {
-                console.log("successfully");
+            success: function(data) {
+                //if added successfully, return alert admin and return back to main page
+                alert("You successfully added movie " + data[0].movie_name + " to the system");
+                window.location.href = "index.html";
             },
             error: function(e) {
                 console.log("error");
