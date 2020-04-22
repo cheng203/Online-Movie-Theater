@@ -56,6 +56,30 @@ Class MovieSql{
         $result = $this->conn->query_json($sql);
         return $result;
     }
+   
+   function findMoviesByCategory($category){
+    $sql = sprintf("SELECT movie_id, name  from movies where type_name = '%s'", $category);
+        $result = $this->conn->query_json($sql);
+        return $result;
+   }
+    function findNewestFiveMovie(){
+        
+        $sql = sprintf("SELECT movie_id, name  from movies ORDER BY movie_id DESC LIMIT 5 ");
+        //ORDER BY movie_id ");
+       // "SELECT *  from movies ORDER BY movie_id DESC LIMIT 5
+        $result = $this->conn->query_json($sql);
+        return $result;
+
+    }
+
+    function findTOPFourMovie(){
+
+        $sql = sprintf("SELECT movie_id, name from movies ORDER BY rating ASC LIMIT 4");
+        $result = $this->conn->query_json($sql);
+        return $result;
+    }
+
+
 
     function addMovie($name,$type_name,$release_date,$off_date,$director,$info,$duration,$rating)
     {
@@ -82,9 +106,14 @@ Class MovieSql{
     }
 
     function listMovies(){
-        $sql = sprintf("select * from movies where 1");
+        $sql = sprintf("select movie_id, name from movies where 1");
         return $this->conn->query_json($sql);
     }
+
+   function listCategory(){
+    $sql=  $sql = sprintf("SELECT DISTINCT type_name from movies where 1");
+        return $this->conn->query_json($sql);
+   }
 
     function SearchMovieNameStartByString($start_string){
         $sql = sprintf("SELECT name from movies WHERE name LIKE '%%%s%%'",$start_string);
@@ -93,6 +122,27 @@ Class MovieSql{
 
     function getMovieImages($movieID){
         $sql = sprintf("select `movie_id`, `name`, `image_type_name`, `image_id`, `image_name` from movie_images natural join image_types natural join image_library natural join movies where movie_id = '%s'", $movieID);
+        return $this->conn->query_json($sql);
+    }
+    function getMovieCarouselImages($movieID){
+        $sql = sprintf("SELECT  image_name from movie_images natural join image_types natural join image_library where movie_id = '%s' AND image_type_name = 'carousel' ", $movieID);
+        return $this->conn->query_json($sql);
+    }
+    function getMovieSearchImages($movieID){
+        $sql = sprintf("SELECT  image_name from movie_images natural join image_types natural join image_library where movie_id = '%s' AND image_type_name = 'search' ", $movieID);
+        return $this->conn->query_json($sql);
+    }
+     function getMovieCartImages($movieID){
+        $sql = sprintf("SELECT  image_name from movie_images natural join image_types natural join image_library where movie_id = '%s' AND image_type_name = 'cart' ", $movieID);
+        return $this->conn->query_json($sql);
+    }
+    function getMovieStageImages($movieID){
+        $sql = sprintf("SELECT  image_name from movie_images natural join image_types natural join image_library where movie_id = '%s' AND image_type_name = 'stage' ", $movieID);
+        return $this->conn->query_json($sql);
+    }
+
+    function getMovieMovieImages($movieID){
+        $sql = sprintf("SELECT  image_name from movie_images natural join image_types natural join image_library where movie_id = '%s' AND image_type_name = 'movie' ", $movieID);
         return $this->conn->query_json($sql);
     }
 
