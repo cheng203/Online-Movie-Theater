@@ -249,7 +249,7 @@ File path: js/movie/user-buy-ticket.js
 
 
 ////File name: 
-////File path: 
+////File path:     IMPORTANT!!! Do not use this any more
     1. This file is add or update info of goods and tickets in the shopping cart 
     2. type: post
     3. url: external/shopping_api/AddCart.php
