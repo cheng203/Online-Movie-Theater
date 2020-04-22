@@ -3,9 +3,9 @@ $(document).ready(function() {
     //once user choose the date it want to buy ticket, information about available time about this movie will be retrieved
     $(".user-choose-date").on("change", function() {
         var date = $(".user-choose-date");
-        var movie = $(".movie-info").find("span")[0].innerHTML;
+        var movie_id = $("#movie-title").attr("value");
         var sendData = [{
-            "movie_name": movie,
+            "movie_id": movie_id,
             "date": date
         }];
         $.ajax({
@@ -29,35 +29,52 @@ $(document).ready(function() {
 
     //once user submit the form, it is ready send to the back server.
     $("#submit-ticket").on("click", function() {
-        var date = $(".user-choose-date");
-        var movie = $(".movie-info").find("span")[0].innerHTML;
-        var adult_ticket = $(".adult-ticket-number option:selected").val();
-        var senior_ticket = $(".senior-ticket-number option:selected").val();
-        var child_ticket = $(".child-ticket-number option:selected").val();
-        var time = [];
-        time.push({
-            "session_id": $(".user-select-date option:selected").attr("id"),
-            "movie_timeFlag": $(".user-select-date option:selected").attr("value"),
-        })
-        var sendData = [{
-            'date': date,
-            'movie': movie,
-            'adult_ticket_number': adult_ticket,
-            'senior_ticket_number': senior_ticket,
-            'child_ticket_number': child_ticket,
-            "time": time
-        }];
-        $.ajax({
-            type: 'post',
-            url: "........",
-            data: sendData,
-            success: function(data) {
-                window.location.href = "../movie/movie-page-template.html";
-            },
-            error: function() {
-                console.log("wrong");
+        var username = localStorage.getItem("username");
+        //indicate if user has already have movie added to cart: true for yes, false for no
+        var movie_flag = localStorage.getItem("movie_flag");
+        if (username == null || usernmae == "") {
+            alert("Please sign in first");
+            return;
+        } else {
+            if (movie_flag != null && move_flag == "true") {
+                alert("You have movie added in the cart. Please checkout that item first. Thanks!");
+            } else {
+                //set movie_flag as true first to indicate that user has already select a movie and added in the cart
+                localStorage.setItem("movie_flag", "true");
+
+                var date = $(".user-choose-date");
+                var movie_id = $("#movie-title").attr("value");
+                var movie_name = $(".movie-info").find("span")[0].innerHTML;
+                var adult_ticket = $(".adult-ticket-number option:selected").val();
+                var senior_ticket = $(".senior-ticket-number option:selected").val();
+                var child_ticket = $(".child-ticket-number option:selected").val();
+                var time = [];
+                time.push({
+                    "session_id": $(".user-select-date option:selected").attr("id"),
+                    "movie_time_flag": $(".user-select-date option:selected").attr("value"),
+                })
+                var sendData = [{
+                    'date': date,
+                    'movie_id': movie_id,
+                    'movie_name': movie_name,
+                    'adult_ticket_number': adult_ticket,
+                    'senior_ticket_number': senior_ticket,
+                    'child_ticket_number': child_ticket,
+                    "time": time
+                }];
+                $.ajax({
+                    type: 'post',
+                    url: "........",
+                    data: sendData,
+                    success: function(data) {
+                        window.location.href = "../movie/movie-page-template.html";
+                    },
+                    error: function() {
+                        console.log("wrong");
+                    }
+                })
             }
-        })
+        }
     });
     // convert movie time flag into regular time format
     function convertMovieTime(timeFlag) {
@@ -68,10 +85,12 @@ $(document).ready(function() {
                 break;
             }
         }
-        var hour = count / 2;
+        var hour = parseInt(count / 2);
         var min = count % 2;
-        hour = hour * 30 / 60;
-        min = min == 0 ? 00 : 30;
+        min = min == 0 ? "00" : "30";
+        if (hour < 10) {
+            hour = "0" + hour;
+        }
         return hour + ":" + min;
     }
 })

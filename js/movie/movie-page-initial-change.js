@@ -1,12 +1,14 @@
 $(document).ready(function() {
     //check the name of movie in localStorage to load the page
-    var movie = localStorage.getItem('movie-name');
+    var movie_id = localStorage.getItem('movie_id');
+    var movie_name = localStorage.getItem('movie_namename');
     //check the if user is admin
-    var user_type = localStorage.getItem('user-type');
+    var user_type = localStorage.getItem('user_type');
     //send movie name through ajax
-    var sendData = [
-        { "movie": movie }
-    ]
+    var sendData = [{
+        "movie_id": movie_id,
+        "movie_name": movie_name
+    }]
 
     //for testing -----------------
     // var data = [{
@@ -44,13 +46,12 @@ $(document).ready(function() {
             var category = data[0].category;
             var director = data[0].director;
             var rate = data[0].rate;
-            var img_url = "../" + data[0].img_url // assume return image url is absolute path
+            var img_url = "../uploads/" + data[0].img_url // assume return image url is absolute path
                 // this data should contain image path for stage pictures
-            var stage_img = data[1];
+            var stage_img = data[0].stage_image;
             //next is to apply these information on the page
             //change the left image in the information body
             $(".left").attr("src", img_url);
-
             //add movie id to the title span
             $("#movie-title").attr("value", movie_id);
             //get all span element first
@@ -73,7 +74,7 @@ $(document).ready(function() {
             //iterate stage image to attach
             for (var i = 0; i < stage_img.length; i++) {
                 $("#photo .nav").append(
-                    '<li class="nav-item"><a class="nav-link" href="#"><img class="movie-photo" src="' + stage_img[i].i + '"></a></li>'
+                    '<li class="nav-item"><a class="nav-link" href="#"><img class="movie-photo" src="../uploads/' + stage_img[0].i + '"></a></li>'
                 )
             }
 
@@ -89,9 +90,7 @@ $(document).ready(function() {
                 $(".admin-edit").hide();
             }
         },
-        error: function() {
-            console.log("information does not exist");
-        }
+        error: function() {}
     });
 
 

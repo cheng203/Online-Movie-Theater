@@ -11,7 +11,7 @@ $(document).ready(function() {
             $(".search-name").empty();
             $.ajax({
                 type: "POST",
-                url: "......",
+                url: "../external/movie_api/searchMoviebyStartString.php",
                 data: { "key": key },
                 dataType: "json",
                 success: function(data) {

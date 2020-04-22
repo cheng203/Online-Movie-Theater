@@ -55,7 +55,7 @@ $(document).ready(function() {
                 if (num == 11) {
                     localStorage.setItem("username", username);
                     // here we assume that only regular user could register
-                    localStorage.setItem("user-type", 1);
+                    localStorage.setItem("user_type", 1);
                     window.location.href = "index.html";
                 }
             },

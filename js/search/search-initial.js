@@ -28,14 +28,11 @@ $(document).ready(function() {
     $.ajax({
         type: "POST",
         url: "......",
-        data: { "type": "all" },
+        data: [{ "type": "all" }],
         dataType: "json",
         success: function(data) {
             pagination(data);
             display(data, 1);
-        },
-        error: function() {
-            console.log("error");
         }
     })
 })

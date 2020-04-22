@@ -20,7 +20,7 @@ $(document).ready(function() {
             var movie_time_flag = $(this).children("option:selected").attr("value");
             var group_id = $(this).children("option:selected").attr("id");
             time.push({
-                "movie-time-flag": movie_time_flag,
+                "movie_time_flag": movie_time_flag,
                 "group": group_id
             })
         })
@@ -51,7 +51,7 @@ $(document).ready(function() {
             success: function(data) {
                 //if added successfully, return alert admin and return back to main page
                 alert("You successfully added movie " + data[0].movie_name + " to the system");
-                window.location.href = "index.html";
+                window.location.href = "../index.html";
             },
             error: function(e) {
                 console.log("error");

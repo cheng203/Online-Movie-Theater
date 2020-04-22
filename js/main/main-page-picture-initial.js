@@ -4,9 +4,11 @@ $(document).ready(function() {
     //before get information, first delete content inside of carousel now
     $(".carousel-inner").clear();
     $(".carousel-indicators").clear();
-    var path = "movie/movie-page-template.html";
+
+    //path for movie template html
+    var path = "../movie/movie-page-template.html";
     $.ajax({
-        type: "get",
+        type: "POST",
         url: ".....",
         dataType: "json",
         success: function(data) {
@@ -18,7 +20,7 @@ $(document).ready(function() {
                         // add carousel body image
                     $("carousel-inner").append(
                         '<div class="carousel-item active">' +
-                        '<a href="' + path + '"><img src="' + data[i].url + '" class="d-block w-100 movie-link" alt="image"></a>' +
+                        '<a class = "movie-link" href="' + path + '" value = "' + data[i].movie_id + '" alt="' + data[i].movie_name + '"><img src="../uploads/' + data[i].url + '" class="d-block w-100 movie-link" alt="' + data[i].movie_name + '"></a>' +
                         '<div class="carousel-caption d-none d-md-block">' +
                         '<h5>' + data[i].movie_name + '</h5>' +
                         '</div></div>'
@@ -29,7 +31,7 @@ $(document).ready(function() {
                         // add carousel body image
                     $("carousel-inner").append(
                         '<div class="carousel-item">' +
-                        '<a class= "movie-link" href="' + path + '"><img src="' + data[i].url + '" class="d-block w-100 " alt="' + data[i].movie_name + '"></a>' +
+                        '<a class = "movie-link" href="' + path + '" value = "' + data[i].movie_id + '" alt="' + data[i].movie_name + '"><img src="../uploads/' + data[i].url + '" class="d-block w-100 movie-link" alt="' + data[i].movie_name + '"></a>' +
                         '<div class="carousel-caption d-none d-md-block">' +
                         '<h5>' + data[i].movie_name + '</h5>' +
                         '</div></div>'
@@ -37,9 +39,7 @@ $(document).ready(function() {
                 }
             }
         },
-        error: function() {
-            console.log("Failed to load");
-        }
+        error: function() {}
     })
 
 
@@ -52,11 +52,11 @@ $(document).ready(function() {
         dataType: "json",
         success: function(data) {
             for (var i = 0; i < data.length; i++) {
+                // add movie_id to value, add movie_name to alt
                 $("#new ul").append(
                     '<li class="nav-item">' +
-                    '<a class="nav-link movie-link" href="' + path + '">' +
-                    '<img class="recommendation-img" src="' + data[i].url + '" alt= "' + data[i].movie_name +
-                    '">' +
+                    '<a class="nav-link movie-link" href="' + path + '" value = "' + data[i].movie_id + '" alt = "' + data[i].movie_name + '">' +
+                    '<img class="recommendation-img" src="../uploads/' + data[i].url + '">' +
                     '</a></li>'
                 )
             }

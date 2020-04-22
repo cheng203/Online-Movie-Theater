@@ -37,8 +37,8 @@ function pagination(data) {
         $(".movie-list-body").append(
             '<li class=" clearfix movie-list-body-li">' +
             '<div style="float: left;">' +
-            '<img style="width: 344px" src="' + data[i].url + '">' +
-            '<button class="btn btn-light value="' + data[i].movie_name + '">Go to Movie</button>' +
+            '<img style="width: 344px" src="../uploads/' + data[i].url + '">' +
+            '<button class="btn btn-light value="' + data[i].movie_name + '" alt="' + data[i].movie_id + '">Go to Movie</button>' +
             '</div>' +
             '</li>'
         )
@@ -64,9 +64,7 @@ function display(data, text) {
         }
     } else if (text == "Next") {
         text = parseInt($(".pagination").find(".active").text()) + 1;
-        console.log(text);
         var prev_index = $(".pagination").find(".next-item").prev().text();
-        console.log(prev_index + " 我是之前的一个");
         if (text > prev_index) {
             return;
         } else {
@@ -101,8 +99,8 @@ function addPicture(data, text) {
         $(".movie-list-body").append(
             '<li class=" clearfix movie-list-body-li">' +
             '<div style="float: left;">' +
-            '<img style="width: 344px" src="' + data[i].url + '">' +
-            '<button class="btn btn-light value="' + data[i].movie_name + '">Go to Movie</button>' +
+            '<img style="width: 344px" src="../uploads/' + data[i].url + '">' +
+            '<button class="btn btn-light go-to-movie" alt = "' + data[i].movie_name + '" value="' + data[i].movie_id + '">Go to Movie</button>' +
             '</div>' +
             '</li>'
         )

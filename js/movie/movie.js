@@ -39,7 +39,9 @@ $(document).ready(function() {
             url: "../external/movie_api/deleteMovie.php",
             data: sendData,
             success: function() {
-                localStorage.setItem("movie-name", "");
+                alert("You have successfullt delete the movie and will direct to the home page.");
+                localStorage.setItem("movie_name", "");
+                localStorage.setItem("movie_id", "");
                 window.location.href = "index.html";
             },
             error: function() {

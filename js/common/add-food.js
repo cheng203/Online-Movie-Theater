@@ -3,34 +3,24 @@ $(document).ready(function() {
         //first get user information
         var username = localStorage.getItem("username");
         //if user is not log in, do not allow to add to shopping cart
-        if (username == "") {
+        if (username == null || username == "") {
             alert("Please Sign In First");
         } else {
-            var food_plan = $(this).siblings("h5").text();
-            if (food_plan == "Popcorn") {
-                food_plan = "a";
-            } else if (food_plan == "Drink") {
-                food_plan = "b";
-            } else {
-                food_plan = "c";
-            }
-
+            var food_plan = $(this).siblings("h5").attr("value");
             // send user name and the food plan user choose to add to the db
             var sendData = [{
                 "username": username,
-                "food": food_plan
+                "food_id": food_plan,
+                "quantity": 1
             }]
             $.ajax({
                 type: "post",
-                url: "core/sendFood.php",
+                url: ".........",
                 data: sendData,
                 success: function() {
-                    console.log("You successfullt add it!");
+                    alert("You have successfully add it to your cart");
                 },
-                error: function() {
-                    console.log("Running out of stock.");
-                }
-
+                error: function() {}
             })
         }
     })

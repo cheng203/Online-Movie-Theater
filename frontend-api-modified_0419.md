@@ -1,19 +1,21 @@
-File name: page-picture-initial.js
-File path: js/main/page-picture-initial.js
+File name: main-page-picture-initial.js
+File path: js/main/main-page-picture-initial.js
     1. This file is used to get image about carousel and also what's new section
     2. To get image for carousel section
         1. url: need to fill ????
-        2. type: get
+        2. type: post
         3. dataType: json
         4. expect data format: 
                 [
                     {
+                        "movie_id": id
                         "movie_name": name,
-                        "url": img/img_name
+                        "url": image name
                     },
-
+                    {
+                        "movie_id": id 
                         "movie_name": name,
-                        "url": img/img_name
+                        "url": image name
                     }
                 ]
         5. It is expected to receive 4 movie info
@@ -24,12 +26,13 @@ File path: js/main/page-picture-initial.js
         4. expect data format:
             [
                     {
+                        "movie_id": id,
                         "movie_name": name,
-                        "url": img/img_name
+                        "url": image name
                     },
-
+                        "movie_id": id,
                         "movie_name": name,
-                        "url": img/img_name
+                        "url": image name
                     }
                 ]
         5. It is expected to receive 4 to 5 images
@@ -45,7 +48,8 @@ File path: js/common/add-food.js
             [
                 {
                     "username": username,
-                    "food": food_plan   //food_plan will be in a (popcore), b (drink), c (popcore & drink)
+                    "food_id": 1
+                    "quantity": 1    //will be 1 always, user only allow to change quantity in cart
                 }
             ]
         4. nothing will be returned.
@@ -151,7 +155,8 @@ File path: js/movie/movie-page-initial-change.js
         2. url: need to fill ?????
         3. data: sendData (json)
             [
-                {"movie": movie}
+                {"movie_id": movie_id},
+                {"movie_name": movie_name}
             ]
         4. expected return data format (json)
             [
@@ -164,15 +169,13 @@ File path: js/movie/movie-page-initial-change.js
                     "category": "Action",
                     "director": "xizi",
                     "rate": 50,
-                    "img_url": "img/spiderMan-small.jpg" //should be a middle size image
-                },
-                {       
-                    "path": [
-                        "../img/spiderMan-small.jpg",
-                        "../img/spiderMan-small.jpg",
-                        "../img/spiderMan-small.jpg",
-                        "../img/spiderMan-small.jpg",
-                        "../img/spiderMan-small.jpg"
+                    "img_url": "spiderMan-small.jpg" //should be a middle size image
+                    "stage_image": [
+                        "spiderMan-small.jpg",
+                        "spiderMan-small.jpg",
+                        "piderMan-small.jpg",
+                        "spiderMan-small.jpg",
+                        "spiderMan-small.jpg"
                     ]
                 }
             ]
@@ -216,10 +219,15 @@ File path: js/movie/user-buy-ticket.js
         1. sendData (json)
         [{
             'date': date,
-            'movie': movie,
+            'movie_id': movie_id,
+            'movie_name': movie_name,
             'adult_ticket_number': adult_ticket,
             'senior_ticket_number': senior_ticket,
-            'child_ticket_number': child_ticket
+            'child_ticket_number': child_ticket,
+            "time": {
+                "session_id": 1,
+                "movie_time_flag": 00000000000011111100000000
+            }
         }];
         2. type: post
         3. url: need to fill ???????
@@ -227,7 +235,7 @@ File path: js/movie/user-buy-ticket.js
     3. to get available time for that movie once time is selected
         1. sendData (json)
             [{
-                "movie_name": movie,
+                "movie_id": movie_id,
                 "date": date
             }]
         2. type: post
@@ -276,34 +284,61 @@ File path: js/movie/user-buy-ticket.js
     2. type: post
     3. url: external/shopping_api/add_order.php
     4. sendData
-        [
-            
         {
-            "session_id":"23",
-            "senior_price": "5",
-            "adult_price": "20",
-            "child_price":"2",
-            "senior_ticket_num": "2",
-            "adult_ticket_num": "2",
-            "child_ticket_num": "1"
-        },
-        {
-            "session_id":"23",
-            "senior_price": "5",
-            "adult_price": "6",
-            "child_price":"4",
-            "adult_ticket_num": "4".
-            "senior_ticket_num": "1",
-            "child_ticket_num": "1"
-
-            ........................
+            "movie":
+                [
+                    "movie_id": movie_id,
+                    "name": movie_name,
+                    "movie_date": movie_date,
+                    "movie_time_flag": movie_time_flag,
+                    "senior_num": senior_num,
+                    "adult_num": adult_num,
+                    "child_num": child_num
+                ],
+            "goods":
+                [
+                    "goods_id": goods_id,
+                    "goods_name": goods_name,
+                    "quantity": quantity
+                ],
+            "total_cost":
+                [
+                    "total_cost": total_cost
+                ]
         }
-        
-        ]
 
 File Name: shopping-initials
 File Path: js/shopping/shopping-initails.js
-    1. This file is used to load 
+    1. This file is used to load user's choice
+    2. sendData: 
+        [
+            {
+                "username": username
+            }
+        ]
+    3. url: "................"
+    4. return data should be in this format
+        data = {
+                "movie": [{
+                        "url": "img/spiderMan-small.jpg",
+                        "movie_id": 1,
+                        "name": "spider man",
+                        "movie_date": "2020-03-13",
+                        "movie_time": "00000000000000100000000000000000000000000000000",
+                        "senior_price": 18,
+                        "adult_price": 12,
+                        "child_price": 7,
+                        "senior_ticket_num": 4,
+                        "adult_ticket_num": 4,
+                        "child_ticket_num": 4
+                }],
+                "goods": [{
+                        "goods_name": "Popcorn & Drink",
+                        "url": "img/warCraft-small.jpg",
+                        "price": 20,
+                        "quantity": 3
+                }]
+    }
 
 
 
@@ -328,12 +363,18 @@ File Path: js/search/search-initial.js
                 ]
     2. To get all movie list had in DB for initilizing page (all will be by default)
             1. type: POST
+            2. sendData: 
+            [
+                {
+                    "type": "all"
+                }
+            ]
         2. url: listMovies.php
             3. expected return data
                 [
                     {
-                        "movie_name": ...,
-                        "url": .....
+                        "movie_name": movie-name,
+                        "url": image-name
                     },
                     {
                         "movie_name": ...,
@@ -360,7 +401,7 @@ File Path: js/search/search-initial.js
         4. expected return type in json
             [{"name":"foo"}]
             
-    3. section 2 is to get searched movie back
+    3. section 2 is to get searched movie backa
         1. sendData:
             {
                 "key": key  // key is movie name
@@ -390,24 +431,59 @@ File Path: js/search/search-by-category
     5. expected return data in json
         [
             {
-                "movie-name": "spider",
-                "url": "img/doctorStrange-small.jpg"
+                "movie_id": id,
+                "movie_name": "spider",
+                "url": "doctorStrange-small.jpg"
             },
             {
-                "movie-name": "spider",
-                "url": "img/spiderMan-small.jpg"
+                "movie_id": id,
+                "movie_name": "spider",
+                "url": "spiderMan-small.jpg"
             },
             {
-                "movie-name": "spider",
-                "url": "img/spiderMan-small.jpg"
+                "movie_id": id,
+                "movie_name": "spider",
+                "url": "spiderMan-small.jpg"
             },
             {
-                "movie-name": "spider",
-                "url": "img/spiderMan-small.jpg"
+                "movie_id": id,
+                "movie_name": "spider",
+                "url": "spiderMan-small.jpg"
             },
             {
-                "movie-name": "spider",
-                "url": "img/spiderMan-small.jpg"
+                "movie_id": id,
+                "movie_name": "spider",
+                "url": "spiderMan-small.jpg"
             },
         ]
         url should be the full image url
+
+
+File Name: request-food-info.js
+File Path: js/common/request-food-info.js
+    1. To get goods info
+    2. sendData: none
+    3. type: post
+    4. url: ".........."
+    5: expected received data
+        data: 
+        [
+            {
+                "goods_name": ....,
+                "goods_id": ....,
+                "goods_price": ....,
+                "url": image name
+            },
+            {
+                "goods_name": ....,
+                "goods_id": ....,
+                "goods_price": ....,
+                "url": image name
+            },
+            {
+                "goods_name": ....,
+                "goods_id": ....,
+                "goods_price": ....,
+                "url": image name
+            }
+        ]
