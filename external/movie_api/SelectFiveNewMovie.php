@@ -6,8 +6,8 @@ session_start();
 
 $query = new MovieSql();
 $movie_result=json_decode($query->findNewestFiveMovie());
-
-for($i=0;$i<5;$i++){
+$length=count($movie_result);
+for($i=0;$i<$length;$i++){
     $new_result=$movie_result[$i];
     $movie_id=$movie_result[$i]->movie_id;
     $image=json_decode($query->getMovieCarouselImages($movie_id));

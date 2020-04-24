@@ -6,8 +6,8 @@ $query = new MovieSql();
 
 //echo $query->findTOPFourMovie();
 $movie_result=json_decode($query->findTOPFourMovie());
-
-for($i=0;$i<4;$i++){
+$length=count($movie_result);
+for($i=0;$i<$length;$i++){
     $new_result=$movie_result[$i];
     $movie_id=$movie_result[$i]->movie_id;
     $image=json_decode($query->getMovieMovieImages($movie_id));

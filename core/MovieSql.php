@@ -45,6 +45,12 @@ Class MovieSql{
         return $result;
     }
 
+     function findMoviePriceByMovieIDAndType($movieID){
+        $sql = sprintf("SELECT ticket_name,price from ticket_price natural join ticket_types where movie_id = '%s' ", $movieID);
+        $result = $this->conn->query_json($sql);
+        return $result;
+    }
+
     function findMovieByName($name){
         $sql = sprintf("SELECT *  from movies where name = '%s'", $name);
         $result = $this->conn->query_json($sql);

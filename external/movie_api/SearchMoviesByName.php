@@ -9,7 +9,8 @@ $name = $data->name;
 $query = new MovieSql();
 $result=$query->findMovieByName($name);
 $movie_result=json_decode($result);
-$length=count($movie_result);
+if($movie_result!=""){
+	$length=count($movie_result);
 for($i=0;$i<$length;$i++){
  
     $movie_id=$movie_result[$i]->movie_id;
@@ -19,13 +20,19 @@ for($i=0;$i<$length;$i++){
     $new_result->url=$image[0]->image_name;
 
     $arr[]=$new_result;        
-}
-$result1=json_encode($arr);
-if($result1!=""){
-	echo $result1;
+   }
+   $result1=json_encode($arr);
+   if($result1!=""){
+	   echo $result1;
+   }else{
+	  echo "Nothing";
+   }
+
 }else{
-	echo "Nothing";
+  $result1=array();
+	echo $result1;
 }
+
 
 
 ?>
