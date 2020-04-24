@@ -1,7 +1,7 @@
 $(document).ready(function() {
     //check the name of movie in localStorage to load the page
     var movie_id = localStorage.getItem('movie_id');
-    var movie_name = localStorage.getItem('movie_namename');
+    var movie_name = localStorage.getItem('movie_name');
     //check the if user is admin
     var user_type = localStorage.getItem('user_type');
     //send movie name through ajax
@@ -46,6 +46,9 @@ $(document).ready(function() {
             var category = data[0].category;
             var director = data[0].director;
             var rate = data[0].rate;
+            var senior_price = data[0].senior_price;
+            var adult_price = data[0].adult_price;
+            var child_price = data[0].child_price;
             var img_url = "../uploads/" + data[0].img_url // assume return image url is absolute path
                 // this data should contain image path for stage pictures
             var stage_img = data[0].stage_image;
@@ -70,11 +73,14 @@ $(document).ready(function() {
             span_elements[5].innerHTML = director;
             //change rate
             span_elements[6].innerHTML = rate + "%";
-
+            //change price for ticket
+            $("#senior-price").text(senior_price);
+            $("#adult-price").text(adult_price);
+            $("#child-price").text(child_price);
             //iterate stage image to attach
             for (var i = 0; i < stage_img.length; i++) {
                 $("#photo .nav").append(
-                    '<li class="nav-item"><a class="nav-link" href="#"><img class="movie-photo" src="../uploads/' + stage_img[0].image_name + '"></a></li>'
+                    '<li class="nav-item"><a class="nav-link" href="#"><img class="movie-photo" src="/uploads/' + stage_img[0].image_name + '"></a></li>'
                 )
             }
 

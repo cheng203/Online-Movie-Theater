@@ -7,7 +7,7 @@ $(document).ready(function() {
         success: function(data) {
             //return will a list of movie type
             //first clear category
-            $(".movie-category-body ul").clear();
+            $(".movie-category-body ul").empty();
             //first append categeory and all to page
             $(".movie-category-body ul").append(
                 '<li class="nav-item nav-link movie-search-link" style="font-weight: bold;">Category: </li>' +

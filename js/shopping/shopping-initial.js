@@ -143,7 +143,7 @@ $(document).ready(function() {
     //testing
     data = {
         "movie": [{
-            "url": "img/spiderMan-small.jpg",
+            "url": "spiderMan-small.jpg",
             "movie_id": 1,
             "name": "spider man",
             "movie_date": "2020-03-13",
@@ -183,7 +183,7 @@ $(document).ready(function() {
             '<tr value="movie">' +
             '<th scope="row" class="border-0">' +
             '<div class="p-2">' +
-            '<img src="' + movie_img_url + '" alt="" width="70" class="img-fluid rounded shadow-sm">' +
+            '<img src="uploads/' + movie_img_url + '" alt="" width="70" class="img-fluid rounded shadow-sm">' +
             '<div class="ml-3 d-inline-block align-middle">' +
             '<h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle movie-name" value = "' + movie_id + '">' + movie_name + '</a></h5><span class="text-muted font-weight-normal font-italic d-block">Time: <span class="movie-time" value="' + movie_date + '" alt ="' + movie_time + '">' + movie_date + ' ' + convertMovieTime(movie_time) + '</span></span>' +
             '</div>' +
@@ -251,7 +251,7 @@ $(document).ready(function() {
                 '<tr value="goods" class="goods">' +
                 '<th scope="row" class="border-0">' +
                 '<div class="p-2">' +
-                '<img src="' + goods_img_url + '" alt="" width="70" class="img-fluid rounded shadow-sm">' +
+                '<img src="/uploads/' + goods_img_url + '" alt="" width="70" class="img-fluid rounded shadow-sm">' +
                 '<div class="ml-3 d-inline-block align-middle">' +
                 '<h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle goods-name" value="' + goods_id + '">' + goods_name + '</a></h5>' +
                 '</div>' +

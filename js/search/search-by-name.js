@@ -47,7 +47,7 @@ $(document).ready(function() {
                     $(".movie-list-body").append(
                         '<li class=" clearfix movie-list-body-li">' +
                         '<div style="float: left;">' +
-                        '<img src="' + data[0].url + '">' +
+                        '<img src="/uploads/' + data[0].url + '">' +
                         '<button class="btn btn-light value="' + data[0].movie_id + '" alt="' + data[0].name + '">Go to Movie</button>' +
                         '</div>' +
                         '</li>'

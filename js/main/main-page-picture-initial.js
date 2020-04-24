@@ -2,11 +2,10 @@ $(document).ready(function() {
 
     //following will be used to get image for carousel section
     //before get information, first delete content inside of carousel now
-    $(".carousel-inner").clear();
-    $(".carousel-indicators").clear();
+    $(".carousel-inner").empty();
+    $(".carousel-indicators").empty();
 
     //path for movie template html
-    var path = "movie/movie-page-template.html";
     $.ajax({
         type: "POST",
         url: "external/movie_api/SelectFiveNewMovie.php",
@@ -20,7 +19,7 @@ $(document).ready(function() {
                         // add carousel body image
                     $("carousel-inner").append(
                         '<div class="carousel-item active">' +
-                        '<a class = "movie-link" href="' + path + '" value = "' + data[i].movie_id + '" alt="' + data[i].movie_name + '"><img src="../uploads/' + data[i].url + '" class="d-block w-100 movie-link" alt="' + data[i].movie_name + '"></a>' +
+                        '<a class = "movie-link" href="movie.html" value = "' + data[i].movie_id + '" alt="' + data[i].movie_name + '"><img src="/uploads/' + data[i].url + '" class="d-block w-100 movie-link" alt="' + data[i].movie_name + '"></a>' +
                         '<div class="carousel-caption d-none d-md-block">' +
                         '<h5>' + data[i].movie_name + '</h5>' +
                         '</div></div>'
@@ -31,7 +30,7 @@ $(document).ready(function() {
                         // add carousel body image
                     $("carousel-inner").append(
                         '<div class="carousel-item">' +
-                        '<a class = "movie-link" href="' + path + '" value = "' + data[i].movie_id + '" alt="' + data[i].movie_name + '"><img src="../uploads/' + data[i].url + '" class="d-block w-100 movie-link" alt="' + data[i].movie_name + '"></a>' +
+                        '<a class = "movie-link" href="movie.html" " value = "' + data[i].movie_id + '" alt="' + data[i].movie_name + '"><img src="/uploads/' + data[i].url + '" class="d-block w-100 movie-link" alt="' + data[i].movie_name + '"></a>' +
                         '<div class="carousel-caption d-none d-md-block">' +
                         '<h5>' + data[i].movie_name + '</h5>' +
                         '</div></div>'

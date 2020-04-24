@@ -43,7 +43,7 @@ $(document).ready(function() {
                 alert("You have successfullt delete the movie and will direct to the home page.");
                 localStorage.setItem("movie_name", "");
                 localStorage.setItem("movie_id", "");
-                window.location.href = "index.html";
+                window.location.href = "/index.html";
             },
             error: function() {
                 console.log("failed");
@@ -81,7 +81,7 @@ $(document).ready(function() {
             data: sendData,
             dataType: "json",
             success: function(data) {
-                window.location.href = "movie/movie-page-template.html";
+                window.location.href = "/movie.html";
             },
             error: function() {
                 console.log("Error");

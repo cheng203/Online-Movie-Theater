@@ -4,27 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- import jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- import css -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- import bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- import font-awesome icon -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
+    <!-- import shopcart and common style -->
     <link rel="stylesheet" type="text/css" href="css/shopcart.css">
     <link rel="stylesheet" type="text/css" href="css/common.css">
+    <!-- //import product information -->
     <script src="js/shopping/shopping-initial.js"></script>
     <script src="js/shopping/shopcart.js"></script>
-    <!-- <script src="js/login.js"></script>
-    <script src="js/jQuery.md5.js"></script>
-    <script src="js/register.js"></script>
-    <script src="js/userLoad.js"></script>
-    <script src="js/logout.js"></script>
-    <script src="js/admin_edit.js"></script> -->
-
+    <script src="js/shopping/checkout.js"></script>
+    <!-- import foof info and action-->
+    <script src="js/common/request-food-info.js"></script>
+    <script src="js/common/add-food.js"></script>
+    <!-- import login, logout, register -->
+    <script src="js/common/userLoad.js"></script>
+    <script src="js/common/jQuery.md5.js"></script>
+    <script src="js/common/login.js"></script>
+    <script src="js/common/logout.js"></script>
+    <script src="js/common/register.js"></script>
+    <!-- import room logic -->
+    <script src="js/common/select-room.js"></script>
+    <script src="js/common/admin_edit.js"></script>
+    <script src="js/common/time-conversion.js"></script>
+    <!-- import image direct -->
+    <script src="plugins/image_upload/upload.js"></script>
+    <script src="plugins/image_setting/image_setting.js"></script>
+    <script src="js/common/direct-img-to-movie.js"></script>
 
     <title>Shopping Cart</title>
 </head>
 
 <body>
-    <!-- nav starts -->
+    <!-- navigation start -->
     <nav class="navbar navbar-expand-lg navbar-dark background nav-text">
         <a class="navbar-brand" href="#">Welcome</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,24 +74,41 @@
                         Username
                     </a>
                 </li>
+                <!-- for admin only -->
+                <li class="nav-item admin-edit">
+                    <div class="dropdown  dropdown-menu-right">
+                        <a class="nav-link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Edit 
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="dropdown-item add-movie" data-toggle="modal" data-target="#edit-movie" id="edit">
+                                <a href="#">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"> Add a Movie</i>
+                                </a>
+                            </li>
+                            <li class="dropdown-item add-image" data-toggle="modal" data-target="#add-image">
+                                <a href="#">
+                                    <i class="fa fa-file-image-o" aria-hidden="true"> Upload Images</i>
+                                </a>
+                            </li>
+                            <li class="dropdown-item edit-image" data-toggle="modal" data-target="#edit-image">
+                                <a href="#">
+                                    <i class="fa fa-file-image-o" aria-hidden="true"> Edit Images</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 <!-- click to logout -->
                 <li class="nav-item user-show logout">
                     <a class="nav-link" href="#">
-                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        <i class="fa fa-sign-out" aria-hidden="true">Sign Out</i>
                     </a>
                 </li>
-                <!-- for user to add or delete a movie -->
-                <li class="nav-item add-delete-movie" data-toggle="modal" data-target="#edit-movie" id="edit">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true">Edit</i>
-                    </a>
-                </li>
+                <!-- direct to shopping cart -->
                 <li class="nav-item">
                     <a class="nav-link" href="shopping.html">
                         <i class="fa fa-shopping-cart shopping-icon" aria-hidden="true">
-                            <div class = "shopping-quantity">
-                                0
-                            </div>
                         </i>
                     </a>
                 </li>
@@ -195,7 +229,7 @@
             <div class="modal-dialog  modal-lg" style="pointer-events: auto" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add or Delete a Movie Here</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Add a Movie Here</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="signup-close" aria-hidden="true">&times;</span>
                         </button>
@@ -268,44 +302,8 @@
                                 <input type="text" class="form-control" id="added-movie-rate" placeholder="number in %">
                             </div>
                         </div>
-                        <!-- add movie carousel img -->
-                        <div class="form-group">
-                            <label for="movie-carouselLarge" class="control-label">
-                                Front Image
-                            </label>
-                            <div>
-                                <input class="added-movie-frontImg" type="file" name="image" accept="image/*" />
-                            </div>
-                        </div>
-                        <!-- add movie display mid img -->
-                        <div class="form-group">
-                            <label for="movie-infoMid" class="control-label">
-                                Movie Info Image
-                            </label>
-                            <div>
-                                <input class="added-movie-infoImg" type="file" name="image" accept="image/*" />
-                            </div>
-                        </div>
-                        <!-- add movie stage img -->
-                        <div class="form-group">
-                            <label for="movie-stageImg" class="control-label">
-                                Movie Stage Image
-                            </label>
-                            <div>
-                                <input class="added-movie-stageImg" type="file" name="image" accept="image/*" multiple="true" />
-                            </div>
-                        </div>
-                        <!-- add shopping cart img -->
-                        <div class="form-group">
-                            <label for="movie-shopImg" class="control-label">
-                                Movie Shopping Cart Image
-                            </label>
-                            <div>
-                                <input class="added-movie-shopImg" type="file" name="image" accept="image/*" multiple="true" />
-                            </div>
-                        </div>
                         <!-- add movie show time -->
-                        <div class="form-group">
+                        <div class="form-group" id="add-movie-show-time">
                             <label for="movie-room" class="control-label">
                                 Room
                             </label>
@@ -327,15 +325,56 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary movie-delete-button">Delete</button>
                     <button type="button" class="btn btn-secondary movie-add-button">Add</button>
                 </div>
             </div>
         </div>
         </div>
         <!-- for admin to add a move ends -->
+        <!-- for admin to add image starts -->
+        <div class="modal fade" id="add-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Please Upload Image Here</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        Select pictures you would like to upload
+                        <plugin class="image_upload" path="./plugins/image_upload/upload.js"></plugin>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- for admin to add image ends -->
+        <!-- for admin to edit images starts -->
+        <div class="modal fade" id="edit-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Please Upload Image Here</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        Select pictures you would like to change or add
+                        <plugin id="setting" class="image_setting" path="./plugins/image_setting/image_setting.js">Image Setting</plugin>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- for admin to edit images ends -->
     </nav>
-    <!-- nav ends -->
+    <!-- navigation end -->
     <div class="pb-5">
         <div class="container text-white py-5 text-center">
             <h1 class="display-4">Thanks for shopping with us, <span>Username</span></h1>
@@ -395,36 +434,6 @@
         <!-- Food & Drink start -->
         <div class="container-fluid food-background" id="food">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card card-style">
-                        <img src="img/popcorn.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title card-text">Popcorn</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Add To Cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-style">
-                        <img src="img/popcorn.jpg" class="card-img-top" alt="...">
-                        <div class="card-body card-text">
-                            <h5 class="card-title">Drink</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Add To Cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-style">
-                        <img src="img/popcorn.jpg" class="card-img-top" alt="... ">
-                        <div class="card-body ">
-                            <h5 class="card-title card-text ">Popcorn & Drinks</h5>
-                            <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="# " class="btn btn-primary ">Add To Cart</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <!-- Food & Drink ends -->

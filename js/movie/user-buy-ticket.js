@@ -71,7 +71,7 @@ $(document).ready(function() {
                     dataType: "json",
                     success: function(data) {
                         if (data == 1) {
-                            window.location.href = "movie/movie-page-template.html";
+                            window.location.href = "/movie.html";
                         } else {
                             alert("Sorry, seats are just sold out.")
                         }

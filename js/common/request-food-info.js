@@ -12,7 +12,7 @@ $(document).ready(function() {
                 $("#food row").append(
                     '<div class="col-md-4">' +
                     '<div class="card card-style">' +
-                    '<img src="../uploads/' + url + '" class="card-img-top" alt="...">' +
+                    '<img src="/uploads/' + url + '" class="card-img-top" alt="...">' +
                     '<div class="card-body">' +
                     '<h5 class="card-title card-text" value="' + goods_id + '">' + goods_name + '</h5>' + '<h6 class="card-title">Price: $<span class="goods-price-section">' + goods_price + '<span></h6>' +
                     '<button class="btn btn-primary food-plan">Add To Cart</button>' +

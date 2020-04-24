@@ -3,36 +3,44 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <!-- shared js -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- import jquery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- import bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- import font-awesome -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
 
-
-    <!-- shared customerized css -->
+    <!-- shared css style -->
     <link rel="stylesheet" type="text/css" href="css/common.css">
-
-    <!-- private customerized css  -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
-    <!-- shared customerized js -->
-    <script src="js/common/login.js"></script>
-    <script src="js/common/jQuery.md5.js"></script>
-    <script src="js/common/register.js"></script>
+    <!-- import picture display -->
+    <script src="js/main/main-page-picture-initial.js"></script>
+    <script src="js/main/carousel-control.js"></script>
+
+    <!-- import search initial -->
+    <script src="js/search/search-initial.js"></script>
+    <script src="js/search/pagination.js"></script>
+    <script src="js/search/search-by-category.js"></script>
+    <script src="js/search/search-by-name.js"></script>
+    <script src="js/search/go-to-movie.js"></script>
+    <!-- import login, logout, register -->
     <script src="js/common/userLoad.js"></script>
+    <script src="js/common/jQuery.md5.js"></script>
+    <script src="js/common/login.js"></script>
     <script src="js/common/logout.js"></script>
+    <script src="js/common/register.js"></script>
+    <!-- import room logic -->
+    <script src="js/common/select-room.js"></script>
     <script src="js/common/admin_edit.js"></script>
-    <!-- <script src="js/common/add-food.js"></script> -->
-    <!-- <script src="js/common/index_select_room.js"></script> -->
-    <script src="plugins/image_select/select.js"></script>
+    <script src="js/common/time-conversion.js"></script>
+    <!-- import image direct -->
     <script src="plugins/image_upload/upload.js"></script>
     <script src="plugins/image_setting/image_setting.js"></script>
+    <script src="js/common/direct-img-to-movie.js"></script>
 
-    <!-- private customerized js -->
-    <script src="js/main/carousel-control.js"></script>
 
     <title>Welcome to Movie Theater</title>
 </head>
@@ -106,9 +114,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="shopping.html">
                         <i class="fa fa-shopping-cart shopping-icon" aria-hidden="true">
-                            <div class = "shopping-quantity">
-                                0
-                            </div>
                         </i>
                     </a>
                 </li>
@@ -381,36 +386,8 @@
         <div class="row">
             <div id="carousel" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <a href="#"><img src="img/docterStrange.jpg" class="d-block w-100" alt="haha"></a>
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Docter Strange</h5>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="#"><img src="img/avenrage.jpg" class="d-block w-100" alt="haha"></a>
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Avenragers</h5>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="#"><img src="img/spiderMan.jpg" class="d-block w-100" alt="haha"></a>
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Spider Man</h5>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="#"><img src="img/warCraft.jpg" class="d-block w-100" alt="haha"></a>
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Warcraft</h5>
-                        </div>
-                    </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -437,26 +414,6 @@
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="new">
                 <ul class="nav justify-content-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <img class="recommendation-img" src="img/doctorStrange-small.jpg">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <img class="recommendation-img" src="img/doctorStrange-small.jpg">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <img class="recommendation-img" src="img/doctorStrange-small.jpg">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <img class="recommendation-img" src="img/doctorStrange-small.jpg">
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -466,17 +423,6 @@
     <!-- Food & Drink start -->
     <div class="container-fluid food-background" id="food">
         <div class="row">
-            <!-- This place is used to place food!!!! -->
-            <!-- ... -->
-            <!-- ... -->
-            <!-- ... -->
-            <!-- ... -->
-            <!-- ... -->
-            <!-- ... -->
-            <!-- ... -->
-            <!-- ... -->
-            <!-- ... -->
-            <!-- ... -->
         </div>
     </div>
     <!-- Food & Drink ends -->

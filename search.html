@@ -4,16 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Our Theater</title>
+    <!-- import jquery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- import bootstrap css -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- import bootstrap js -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- import font-awesome icon -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
+    <!-- import css style -->
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/search.css">
+    <!-- import search initial -->
+    <script src="js/search/search-initial.js"></script>
     <script src="js/search/pagination.js"></script>
     <script src="js/search/search-by-category.js"></script>
-    <!-- <script src="js/search/search-by-name.js"></script> -->
+    <script src="js/search/search-by-name.js"></script>
+    <script src="js/search/go-to-movie.js"></script>
+    <!-- import login, logout, register -->
+    <script src="js/common/userLoad.js"></script>
+    <script src="js/common/jQuery.md5.js"></script>
+    <script src="js/common/login.js"></script>
+    <script src="js/common/logout.js"></script>
+    <script src="js/common/register.js"></script>
+    <!-- import room logic -->
+    <script src="js/common/select-room.js"></script>
+    <script src="js/common/admin_edit.js"></script>
+    <script src="js/common/time-conversion.js"></script>
+    <!-- import image direct -->
+    <script src="plugins/image_upload/upload.js"></script>
+    <script src="plugins/image_setting/image_setting.js"></script>
+    <script src="js/common/direct-img-to-movie.js"></script>
+
+    <title>Welcome to Our Theater</title>
 </head>
 
 <body class="background">
@@ -40,24 +63,58 @@
         <!-- nav right part -->
         <div class="collapse navbar-collapse ml-auto" id="nav-right">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item" data-toggle="modal" data-target="#myModal" id="signIn">
+                <li class="nav-item signin-show" data-toggle="modal" data-target="#myModal" id="signIn">
                     <a class="nav-link" href="#">
                         <i class="fa fa-user" aria-hidden="true"> Sign In</i>
                     </a>
                 </li>
+                <li class="nav-item user-show">
+                    <a class="nav-link username-login" href="#">
+                        Username
+                    </a>
+                </li>
+                <!-- for admin only -->
+                <li class="nav-item admin-edit">
+                    <div class="dropdown  dropdown-menu-right">
+                        <a class="nav-link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Edit 
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="dropdown-item add-movie" data-toggle="modal" data-target="#edit-movie" id="edit">
+                                <a href="#">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"> Add a Movie</i>
+                                </a>
+                            </li>
+                            <li class="dropdown-item add-image" data-toggle="modal" data-target="#add-image">
+                                <a href="#">
+                                    <i class="fa fa-file-image-o" aria-hidden="true"> Upload Images</i>
+                                </a>
+                            </li>
+                            <li class="dropdown-item edit-image" data-toggle="modal" data-target="#edit-image">
+                                <a href="#">
+                                    <i class="fa fa-file-image-o" aria-hidden="true"> Edit Images</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- click to logout -->
+                <li class="nav-item user-show logout">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-sign-out" aria-hidden="true">Sign Out</i>
+                    </a>
+                </li>
+                <!-- direct to shopping cart -->
                 <li class="nav-item">
                     <a class="nav-link" href="shopping.html">
                         <i class="fa fa-shopping-cart shopping-icon" aria-hidden="true">
-                            <div class = "shopping-quantity">
-                                0
-                            </div>
                         </i>
                     </a>
                 </li>
             </ul>
         </div>
         <!-- login modal window starts -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="true">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <!--modal header-->
@@ -82,7 +139,7 @@
                             <!--password input-->
                             <div class="form-group">
                                 <label for="password" class="col-sm-2 control-label">
-                                    password
+                                    Password
                                 </label>
                                 <div class="col-sm-10">
                                     <input type="password" class="form-control" id="password" placeholder="password" required="required">
@@ -91,18 +148,21 @@
                             <!-- Sign up -->
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <a class="login-a" href="#">
-                                Don't have an account? Sign up here first
-                            </a>
+                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#sign-Up" id="signUp">
+                                        Don't have an account? Sign up here first!
+                                      </button>
                                 </div>
                             </div>
                             <!--login-->
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default">
+                                    <button type="submit" class="btn btn-default sign-in">
                                     Log In
                                     </button>
                                 </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary signin-close" data-dismiss="modal">Close</button>
                             </div>
                         </form>
                     </div>
@@ -110,6 +170,208 @@
             </div>
         </div>
         <!-- modal window ends -->
+        <!-- sign up modal window starts -->
+        <div class="modal fade" id="sign-Up" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sign Up First</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="signup-close" aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- sign up username starts -->
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label">
+                                Username
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="signup-username" placeholder="username" required="required">
+                                <span class="error" id="username-err"></span>
+                            </div>
+                        </div>
+                        <!-- sign up username ends -->
+                        <!-- sign up password starts -->
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2 control-label">
+                                Password
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="signup-password" placeholder="password" required="required">
+                                <span class="error" id="password-err"></span>
+                            </div>
+                        </div>
+                        <!-- sign up password ends -->
+                        <!-- sign up email starts -->
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">
+                                Email
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="signup-email" placeholder="email" required="required">
+                                <span class="error" id="email-err"></span>
+                            </div>
+                        </div>
+                        <!-- sign up email ends -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary signup-close" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default signup-btn">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- sign up modal window ends -->
+        <!-- for admin to add a movie starts -->
+        <div class="modal fade" id="edit-movie" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-lg" style="pointer-events: auto" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add a Movie Here</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="signup-close" aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- add movie name -->
+                        <div class="form-group">
+                            <label for="movie-name" class="control-label">
+                                Movie Name
+                            </label>
+                            <div>
+                                <input type="text" class="form-control" id="added-movie-name" placeholder="name" required="required">
+                            </div>
+                        </div>
+                        <!-- add movie release date -->
+                        <div class="form-group">
+                            <label for="movie-release-date" class="control-label">
+                                Release Date
+                            </label>
+                            <div>
+                                <input type="date" class="form-control" id="added-movie-release-date">
+                            </div>
+                        </div>
+                        <!-- add movie duration -->
+                        <div class="form-group">
+                            <label for="movie-duration" class="control-label">
+                                Duration
+                            </label>
+                            <div>
+                                <input type="text" class="form-control" id="added-movie-duration" placeholder="Unit in minutes">
+                            </div>
+                        </div>
+                        <!-- add movie off date -->
+                        <div class="form-group">
+                            <label for="movie-duration" class="control-label">
+                                Off Date
+                            </label>
+                            <div>
+                                <input type="date" class="form-control" id="added-movie-off-date">
+                            </div>
+                        </div>
+                        <!-- add movie category -->
+                        <div class="form-group">
+                            <label for="movie-category" class="control-label">
+                                Categories:
+                                 <div>
+                                    <input type="checkbox" id="added-movie-magical" value="Action" name="edit-movie">Action
+                                    <input type="checkbox" id="added-movie-magical" value="Comedies" name="edit-movie">Comedies
+                                    <input type="checkbox" id="added-movie-magical" value="Romantic" name="edit-movie">Romantic
+                                    <input type="checkbox" id="added-movie-magical" value="Adventure" name="edit-movie">Adventure
+                                    <input type="checkbox" id="added-movie-magical" value="Scientific" name="edit-movie">Scientific
+                                </div>
+                            </label>
+                        </div>
+                        <!-- add movie director -->
+                        <div class="form-group">
+                            <label for="movie-director" class="control-label">
+                                Director
+                            </label>
+                            <div>
+                                <input type="text" class="form-control" id="added-movie-director" placeholder="name...">
+                            </div>
+                        </div>
+                        <!-- add rate -->
+                        <div class="form-group">
+                            <label for="movie-rate" class="control-label">
+                                Rate
+                            </label>
+                            <div>
+                                <input type="text" class="form-control" id="added-movie-rate" placeholder="number in %">
+                            </div>
+                        </div>
+                        <!-- add movie show time -->
+                        <div class="form-group" id="add-movie-show-time">
+                            <label for="movie-room" class="control-label">
+                                Room
+                            </label>
+                            <div>
+                                <select id="added-movie-room" name="roomlist">
+                                    <option value="0">-------</option>
+                                </select>
+                            </div>
+                            <br>
+                            <label for="movie-time" class="control-label">
+                                Time
+                            </label>
+                            <div>
+                                <select id="added-movie-time" name="timelist">
+                                    <option value="0">-------</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary movie-add-button">Add</button>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- for admin to add a move ends -->
+        <!-- for admin to add image starts -->
+        <div class="modal fade" id="add-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Please Upload Image Here</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        Select pictures you would like to upload
+                        <plugin class="image_upload" path="./plugins/image_upload/upload.js"></plugin>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- for admin to add image ends -->
+        <!-- for admin to edit images starts -->
+        <div class="modal fade" id="edit-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Please Upload Image Here</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                        Select pictures you would like to change or add
+                        <plugin id="setting" class="image_setting" path="./plugins/image_setting/image_setting.js">Image Setting</plugin>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- for admin to edit images ends -->
     </nav>
     <!-- navigation end -->
 
@@ -117,13 +379,6 @@
     <div class="container-fluid">
         <div class="row movie-category-body">
             <ul class="nav">
-                <li class="nav-item nav-link movie-search-link" style="font-weight: bold;">Category: </li>
-                <li class="nav-item"><a class="nav-link active movie-search-link" href="#">All</a></li>
-                <li class="nav-item"><a class="nav-link movie-search-link" href="#">Scientific</a></li>
-                <li class="nav-item"><a class="nav-link movie-search-link" href="#">Magic</a></li>
-                <li class="nav-item"><a class="nav-link movie-search-link" href="#">Nature</a></li>
-                <li class="nav-item"><a class="nav-link movie-search-link" href="#">Romance</a></li>
-                <li class="nav-item"><a class="nav-link movie-search-link" href="#">Adventure</a></li>
             </ul>
             <nav class="navbar navbar-light ml-auto">
                 <form class="form-inline">
@@ -142,71 +397,18 @@
     <!-- movie list body starts -->
     <div class="container-fluid ">
         <ul class="movie-list-body ">
-            <!-- <li class=" clearfix movie-list-body-li ">
-                <div style="float: left; ">
-                    <img src="img/warCraft-small.jpg ">
-                    <button class="btn btn-light ">Buy A Ticket</button>
-                </div>
-            </li>
-            <li class="clearfix movie-list-body-li ">
-                <div style="float: left; ">
-                    <img src="img/warCraft-small.jpg ">
-                    <button class="btn btn-light ">Buy A Ticket</button>
-                </div>
-            </li>
-            <li class="clearfix movie-list-body-li ">
-                <div style="float: left; ">
-                    <img src="img/warCraft-small.jpg ">
-                    <button class="btn btn-light ">Buy A Ticket</button>
-                </div>
-            </li> -->
         </ul>
         <!-- page split starts -->
         <div>
             <ul class="pagination justify-content-center">
-                <!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
             </ul>
         </div>
         < <!-- page split ends -->
     </div>
     <!-- movie list body starts -->
     <!-- Food & Drink start -->
-    <div class="container-fluid food-background " id="food ">
-        <div class="row ">
-            <div class="col-md-4 ">
-                <div class="card card-style ">
-                    <img src="img/popcorn.jpg " class="card-img-top " alt="... ">
-                    <div class="card-body ">
-                        <h5 class="card-title card-text ">Popcorn</h5>
-                        <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="# " class="btn btn-primary ">Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 ">
-                <div class="card card-style ">
-                    <img src="img/popcorn.jpg " class="card-img-top " alt="... ">
-                    <div class="card-body card-text ">
-                        <h5 class="card-title ">Drink</h5>
-                        <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="# " class="btn btn-primary ">Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 ">
-                <div class="card card-style ">
-                    <img src="img/popcorn.jpg " class="card-img-top " alt="... ">
-                    <div class="card-body ">
-                        <h5 class="card-title card-text ">Popcorn & Drinks</h5>
-                        <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="# " class="btn btn-primary ">Add To Cart</a>
-                    </div>
-                </div>
-            </div>
+    <div class="container-fluid food-background" id="food">
+        <div class="row">
         </div>
     </div>
     <!-- Food & Drink ends -->
