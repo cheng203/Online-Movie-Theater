@@ -9,7 +9,7 @@ $(document).ready(function() {
     var path = "../movie/movie-page-template.html";
     $.ajax({
         type: "POST",
-        url: ".....",
+        url: "../movie_api/SelectFiveNewMovie.php",
         dataType: "json",
         success: function(data) {
             for (var i = 0; i < data.length; i++) {
