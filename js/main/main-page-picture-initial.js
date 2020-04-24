@@ -6,10 +6,10 @@ $(document).ready(function() {
     $(".carousel-indicators").clear();
 
     //path for movie template html
-    var path = "../movie/movie-page-template.html";
+    var path = "movie/movie-page-template.html";
     $.ajax({
         type: "POST",
-        url: "../movie_api/SelectFiveNewMovie.php",
+        url: "external/movie_api/SelectFiveNewMovie.php",
         dataType: "json",
         success: function(data) {
             for (var i = 0; i < data.length; i++) {
@@ -39,13 +39,15 @@ $(document).ready(function() {
                 }
             }
         },
-        error: function() {}
+        error: function() {
+            console.log("failed");
+        }
     })
 
 
     //following will be used to get image for what's new section
     //before get information, first delete content inside of what's new body
-    $("#new ul").clear();
+    $("#new ul").empty();
     $.ajax({
         type: "get",
         url: "......",
