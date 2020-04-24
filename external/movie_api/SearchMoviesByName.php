@@ -2,10 +2,9 @@
 include_once('../../core/MovieSql.php');
 
 session_start();
-$test = $_POST['sendData'];
-$data=json_decode($test);
 
-$name = $data->name;
+
+$name = $_POST['key'];
 $query = new MovieSql();
 $result=$query->findMovieByName($name);
 $movie_result=json_decode($result);

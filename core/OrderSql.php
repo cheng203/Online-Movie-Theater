@@ -22,7 +22,17 @@ Class OrderSql{
        
       
     }
-
+   function AddOnlyGoodsinOrder($user_id,$number_tickets,$total_amount)
+    {
+     
+        $sql = sprintf("INSERT into orders (user_id, number_tickets,total_amount) values ('%s','%s','%s')",$user_id,$number_tickets,$total_amount);
+          $result=$this->conn->get_insert_id($sql);
+          
+          return $result;
+       
+      
+    }
+ 
     function Add_order_goods_detail($order_id,$goods_id,$quantity){
     	$sql = sprintf("INSERT into order_goods_detail values ('%s','%s', '%s')",$order_id,$goods_id,$quantity);
         $result=$this->conn->query($sql);

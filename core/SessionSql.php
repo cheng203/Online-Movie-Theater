@@ -24,6 +24,13 @@ Class SessionSql{
         return $result;
     }
 
+    function findSessionByMovieAndDate($movie_id,$date){
+         $sql = sprintf("SELECT session_id,time_flag  from sessions where movie_id = '%s' and date='%s' ", $movie_id,$date);
+        $result = $this->conn->query_json($sql);
+        return $result;
+
+    }
+
     function addSession($movie_id,$room_id,$date,$time_flag,$available)
     {   
      

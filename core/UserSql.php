@@ -50,6 +50,18 @@ Class UserSql{
             return $jsonObj[0]->person_type;
         }
     }
+
+    function getUserID($username){
+        $sql = sprintf("select person_id from persons where username = '%s'", $username);
+        $result = $this->conn->query_json($sql);        
+        if($result==""||$result==false){
+            return false;
+        }
+        else{
+            $jsonObj = json_decode($result);
+            return $jsonObj[0]->person_id;
+        }
+    }
 }
 ?>
 

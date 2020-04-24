@@ -92,10 +92,10 @@ Class CartSql{
       
     }
     
-    /*function DeleteCart($user_id){
+    function DeleteCart($user_id){
         $sql = sprintf("DELETE from carts WHERE user_id = '%s'", $user_id);
         return $this->conn->query($sql);
-    }*/
+    }
 
     function ModifyCart($user_id,$number_tickets,$session_id,$total_amount)
     {
@@ -115,10 +115,10 @@ Class CartSql{
 
     }
     //
-   /*function DeleteCart_goods_detail($user_id){
+   function DeleteCart_goods_detail($user_id){
         $sql = sprintf("DELETE from cart_goods_detail WHERE user_id = '%s'", $user_id);
         return $this->conn->query($sql);
-    }*/
+    }
 
     function Modify_cart_goods_detail($user_id,$goods_id,$quantity)
     {
@@ -141,10 +141,10 @@ Class CartSql{
     }
     //
 
-     /*function DeleteCart_tickets_detail($user_id){
+     function DeleteCart_tickets_detail($user_id){
         $sql = sprintf("DELETE from cart_tickets_detail WHERE user_id = '%s'", $user_id);
         return $this->conn->query($sql);
-    }*/
+    }
 
 
     function Modify_cart_tickets_detail($user_id,$ticket_type_id,$price,$quantity)

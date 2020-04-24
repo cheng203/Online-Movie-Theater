@@ -2,10 +2,9 @@
 include_once('../../core/MovieSql.php');
 
 session_start();
-$test = $_POST['sendData'];
-$data=json_decode($test);
 
-$category = $data->type_name;
+
+$category = $_POST['type'];
 $query = new MovieSql();
 $result=$query->findMoviesByCategory($category);
 $movie_result=json_decode($result);
