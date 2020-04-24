@@ -44,8 +44,8 @@ $(document).ready(function() {
 
         $.ajax({
             type: "post",
-            url: "external/shopping_api/add_order.php",
-            data: sendData,
+            url: "external/shopping_api/addOrder.php",
+            data: {"sendData":JSON.stringify(sendData)},
             success: function(data) {
                 if (data == 1) {
                     alert("You purchase is successfully finished. Will direct to homepage.");

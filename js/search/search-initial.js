@@ -27,7 +27,7 @@ $(document).ready(function() {
     //when page first loaded, it will show all movie first
     $.ajax({
         type: "POST",
-        url: "external/movie_api/listMovieAndImage.php",
+        url: "external/movie_api/listMoviesAndImage.php",
         data: [{ "type": "all" }],
         dataType: "json",
         success: function(data) {

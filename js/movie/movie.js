@@ -37,8 +37,8 @@ $(document).ready(function() {
         $.ajax({
             type: "post",
             url: "external/movie_api/deleteMovie.php",
-            data: sendData,
-            dataType: "json",
+            data: {"sendData":JSON.stringify(sendData)},
+          
             success: function() {
                 alert("You have successfullt delete the movie and will direct to the home page.");
                 localStorage.setItem("movie_name", "");
@@ -78,8 +78,8 @@ $(document).ready(function() {
         $.ajax({
             url: "external/movie_api/modifyMovie.php",
             type: "POST",
-            data: sendData,
-            dataType: "json",
+            data: {"sendData":JSON.stringify(sendData)},
+    
             success: function(data) {
                 window.location.href = "/movie.html";
             },

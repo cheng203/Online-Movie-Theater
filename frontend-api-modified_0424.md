@@ -26,8 +26,11 @@ File path: js/main/main-page-picture-initial.js
         {"movie_id":"30","name":"cvbfd","url":"haisjkdfg.jpg\r\n"},
         {"movie_id":"29","name":"avs","url":"ahsudfkg.jpg"}]
 
+
+
     ////5. It is expected to receive 4 movie info
            url: movie_api/SelectTopFourMovie.php
+           
            [{"movie_id":"29","name":"avs","url":"ygfds.jpg"},
            {"movie_id":"31","name":"moviesssd","url":"drtghfdsd.jpg"},
            {"movie_id":"30","name":"cvbfd","url":"eeee.jpg"},

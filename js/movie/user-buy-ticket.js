@@ -11,8 +11,7 @@ $(document).ready(function() {
         $.ajax({
             type: "post",
             url: "external/room_session_api/findSessionForMovie.php",
-            data: sendData,
-            dataType: "json",
+            data: {"sendData":JSON.stringify(sendData)},
             success: function(data) {
                 res = [];
                 for (var i = 0; i < data.length; i++) {
@@ -63,11 +62,12 @@ $(document).ready(function() {
                     'senior_ticket_number': senior_ticket,
                     'child_ticket_number': child_ticket,
                     "time": time
+                    
                 }];
                 $.ajax({
                     type: 'post',
                     url: "external/shopping_api/addTicket.php",
-                    data: sendData,
+                    data: {"sendData":JSON.stringify(sendData)},
                     dataType: "json",
                     success: function(data) {
                         if (data == 1) {

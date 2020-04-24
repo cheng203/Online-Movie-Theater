@@ -35,7 +35,7 @@ $(document).ready(function() {
     $.ajax({
         type: "post",
         url: "external/movie_api/MoviePage_Initial.php",
-        data: sendData,
+        data: {"sendData":JSON.stringify(sendData)},
         success: function(data) {
             //this data should contain all the information about this image in json format;
             var movie_id = data[0].id;

@@ -2,7 +2,7 @@ $(document).ready(function() {
     var room_option = "";
     $.ajax({
         type: 'post',
-        url: 'external/momvie_api/Listrooms.php',
+        url: 'external/room_session_api/Listrooms.php',
         dataType: 'json',
         success: function(data) {
             for (var i = 0; i < data.length; i++) {
@@ -24,11 +24,11 @@ $(document).ready(function() {
             "room": pid,
             "start_date": movie_start_date,
             "end_date": movie_end_date
-        }]
+        }];
         $.ajax({
             type: 'post',
-            url: 'external/room_session_api/Find_room_by_start_end_date.php',
-            data: sendData,
+            url: 'external/room_session_api/Find_room_by_start_end_dateNew.php',
+            data: {"sendData":JSON.stringify(sendData)},
             success: function(data) {
                 var segment = convert(data);
                 var duration = $("#added-movie-duration").val();

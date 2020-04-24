@@ -43,8 +43,8 @@ $(document).ready(function() {
         // send formData to backend
         $.ajax({
             type: "POST",
-            url: "external/movie_api/Admin_add_session_byGroup.php",
-            data: sendData,
+            url: "external/movie_api/Admin_add_session_byGroupNew.php",
+            data: {"sendData":JSON.stringify(sendData)},
             contentType: false,
             cache: false,
             processData: false,

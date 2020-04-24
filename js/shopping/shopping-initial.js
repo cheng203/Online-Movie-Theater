@@ -11,9 +11,9 @@ $(document).ready(function() {
     // }]
     // $.ajax({
     //     type: "post",
-    //     url: ".....",
-    //     data: sendData,
-    //     dataType: "json",
+    //     url: "external/shopping_api/shoppingInitial.php",
+    //     data: {"sendData":JSON.stringify(sendData)},
+    //
     //     success: function(data) {
     //         $(".product_info").clear();
     //         // path for small size picture
