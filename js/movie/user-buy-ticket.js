@@ -10,14 +10,15 @@ $(document).ready(function() {
         }];
         $.ajax({
             type: "post",
-            url: "..........",
+            url: "external/room_session_api/findSessionForMovie.php",
             data: sendData,
+            dataType: "json",
             success: function(data) {
                 res = [];
                 for (var i = 0; i < data.length; i++) {
                     //convert each movie time
-                    var time = convertMovieTime(data[i].movie_timeFlag);
-                    res += '<option id = "' + data[i].movie_timeFlag + '" value = "' + data[i].session_id + '">' + time + '</option>';
+                    var time = convertMovieTime(data[i].time_flag);
+                    res += '<option id = "' + data[i].time_flag + '" value = "' + data[i].session_id + '">' + time + '</option>';
                 }
                 $(".user-select-date").append(res);
             },
@@ -54,6 +55,7 @@ $(document).ready(function() {
                     "movie_time_flag": $(".user-select-date option:selected").attr("value"),
                 })
                 var sendData = [{
+                    "username": username,
                     'date': date,
                     'movie_id': movie_id,
                     'movie_name': movie_name,
@@ -64,10 +66,15 @@ $(document).ready(function() {
                 }];
                 $.ajax({
                     type: 'post',
-                    url: "........",
+                    url: "external/shopping_api/addTicket.php",
                     data: sendData,
+                    dataType: "json",
                     success: function(data) {
-                        window.location.href = "../movie/movie-page-template.html";
+                        if (data == 1) {
+                            window.location.href = "movie/movie-page-template.html";
+                        } else {
+                            alert("Sorry, seats are just sold out.")
+                        }
                     },
                     error: function() {
                         console.log("wrong");

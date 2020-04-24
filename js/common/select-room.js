@@ -2,7 +2,7 @@ $(document).ready(function() {
     var room_option = "";
     $.ajax({
         type: 'post',
-        url: '../external/momvie_api/Listrooms.php',
+        url: 'external/momvie_api/Listrooms.php',
         dataType: 'json',
         success: function(data) {
             for (var i = 0; i < data.length; i++) {
@@ -27,7 +27,7 @@ $(document).ready(function() {
         }]
         $.ajax({
             type: 'post',
-            url: '../external/room_session_api/Find_room_by_start_end_date.php',
+            url: 'external/room_session_api/Find_room_by_start_end_date.php',
             data: sendData,
             success: function(data) {
                 var segment = convert(data);

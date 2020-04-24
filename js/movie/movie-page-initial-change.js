@@ -34,7 +34,7 @@ $(document).ready(function() {
     // return movie information
     $.ajax({
         type: "post",
-        url: "...........",
+        url: "external/movie_api/MoviePage_Initial.php",
         data: sendData,
         success: function(data) {
             //this data should contain all the information about this image in json format;
@@ -74,7 +74,7 @@ $(document).ready(function() {
             //iterate stage image to attach
             for (var i = 0; i < stage_img.length; i++) {
                 $("#photo .nav").append(
-                    '<li class="nav-item"><a class="nav-link" href="#"><img class="movie-photo" src="../uploads/' + stage_img[0].i + '"></a></li>'
+                    '<li class="nav-item"><a class="nav-link" href="#"><img class="movie-photo" src="../uploads/' + stage_img[0].image_name + '"></a></li>'
                 )
             }
 

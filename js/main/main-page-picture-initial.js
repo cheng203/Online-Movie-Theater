@@ -50,7 +50,7 @@ $(document).ready(function() {
     $("#new ul").empty();
     $.ajax({
         type: "get",
-        url: "......",
+        url: "external/movie_api/NewMovie_Search.php",
         dataType: "json",
         success: function(data) {
             for (var i = 0; i < data.length; i++) {

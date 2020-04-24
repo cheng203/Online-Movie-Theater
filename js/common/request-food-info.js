@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajax({
         type: "post",
-        url: ".......",
+        url: "external/goods_api/foodInfo.php",
         dataType: "json",
         success: function(data) {
             for (var i = 0; i < data.length; i++) {

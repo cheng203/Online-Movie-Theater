@@ -5,7 +5,7 @@ $(document).ready(function() {
         var category = $(this).text();
         $.ajax({
             type: "POST",
-            url: ".......",
+            url: "external/movie_api/SearchMovieByCategory.php",
             data: { "type": category },
             success: function(data) {
                 //data has movie_id, movie_name, movie_url

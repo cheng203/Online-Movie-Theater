@@ -15,10 +15,14 @@ $(document).ready(function() {
             }]
             $.ajax({
                 type: "post",
-                url: ".........",
-                data: sendData,
-                success: function() {
-                    alert("You have successfully add it to your cart");
+                url: "external/shopping_api/addFood.php",
+                data: { "sendData": JSON.stringify(sendData) },
+                success: function(data) {
+                    if (data == 1) {
+                        alert("You have successfully add it to your cart");
+                    } else {
+                        alert("Food is currently out of order. Please come back later!")
+                    }
                 },
                 error: function() {}
             })

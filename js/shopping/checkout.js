@@ -44,11 +44,15 @@ $(document).ready(function() {
 
         $.ajax({
             type: "post",
-            url: "........",
+            url: "external/shopping_api/add_order.php",
             data: sendData,
-            success: function() {
-                alert("You purchase is successfully finished. Will direct to homepage.");
-                window.location.href = "../index.html";
+            success: function(data) {
+                if (data == 1) {
+                    alert("You purchase is successfully finished. Will direct to homepage.");
+                    window.location.href = "index.html";
+                } else {
+                    alert("Unfortunately, the movie you choose is just sold out. Please go back and select another available time.")
+                }
             }
         })
     }

@@ -38,7 +38,7 @@ function pagination(data) {
             '<li class=" clearfix movie-list-body-li">' +
             '<div style="float: left;">' +
             '<img style="width: 344px" src="../uploads/' + data[i].url + '">' +
-            '<button class="btn btn-light value="' + data[i].movie_name + '" alt="' + data[i].movie_id + '">Go to Movie</button>' +
+            '<button class="btn btn-light value="' + data[i].name + '" alt="' + data[i].movie_id + '">Go to Movie</button>' +
             '</div>' +
             '</li>'
         )
@@ -100,7 +100,7 @@ function addPicture(data, text) {
             '<li class=" clearfix movie-list-body-li">' +
             '<div style="float: left;">' +
             '<img style="width: 344px" src="../uploads/' + data[i].url + '">' +
-            '<button class="btn btn-light go-to-movie" alt = "' + data[i].movie_name + '" value="' + data[i].movie_id + '">Go to Movie</button>' +
+            '<button class="btn btn-light go-to-movie" alt = "' + data[i].name + '" value="' + data[i].movie_id + '">Go to Movie</button>' +
             '</div>' +
             '</li>'
         )

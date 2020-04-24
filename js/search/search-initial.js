@@ -2,7 +2,7 @@ $(document).ready(function() {
     //To get a list of movie type
     $.ajax({
         type: "POST",
-        url: ".......",
+        url: "external/movie_api/listMovieCategory.php",
         dataType: "json",
         success: function(data) {
             //return will a list of movie type
@@ -15,7 +15,7 @@ $(document).ready(function() {
             );
             for (var i = 0; i < data.length; i++) {
                 $(".movie-category-body ul").append(
-                    '<li class="nav-item"><a class="nav-link movie-search-link" href="#">' + data[i].type + '</a></li>'
+                    '<li class="nav-item"><a class="nav-link movie-search-link" href="#">' + data[i].type_name + '</a></li>'
                 )
             }
         },
@@ -27,7 +27,7 @@ $(document).ready(function() {
     //when page first loaded, it will show all movie first
     $.ajax({
         type: "POST",
-        url: "......",
+        url: "external/movie_api/listMovieAndImage.php",
         data: [{ "type": "all" }],
         dataType: "json",
         success: function(data) {

@@ -36,8 +36,9 @@ $(document).ready(function() {
         }];
         $.ajax({
             type: "post",
-            url: "../external/movie_api/deleteMovie.php",
+            url: "external/movie_api/deleteMovie.php",
             data: sendData,
+            dataType: "json",
             success: function() {
                 alert("You have successfullt delete the movie and will direct to the home page.");
                 localStorage.setItem("movie_name", "");
@@ -75,12 +76,12 @@ $(document).ready(function() {
             "rating": rate
         }];
         $.ajax({
-            url: "../external/movie_api/modifyMovie.php",
+            url: "external/movie_api/modifyMovie.php",
             type: "POST",
             data: sendData,
             dataType: "json",
             success: function(data) {
-                window.location.href = "../movie-page-template.html";
+                window.location.href = "movie/movie-page-template.html";
             },
             error: function() {
                 console.log("Error");

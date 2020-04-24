@@ -11,14 +11,14 @@ $(document).ready(function() {
             $(".search-name").empty();
             $.ajax({
                 type: "POST",
-                url: "../external/movie_api/searchMoviebyStartString.php",
-                data: { "key": key },
+                url: "external/movie_api/searchMoviebyStartString.php",
+                data: { "start_string": key },
                 dataType: "json",
                 success: function(data) {
                     //expected to receive a list of movie-name including key
                     for (var i = 0; i < data.length; i++) {
                         $(".search-name").append(
-                            '<li class="list-group-item search-name-item">' + data[i].movie_name + '</li>'
+                            '<li class="list-group-item search-name-item">' + data[i].name + '</li>'
                         )
                     }
                 },
@@ -34,12 +34,12 @@ $(document).ready(function() {
         var key = $(".user-search").val();
         $.ajax({
             type: "POST",
-            url: "......",
+            url: "external/movie_api/SearchMoviesByName.php",
             data: { "key": key },
             dataType: "json",
             success: function(data) {
                 //expect to return movie-name, movie-image-url; if not found, return a indicator
-                if (data[0].indicator == "false") {
+                if (data.length == 0) {
                     $(".movie-list-body").empty();
                     $(".movie-list-body").append('<h3>Sorry, the movie you search is currently not on the show</h3>')
                 } else {
@@ -47,8 +47,8 @@ $(document).ready(function() {
                     $(".movie-list-body").append(
                         '<li class=" clearfix movie-list-body-li">' +
                         '<div style="float: left;">' +
-                        '<img src="' + data[1].url + '">' +
-                        '<button class="btn btn-light value="' + data[1].movie_name + '">Go to Movie</button>' +
+                        '<img src="' + data[0].url + '">' +
+                        '<button class="btn btn-light value="' + data[0].movie_id + '" alt="' + data[0].name + '">Go to Movie</button>' +
                         '</div>' +
                         '</li>'
                     );

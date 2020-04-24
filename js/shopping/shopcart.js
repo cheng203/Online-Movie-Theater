@@ -34,31 +34,35 @@ $(document).ready(function() {
     function getCostFirst() {
         //before calculating, determine if there is a movie added
         // This is used to calculate the movie cost
-        var all_p = $(".movie-price-display").find("strong");
-        var all_price = [];
-        for (var i = 0; i < all_p.length; i++) {
-            all_price.push(parseFloat(all_p[i].innerText));
-        }
-        var all_c = $(".movie-quantity-display").find(".itxt");
-        var all_count = [];
-        for (var i = 0; i < all_p.length; i++) {
-            all_count.push(parseInt(all_c[i].value));
-        }
-        var unit_t = $(".movie-cost");
-        var cur_cost = 0;
-        for (var i = 0; i < all_price.length; i++) {
-            cur_cost += all_price[i] * all_count[i];
-        }
-        unit_t[0].innerText = "$" + cur_cost;
-        //This is used to calculate the goods cost
-        var goods_price = $(".goods-price");
-        var goods_quantity = $(".goods-quantity")
-        var goods_cost = $(".goods-cost");
-        for (var i = 0; i < goods_price.length; i++) {
-            var price = parseFloat(goods_price[i].innerText.substring(1));
-            var quantity = goods_quantity[i].value;
-            var cost = price * quantity;
-            goods_cost[i].innerText = "$" + cost;
+        if ($(".product_info tr:first-child").attr("value") == "movie") {
+            var all_p = $(".movie-price-display").find("strong");
+            var all_price = [];
+            for (var i = 0; i < all_p.length; i++) {
+                all_price.push(parseFloat(all_p[i].innerText));
+            }
+            var all_c = $(".movie-quantity-display").find(".itxt");
+            var all_count = [];
+            for (var i = 0; i < all_p.length; i++) {
+                all_count.push(parseInt(all_c[i].value));
+            }
+            var unit_t = $(".movie-cost");
+            var cur_cost = 0;
+            for (var i = 0; i < all_price.length; i++) {
+                cur_cost += all_price[i] * all_count[i];
+            }
+            unit_t[0].innerText = "$" + cur_cost;
+        };
+        if ($(".product_info tr:first-child").attr("value") == "goods" || $(".product_info tr:nth-child(2)" == "goods")) {
+            //This is used to calculate the goods cost
+            var goods_price = $(".goods-price");
+            var goods_quantity = $(".goods-quantity")
+            var goods_cost = $(".goods-cost");
+            for (var i = 0; i < goods_price.length; i++) {
+                var price = parseFloat(goods_price[i].innerText.substring(1));
+                var quantity = goods_quantity[i].value;
+                var cost = price * quantity;
+                goods_cost[i].innerText = "$" + cost;
+            }
         }
         //This is to get sum
         getSum();

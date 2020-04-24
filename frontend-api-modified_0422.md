@@ -100,10 +100,6 @@ File path: js/common/add-food.js
             {"info":"info"},
             { "time": [
             {"movie_time_flag":"000010000000000000000000000000000000000000000000","group":1},
-            ...........
-            //Yibo edit: movie_time_flag should be the time movie takes, something like this
-            000011111111000000000000000000000000000000000000000 so that you can just add it to the corresponding group.
-            ............
             {"movie_time_flag":"000010000000000000000000000000000000000000000000","group":2}
             ]
           }]
