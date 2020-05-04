@@ -1,4 +1,4 @@
-File name: main-page-picture-initial.js
+*******File name: main-page-picture-initial.js
 File path: js/main/main-page-picture-initial.js
 ////1. This file is used to get image about carousel and also what's new section
 ////2. To get image for carousel section
@@ -60,7 +60,7 @@ File path: js/main/main-page-picture-initial.js
         5. It is expected to receive 4 to 5 images
 
 
-////File name: add-food.js
+******////File name: add-food.js
 ////File path: js/common/add-food.js
     1. This file is used to send the food plan user choose back to backend
     2. Details
@@ -80,7 +80,7 @@ File path: js/main/main-page-picture-initial.js
         return data:"Success" or "Fail"
 
 
-////File name: admin_edit.js
+*****////File name: admin_edit.js
 ////File path: js/common/admin_edit.js
     1. This file will collect front information and send back to end
     2. To send sendData back
@@ -128,7 +128,7 @@ File path: js/main/main-page-picture-initial.js
             ]
             ............
 
-///File name: select-room.js(updated)
+*****///File name: select-room.js(updated)
 File path: js/common/select-room.js
     1. This file is used to first get room information and then base on room selected, get time information then.
     2. to get room information
@@ -172,7 +172,7 @@ File path: js/common/select-room.js
             ]
 
 
-////File name: movie-page-initial-change.js
+*******////File name: movie-page-initial-change.js
 ////File path: js/movie/movie-page-initial-change.js
     1. This file is used to get information for loading the movie page
     2. to get information
@@ -227,7 +227,7 @@ File path: js/common/select-room.js
                 ]
 
 
-////File name: movie.js(updated)
+******////File name: movie.js(updated)
 ////File path: js/movie/movie.js
     1. This file is used to edit or delete an existing movie
     2. To edit a movie
@@ -258,7 +258,7 @@ File path: js/common/select-room.js
         4. no need to return data
 
 
-////File name: user-buy-ticket.js
+******////File name: user-buy-ticket.js
 ////File path: js/movie/user-buy-ticket.js
     1. This file is used to allow user buy a ticket and send back to server; Also when date select, return back available time.
     2. send info after click buy ticket
@@ -309,7 +309,7 @@ File path: js/common/select-room.js
 
 
 
-////File Name: checkout.js(updated)
+*******////File Name: checkout.js(updated)
 ////File path: js/shopping/checkout.js
     1. This file is add goods and tickets in order 
     2. type: post
@@ -376,7 +376,7 @@ File path: js/common/select-room.js
                 ]
         }];
 
-////File Name: shopping-initials
+*****////File Name: shopping-initials
 ///File Path: js/shopping/shopping-initails.js
     1. This file is used to load user's choice
     2. sendData: 
@@ -419,7 +419,7 @@ File path: js/common/select-room.js
 
 
 
-////File Name: search-initial.js
+*****////File Name: search-initial.js
 File Path: js/search/search-initial.js
 //// 1. This file is used to initialize the search page
         1. To get movie type array
@@ -447,7 +447,7 @@ File Path: js/search/search-initial.js
                     "type": "all"
                 }
             ]
-        2. url: movie_api/listMovieAndImage.php
+        2. url: movie_api/listMoviesAndImage.php
             3. expected return data
                 [
                     {
@@ -469,7 +469,7 @@ File Path: js/search/search-initial.js
                 [{"movie_id":"9","name":"foo","url":"ygfds.jpg"},{"movie_id":"11","name":"fad","url":null},{"movie_id":"12","name":"movie_name","url":null},{"movie_id":"13","name":"movie_name","url":null},{"movie_id":"14","name":"movie_name","url":null},{"movie_id":"15","name":"movie_name","url":null},{"movie_id":"16","name":"movie_name","url":null},{"movie_id":"17","name":"movie_name","url":null},{"movie_id":"18","name":"movie_name","url":null},{"movie_id":"19","name":"movie_name","url":null},{"movie_id":"20","name":"movie_name","url":null},{"movie_id":"21","name":"movie_name","url":null},{"movie_id":"22","name":"movie_name","url":null},{"movie_id":"23","name":"movie_name","url":null},{"movie_id":"24","name":"movie_name","url":null},{"movie_id":"25","name":"movie_name","url":null},{"movie_id":"26","name":"movie_name","url":null},{"movie_id":"27","name":"movie_name","url":null},{"movie_id":"28","name":"movie_name","url":null},{"movie_id":"29","name":"avs","url":null},{"movie_id":"30","name":"cvbfd","url":null},{"movie_id":"31","name":"moviesssd","url":null},{"movie_id":"32","name":"dfgbv","url":null},{"movie_id":"33","name":"cvbg","url":null}]
 
 
-////File Name: seach-by-name
+******////File Name: seach-by-name
 ////File Path: js/search/search-by-name.js
     1. This file is used for user to type movie name and search
     2. section 1 is to get real-time result back while user type
@@ -505,7 +505,7 @@ File Path: js/search/search-initial.js
             [{"movie_id":"9","name":"foo","url":"ygfds.jpg"}]
 
 
-////File Name: search-by-category
+*******////File Name: search-by-category
 ////File Path: js/search/search-by-category
     1. This file is used to get same type movie list
     2. sendData
@@ -548,7 +548,7 @@ File Path: js/search/search-initial.js
         [{"movie_id":"9","name":"foo","url":"ygfds.jpg"},{"movie_id":"12","name":"movie_name","url":null}]
 
 
-////File Name: request-food-info.js(updated)
+*******////File Name: request-food-info.js(updated)
 ////File Path: js/common/request-food-info.js
     1. To get goods info
     2. sendData: none

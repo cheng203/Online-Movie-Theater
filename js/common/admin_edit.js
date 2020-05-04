@@ -44,14 +44,14 @@ $(document).ready(function() {
         $.ajax({
             type: "POST",
             url: "external/movie_api/Admin_add_session_byGroupNew.php",
-            data: {"sendData":JSON.stringify(sendData)},
+            data: { "sendData": JSON.stringify(sendData) },
             contentType: false,
             cache: false,
             processData: false,
             success: function(data) {
                 //if added successfully, return alert admin and return back to main page
-                alert("You successfully added movie " + data[0].movie_name + " to the system");
-                window.location.href = "../index.html";
+                alert("You successfully added movie " + data[0].name + " to the system");
+                window.location.href = "/index.html";
             },
             error: function(e) {
                 console.log("error");
