@@ -16,6 +16,14 @@
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
+    <!-- import login, logout, register -->
+    <script src="js/common/userLoad.js"></script>
+    <script src="js/common/jQuery.md5.js"></script>
+    <script src="js/common/login.js"></script>
+    <script src="js/common/logout.js"></script>
+    <script src="js/common/register.js"></script>
+
+
     <!-- import picture display -->
     <script src="js/main/main-page-picture-initial.js"></script>
     <script src="js/main/carousel-control.js"></script>
@@ -26,18 +34,14 @@
     <script src="js/search/search-by-category.js"></script>
     <script src="js/search/search-by-name.js"></script>
     <script src="js/search/go-to-movie.js"></script>
-    <!-- import login, logout, register -->
-    <script src="js/common/userLoad.js"></script>
-    <script src="js/common/jQuery.md5.js"></script>
-    <script src="js/common/login.js"></script>
-    <script src="js/common/logout.js"></script>
-    <script src="js/common/register.js"></script>
+
     <!-- import room logic -->
     <script src="js/common/select-room.js"></script>
     <script src="js/common/admin_edit.js"></script>
     <script src="js/common/time-conversion.js"></script>
     <!-- import image direct -->
     <script src="plugins/image_upload/upload.js"></script>
+    <script src="plugins/image_select/select.js"></script>
     <script src="plugins/image_setting/image_setting.js"></script>
     <script src="js/common/direct-img-to-movie.js"></script>
 
@@ -348,7 +352,7 @@
                     </div>
                     <div class="modal-body">
                         Select pictures you would like to upload
-                        <plugin class="image_upload" path="./plugins/image_upload/upload.js"></plugin>
+                        <plugin class="image_upload" path="./plugins"></plugin>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

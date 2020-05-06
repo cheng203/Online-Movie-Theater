@@ -9,7 +9,7 @@ session_start();
 
 
 $query = new RoomSql();
-$result=$query->listRooms($room_name);
+$result=$query->listRooms();
 if($result!=""){
 	echo $result;
 }else{

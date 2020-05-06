@@ -186,3 +186,8 @@ create table if not exists `cart_goods_detail`(
     foreign key(`user_id`) references `carts` (`user_id`),
     foreign key(`goods_id`) references `goods` (`goods_id`)
 )engine=innodb default charset=utf8;
+
+INSERT INTO `persons` (`person_id`, `person_type`, `username`, `password_hash`, `email`) VALUES (NULL, '1', 'root', '63A9F0EA7BB98050796B649E85481845', 'admin@admin.com');
+INSERT INTO `rooms` (`room_id`, `room_name`, `capacity`) VALUES (NULL, 'Room 01', '36');
+INSERT INTO `rooms` (`room_id`, `room_name`, `capacity`) VALUES (NULL, 'Room 02', '32');
+INSERT INTO `rooms` (`room_id`, `room_name`, `capacity`) VALUES (NULL, 'Room 03', '64');

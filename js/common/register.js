@@ -56,7 +56,7 @@ $(document).ready(function() {
                     localStorage.setItem("username", username);
                     // here we assume that only regular user could register
                     localStorage.setItem("user_type", 1);
-                    window.location.href = "/index.html";
+                    window.location.href = "./index.html";
                 }
             },
             error: function() {

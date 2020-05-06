@@ -10,15 +10,14 @@ $(document).ready(function() {
             dataType: "text",
             data: { "username": username, "password_hash": password },
             success: function(data) {
-                if (data.login_status == 20) {
+                var obj = JSON.parse(data);
+                if (obj.login_status == 20) {
                     alert("Either username or password does not match. Please try again");
                 } else {
-                    var user_type = data["user_type"];
                     localStorage.setItem("username", username);
-                    localStorage.setItem("user-type", user_type);
-                    window.location.href = "../index.html";
+                    localStorage.setItem("user_type", obj.user_type);
+                    window.location.href = "./index.html";
                 }
-
             },
             error: function() {
                 alert("Username or password does not match. Please try again");

@@ -2,18 +2,21 @@ $(document).ready(function() {
     var room_option = "";
     $.ajax({
         type: 'post',
-        url: 'external/room_session_api/Listrooms.php',
-        dataType: 'json',
+        url: './external/room_session_api/ListRooms.php',
+        dataType: 'text',
         success: function(data) {
+            data = JSON.parse(data);
             for (var i = 0; i < data.length; i++) {
-                room_option += '<option value = "' + data[i].room_id + '">' + data[i].room_name + '</option>';
+                var option = $("<option/>").attr("value", data[i].room_id).html(data[i].room_name); 
+                $("#added-movie-room").append(option);
+                // room_option += '<option value = "' + data[i].room_id + '">' + data[i].room_name + '</option>';
             }
+            // $("#add-movie-room").append(room_option);
         },
         error: function() {
             console.log("Unsuccessfully");
         }
     })
-    $("#add-movie-room").append(room_option);
 
     // if room is selected, get information for available time
     $("#added-movie-room").on("change", function() {
@@ -30,6 +33,7 @@ $(document).ready(function() {
             url: 'external/room_session_api/Find_room_by_start_end_dateNew.php',
             data: { "sendData": JSON.stringify(sendData) },
             success: function(data) {
+                $('body').append(data);
                 var segment = convert(data);
                 var duration = $("#added-movie-duration").val();
                 for (var i = 0; i < segment.length; i++) {
