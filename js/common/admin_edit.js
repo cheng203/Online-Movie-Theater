@@ -12,6 +12,9 @@ $(document).ready(function() {
         var director = $("#added-movie-director").val();
         var rate = $("#added-movie-rate").val();
         var room = $("#added-movie-room").val();
+        var adult_price = $("#adult-price-header").val();
+        var senior_price = $("#senior-price-header").val();
+        var child_price = $("#child-price-header").val();
         var time = [];
         // $("#added-movie-time").change(function() {
         //     time = $("#added-movie-time option:selected").attr("value");
@@ -34,6 +37,9 @@ $(document).ready(function() {
             { "category": category },
             { "director": director },
             { "rate": rate },
+            { "adult_price": adult_price },
+            { "senior_price": senior_price },
+            { "child_price": child_price },
             { "room": room },
             { "time": time }
             //time here is a json array
