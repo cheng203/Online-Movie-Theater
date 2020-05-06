@@ -12,20 +12,19 @@ session_start();
 $return_data=array();
 //$user_id=$_SESSION["user_id"];
 
-
 $data=$_POST['sendData'];
-$data = json_decode($data);
-
-
+$data=json_decode($data);
 $user_name=$data[0]->username;
-$res=array("name"=>$user_name);
+//$res=array("name"=>$user_name);
+//echo $user_name;
 
 $person=new UserSql;
 $user_id=$person->getUserID($user_name);
+//echo $user_id;
 
 $query1= new CartSql;
 $cartInfo=json_decode($query1->FindCartInfo($user_id));
-
+//echo $query1->FindCartInfo($user_id);
 $goodsInfo=json_decode($query1->FindCartGoodsInfo($user_id));
 //echo $query1->FindCartGoodsInfo($user_id);
 
@@ -34,8 +33,10 @@ $ticketInfo=json_decode($query1->FindCartTicketInfo($user_id));
 if($ticketInfo!=''){
 
     $session_id=$cartInfo[0]->session_id;
+    //echo $session_id;
 
     $length=count($ticketInfo);
+    //echo $length;
     for($i=0;$i<$length;$i++){
 
 	if($ticketInfo[$i]->ticket_type_id=="1"){
@@ -48,15 +49,15 @@ if($ticketInfo!=''){
 		$child_ticket_number=$ticketInfo[$i]->quantity;
 	}
     }
-
+    //echo $child_ticket_number;
     $query2=new SessionSql;
     $sessionInfo=json_decode($query2->findSessionByID($session_id));
     $movie_id=$sessionInfo[0]->movie_id;
 
-    $query_movie = new MovieSql();
-    $ticket_prices=json_decode( $query_movie->findMoviePriceByMovieIDAndType($movie_id));
 
-
+    $query_movie = new MovieSql;
+    
+    $ticket_prices=json_decode($query_movie->findMoviePriceByMovieIDAndType($movie_id));
     for($i=0;$i<3;$i++){
 	    if($ticket_prices[$i]->ticket_name=="adult"){
 		    $adult_ticket_price=$ticket_prices[$i]->price;
@@ -68,31 +69,34 @@ if($ticketInfo!=''){
 		    $senior_ticket_price=$ticket_prices[$i]->price;
 	    }
     }
-
+    //echo $senior_ticket_price;
     $movie_date=$sessionInfo[0]->date;
-//echo $date;
+    //echo $movie_date;
     $movie_time=$sessionInfo[0]->time_flag;
-//echo $time_flag;
-    $query3 = new MovieSql;
-    $movieInfo=json_decode( $query3->findMovieByID($movie_id));
+    //echo $movie_time;
+    //$query3 = new MovieSql;
+   // $movieInfo=json_decode( 
+    $movieInfo=json_decode( $query_movie->findMovieByID($movie_id));
     $name=$movieInfo[0]->name;
-    $imageInfo=json_decode($query3->getMovieCartImages($movie_id));
+    $imageInfo=json_decode($query_movie->getMovieCartImages($movie_id));
+
     $url=$imageInfo[0]->image_name;
-
-    $movie["url"]=$url;
-    $movie["movie_id"]=$movie_id;
-    $movie["session_id"]=$session_id;
-    $movie["name"]=$name;
-    $movie["movie_date"]=$movie_date;
-    $movie["movie_time"]=$movie_time;
-    $movie["senior_price"]=$senior_ticket_price;
-    $movie["adult_price"]=$adult_ticket_price;
-    $movie["child_price"]=$child_ticket_price;
-    $movie["senior_ticket_num"]=$senior_ticket_number;
-    $movie["adult_ticket_num"]=$adult_ticket_number;
-    $movie["child_ticket_num"]=$child_ticket_number;
-
-    $return_data["movie"]=$movie;
+    //echo $url;
+    //$movie=array();
+    $movie[0]->url= $url;
+    $movie[0]->movie_id=$movie_id;
+    $movie[0]->session_id=$session_id;
+    $movie[0]->name=$name;
+    $movie[0]->movie_date=$movie_date;
+    $movie[0]->movie_time=$movie_time;
+    $movie[0]->senior_price=$senior_ticket_price;
+    $movie[0]->adult_price=$adult_ticket_price;
+    $movie[0]->child_price=$child_ticket_price;
+    $movie[0]->senior_ticket_num=$senior_ticket_number;
+    $movie[0]->adult_ticket_num=$adult_ticket_number;
+    $movie[0]->child_ticket_num=$child_ticket_number;
+     //echo $movie[0]->child_ticket_num;
+    $return_data[0]->movie=$movie;
     //echo json_encode($return_data);
 
 }
@@ -116,7 +120,7 @@ if($goodsInfo!=""){
 
 
      }
-     $return_data->goods=$goods_arr;
+     $return_data[0]->goods=$goods_arr;
 	
 
 
