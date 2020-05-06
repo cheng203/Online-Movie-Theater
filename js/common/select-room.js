@@ -7,7 +7,7 @@ $(document).ready(function() {
         success: function(data) {
             data = JSON.parse(data);
             for (var i = 0; i < data.length; i++) {
-                var option = $("<option/>").attr("value", data[i].room_id).html(data[i].room_name); 
+                var option = $("<option/>").attr("value", data[i].room_id).html(data[i].room_name);
                 $("#added-movie-room").append(option);
                 // room_option += '<option value = "' + data[i].room_id + '">' + data[i].room_name + '</option>';
             }
@@ -23,6 +23,9 @@ $(document).ready(function() {
         var pid = this.value;
         var movie_start_date = $("#added-movie-release-date").val();
         var movie_end_date = $("#added-movie-off-date").val();
+        if (movie_start_date == '' || movie_end_date == '') {
+            alert("Please select the date you would like to add movie first.")
+        }
         var sendData = [{
             "room": pid,
             "start_date": movie_start_date,
@@ -33,7 +36,11 @@ $(document).ready(function() {
             url: 'external/room_session_api/Find_room_by_start_end_dateNew.php',
             data: { "sendData": JSON.stringify(sendData) },
             success: function(data) {
+<<<<<<< HEAD
                 data = JSON.parse(data);
+=======
+                data = JSON.parse(data)
+>>>>>>> 7f132621b929eb22634d06c0ded207c80da6d349
                 $('body').append(data);
                 var segment = convert(data);
                 var duration = $("#added-movie-duration").val();
