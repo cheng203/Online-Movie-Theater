@@ -36,7 +36,7 @@ $(document).ready(function() {
             url: 'external/room_session_api/Find_room_by_start_end_dateNew.php',
             data: { "sendData": JSON.stringify(sendData) },
             success: function(data) {
-                data = JSON.parse(data)
+                data = JSON.parse(data);
                 $('body').append(data);
                 var segment = convert(data);
                 var duration = $("#added-movie-duration").val();

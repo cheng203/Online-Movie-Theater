@@ -9,7 +9,7 @@ $(document).ready(function() {
         "movie_id": movie_id,
         "movie_name": movie_name
     }]
-
+    console.log(sendData);
     //for testing -----------------
     // var data = [{
     //         "movie_name": "spiderman",
@@ -37,19 +37,20 @@ $(document).ready(function() {
         url: "external/movie_api/MoviePage_Initial.php",
         data: {"sendData":JSON.stringify(sendData)},
         success: function(data) {
+            data = JSON.parse(data);
             //this data should contain all the information about this image in json format;
             var movie_id = data[0].id;
             var movie_name = data[0].name;
             var release_date = data[0].release_date;
             var duration = data[0].duration;
             var off_date = data[0].off_date;
-            var category = data[0].category;
+            var category = data[0].type_name;
             var director = data[0].director;
-            var rate = data[0].rate;
+            var rate = data[0].rating;
             var senior_price = data[0].senior_price;
             var adult_price = data[0].adult_price;
             var child_price = data[0].child_price;
-            var img_url = "../uploads/" + data[0].img_url // assume return image url is absolute path
+            var img_url = "./uploads/" + data[0].img_url // assume return image url is absolute path
                 // this data should contain image path for stage pictures
             var stage_img = data[0].stage_image;
             //next is to apply these information on the page
@@ -80,7 +81,7 @@ $(document).ready(function() {
             //iterate stage image to attach
             for (var i = 0; i < stage_img.length; i++) {
                 $("#photo .nav").append(
-                    '<li class="nav-item"><a class="nav-link" href="#"><img class="movie-photo" src="/uploads/' + stage_img[0].image_name + '"></a></li>'
+                    '<li class="nav-item"><a class="nav-link" href="#"><img class="movie-photo" src="./uploads/' + stage_img[i].image_name + '"></a></li>'
                 )
             }
 

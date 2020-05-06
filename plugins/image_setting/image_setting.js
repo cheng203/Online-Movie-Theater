@@ -44,7 +44,7 @@ function openImageSetter() {
 function createImageSetterPanel(path) {
     var panel = $("<div/>").addClass("image_setter_panel").html("Image Setting Panel (Login as Administrator)")
         .css("width", "800px")
-        .css("height", "500px")
+        .css("height", "700px")
         .css("border", "solid")
         .css("border-width", "2px")
         .css("border-color", "#bebebe")

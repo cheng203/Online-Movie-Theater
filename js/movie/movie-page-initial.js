@@ -25,7 +25,7 @@ $(document).ready(function() {
         '                        Director: <span>Yibo Cheng</span>',
         '                    </div>',
         '                    <div class="movie-info-title">',
-        '                        <img class="movie-info-tomato" src="../img/icon/tomato.png">: <span>100%</span>',
+        '                        <img class="movie-info-tomato" src="./img/icon/tomato.png">: <span>100%</span>',
         '                    </div>',
         '                </div>',
         '                <div class="movie-info-title">',

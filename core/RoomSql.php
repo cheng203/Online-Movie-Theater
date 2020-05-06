@@ -38,10 +38,8 @@ Class RoomSql{
     }
 
     function findRoomByDate($room_id,$date){
-
         $result = $this->isRoomByDateCreated($room_id,$date);
         if($result==FALSE){
-            
             $result1=$this->initRoomsByDate($room_id,$date);
             return $this->findRoomByDate($room_id,$date);
         }else{
@@ -60,9 +58,7 @@ Class RoomSql{
         $result=$this->findRoomByDate($room_id,$start_date);
         $r=json_decode($result);
         $group_time_flag=$r[0]->time_flag;
-        echo $start_date;
         for($i=$start_date;$i<=$end_date;$i++){
-    
             $r=$this->findRoomByDate($room_id,$i);
 
             $rr=json_decode($r);
@@ -93,7 +89,6 @@ Class RoomSql{
         $time_flag="000000000000000000000000000000000000000000000000";
         //$time_flag="000000";
         $sql = sprintf("INSERT into rooms_by_date values('%s', '%s', '%s')",$room_id,$date,$time_flag);
-        echo $sql;
         return $this->conn->query($sql);
     }
 
