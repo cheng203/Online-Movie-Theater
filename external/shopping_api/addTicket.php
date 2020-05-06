@@ -1,6 +1,5 @@
 <?php
 include_once('../../core/CartSql.php');
-include_once('../core/SessionSql.php');
 include_once('../../core/MovieSql.php');
 include_once('../../core/UserSql.php');
 include_once('../../core/SessionSql.php');
@@ -30,6 +29,7 @@ $child_ticket_id="3";
 //echo $ticket_id[0];
 
 $time=$data[0]->time;
+$time = $time[0];
 
 $session_id=$time->session_id;
 //If there are enough available seats
