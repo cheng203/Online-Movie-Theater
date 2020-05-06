@@ -3,10 +3,12 @@ include_once('../../core/RoomSql.php');
 include_once('../../core/SessionSql.php');
 include_once('../../core/MovieSql.php');
 session_start();
-//if(!isset($_SESSION["user_type"])||$_SESSION["user_type"]!=0){
-	//die("You have no permission.");
-//}
+if(!isset($_SESSION["user_type"])||$_SESSION["user_type"]!=0){
+	die("You have no permission.");
+}
+
 $test = $_POST['sendData'];
+
 $data=json_decode($test);
 
 $room_id = $data[7]->room;
@@ -23,8 +25,8 @@ $rating=$data[6]->rate;
 //$info_image=$data[8]->info_image;
 //$stage_image=$data[9]->stage_image;
 //$shop_image=$data[10]->shop_image;
-$info=$date[8]->info;
-$return_time_flags=$data[9]->time;
+$info="default";
+$return_time_flags=$data[8]->time;
 //echo $time_flags[1]->movie_time_flag;
 //echo $end_date;
 //Add movie and get movie id
@@ -99,17 +101,17 @@ for($i=0;$i<$array_length;$i++){
 }
 $len=count($result_flag);
 
+
+$xxx = 0;
 for($x=0;$x<$len;$x++){
 	if($result_flag[$x]==0){
 		$xxx=1;
 	}
 }
 if($xxx!=1){
-	$result->movie_name=$name;
-   echo json_encode($result);
+	echo $name;
 }else{
 	echo "Not succeed";
-
 }
 
 //$result= json_decode($result1);

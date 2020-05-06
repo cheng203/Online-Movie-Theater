@@ -115,14 +115,15 @@ function imgBlock(imgId, imgName) {
     var block = $("<div/>").css("position", "relative")
         .css("display", "inline")
         .css("padding", "24px")
-        .css("height", "auto")
+        // .css("padding-bottom", "260px")
+        .css("height", "300px")
         .addClass("img_block");
     var path = $("plugin.image_select").attr("path");
     if (path.charAt(path.length - 1) != "/") {
         path = path + "/";
     }
     path = path + "../uploads/thumb/thumb-" + imgName; //relative path
-    var img = $("<img/>").attr("src", path).css("width", "150px").css("max-height", "250px");
+    var img = $("<img/>").attr("src", path).css("width", "150px").css("height", "150px").css("padding-top", "20px").css("padding-bottom", "20px");
     var inputBox = $("<input/>").addClass("image_check_box")
         .attr("type", "checkbox")
         .attr("name", "box" + imgId)
@@ -130,8 +131,9 @@ function imgBlock(imgId, imgName) {
         .attr("imgName", imgName)
         .css("width", "40px")
         .css("height", "40px")
-        .css("position", "absolute").css("top", "-2px").css("right", "20px").css("z-index", "1000");
-
-    block.append(img).append(inputBox);
+        .css("position", "absolute").css("top", "20px").css("right", "22px").css("z-index", "1000");
+    var displayName = imgName.substr(14, imgName.length-14);    
+    var file_name = $("<label/>").html(displayName).css("padding-top", "20px").css("position", "absolute").css("font-size", "8px").css("top", "80px").css("right", "20px").css("z-index", "1000");
+    block.append(img).append(inputBox).append(file_name);
     return block;
 }

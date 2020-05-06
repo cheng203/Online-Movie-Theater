@@ -17,6 +17,8 @@ for($i=0;$i<$length;$i++){
     $arr[]=$new_result;        
 }
 $result=json_encode($arr);
+
+
 if($result!=""){
 	echo $result;
 }else{

@@ -6,7 +6,7 @@ session_start();
 	//die("You have no permission.");
 //}
 $test = $_POST['sendData'];
-$data=json_decode($test);
+$data=json_decode($test)[0];
 
 $movieID = $data->movie_id;
 

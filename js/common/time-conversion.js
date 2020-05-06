@@ -62,7 +62,7 @@ function timeConversion(data, duration) {
             }
         }
     }
-    time_display = '<label for="movie-time" class="control-label">' + start_date + ' to ' + end_date + '</label><div><select id="added-movie-time" name="timelist">'
+    time_display = '<label for="movie-time" class="control-label">' + start_date + ' to ' + end_date + '</label><div class="time-wrapper"><select class="added-movie-time" name="timelist">'
     for (var i = 0; i < time_option.length; i++) {
         time_display += '<option id = "' + group_id + '"value = "' + time_option[i].string + '">' + time_option[i].time + '</option>';
     }

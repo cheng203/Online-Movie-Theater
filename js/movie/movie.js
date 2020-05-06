@@ -39,11 +39,11 @@ $(document).ready(function() {
             url: "external/movie_api/deleteMovie.php",
             data: {"sendData":JSON.stringify(sendData)},
           
-            success: function() {
-                alert("You have successfullt delete the movie and will direct to the home page.");
+            success: function(data) {
+                console.log(data);
                 localStorage.setItem("movie_name", "");
                 localStorage.setItem("movie_id", "");
-                window.location.href = "/index.html";
+                //window.location.href = "./index.html";
             },
             error: function() {
                 console.log("failed");
@@ -51,8 +51,8 @@ $(document).ready(function() {
         })
     });
     //once admin click save changes, send data back to backend
-    $(".edit-movie-save-change").on("click", function() {
-        var movie_id = $("#movie-title").attr("value");
+    $(".edit-movie-save-change").on("click", function() {     
+        var movie_id = localStorage.getItem("movie_id");
         var movie_name = $(".movie-name").val();
         var release = $(".release-date").val();
         var duration = $(".duration").val();
@@ -63,6 +63,7 @@ $(document).ready(function() {
         })
         var director = $(".director").val();
         var rate = $(".rate").val();
+        rate = rate.substr(0, rate.length-1);
 
         //create JSON data format send
         var sendData = [{
@@ -81,7 +82,7 @@ $(document).ready(function() {
             data: {"sendData":JSON.stringify(sendData)},
     
             success: function(data) {
-                window.location.href = "/movie.html";
+               window.location.href = "./movie.html";
             },
             error: function() {
                 console.log("Error");

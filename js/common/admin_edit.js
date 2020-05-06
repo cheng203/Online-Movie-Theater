@@ -11,12 +11,12 @@ $(document).ready(function() {
         })
         var director = $("#added-movie-director").val();
         var rate = $("#added-movie-rate").val();
-        var room = $(".added-movie-room").val();
+        var room = $("#added-movie-room").val();
         var time = [];
         // $("#added-movie-time").change(function() {
         //     time = $("#added-movie-time option:selected").attr("value");
         // });
-        $("#add-movie-show-time").find("select").each(function() {
+        $(".added-movie-time").each(function() {
             var movie_time_flag = $(this).children("option:selected").attr("value");
             var group_id = $(this).children("option:selected").attr("id");
             time.push({
@@ -39,19 +39,18 @@ $(document).ready(function() {
             //time here is a json array
         ];
 
-
+        sendData = JSON.stringify(sendData);
+        console.log(sendData);
         // send formData to backend
         $.ajax({
             type: "POST",
             url: "external/movie_api/Admin_add_session_byGroupNew.php",
-            data: { "sendData": JSON.stringify(sendData) },
-            contentType: false,
-            cache: false,
-            processData: false,
+            data: { "sendData": sendData },
             success: function(data) {
+                $("body").append(data);
                 //if added successfully, return alert admin and return back to main page
-                alert("You successfully added movie " + data[0].name + " to the system");
-                window.location.href = "/index.html";
+                alert("You successfully added movie " + data + " to the system");
+                window.location.href = "./index.html";
             },
             error: function(e) {
                 console.log("error");

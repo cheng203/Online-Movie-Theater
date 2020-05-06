@@ -100,7 +100,8 @@ Class MovieSql{
     }
 
     function deleteMovieByID($movieID){
-    	$sql = sprintf("DELETE from movies WHERE movie_id = '%s'", $movieID);
+        $sql = sprintf("delete from `movie_images` where movie_id = '%s'", $movieID);
+        $sql = sprintf("DELETE from movies WHERE movie_id = '%s'", $movieID);
         return $this->conn->query($sql);
 
     }
