@@ -16,15 +16,41 @@ $start_date = $data[0]->start_date;
 $end_date = $data[0]->end_date;
 //echo $end_date;
 $query = new RoomSql();
+for($i=$start_date;$i<=$end_date;$i++){
+      $result = $query->isRoomByDateCreated($room_id,$i);
 
-$result1= $query->findRoomByStartEndDate($room_id,$start_date,$end_date);
-
-
-if($data!=""){
-	echo $result1;
-}else{
-	echo "There is an ERROR";
+      if($result==FALSE){
+            $result1=$query->initRoomsByDate($room_id,$i);
+        }
 }
+
+$arr=array();
+$result=$query->findRoomByDate($room_id,$start_date);
+if($result!=''){
+	//echo "yes";
+	$group_num ="1";
+	$r=json_decode($result);
+    $group_time_flag=$r[0]->time_flag;
+    //echo  $group_time_flag;
+    for($j=$start_date;$j<=$end_date;$j++){
+           $rx=$query->findRoomByDate($room_id,$j);
+           $rrx=json_decode($rx);
+            if($rrx[0]->time_flag==$group_time_flag){
+                    $rrx[0]->group=$group_num;
+                    //echo $rrx[0]->time_flag;
+            }else{
+                $group_time_flag=$rrx[0]->time_flag;
+                $group_num++;
+               $rrx[0]->group=$group_num;
+            }
+   
+          $arr[] = $rrx[0];
+          //echo json_encode($rrx[0]);
+         }
+         
+}
+
+echo json_encode($arr);
 
 
 
