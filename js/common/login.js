@@ -16,7 +16,9 @@ $(document).ready(function() {
                 } else {
                     localStorage.setItem("username", username);
                     localStorage.setItem("user_type", obj.user_type);
+                    $("#myModal").remove();
                     window.location.href = "./index.html";
+                    
                 }
             },
             error: function() {
