@@ -9,7 +9,7 @@ $test = $_POST['test'];
 $data=json_decode($test);
 
 //get parameters
-$user_id=$data->user_id;
+$user_id=$_SESSION["user_id"];
 
 $session_id=$data->session_id;
 
@@ -17,7 +17,6 @@ $adult_quantity=$data->tickets[0]->adult;
 $senior_quantity=$data->tickets[1]->senior;
 $children_quantity=$data->tickets[2]->children;
 
-$number_tickets=$adult_quantity+$senior_quantity+$children_quantity;
 
 $goods_id1=$data->goods[0]->goods_id;
 $good_quantity1=$data->goods[0]->quantity;
@@ -26,7 +25,7 @@ $good_quantity2=$data->goods[1]->quantity;
 $goods_id3=$data->goods[2]->goods_id;
 $good_quantity3=$data->goods[2]->quantity;
 
-
+$order_id = 0;
 
 $query = new OrderSql();
 //Add order and get the id of order

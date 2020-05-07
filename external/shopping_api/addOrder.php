@@ -3,14 +3,19 @@ include_once('../../core/OrderSql.php');
 include_once('../../core/SessionSql.php');
 include_once('../../core/MovieSql.php');
 include_once('../../core/CartSql.php');
+include_once('../../core/UserSql.php');
 session_start();
 
 //get json data
 $test = $_POST['sendData'];
 $data=json_decode($test);
 
+
+
+$userSql = new UserSql();
 //get parameters
-$user_id=$_SESSION["user_id"];
+$user_name=$_SESSION["username"];
+$user_id=$userSql->getUserID($user_name);
 $movie_info=$data->movie;
 $goods_info=$data->goods;
 
