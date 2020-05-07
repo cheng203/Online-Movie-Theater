@@ -24,6 +24,8 @@ $rating=$data[6]->rate;
 $adult_price=$data[7]->adult_price;
 $senior_price=$data[8]->senior_price;
 $child_price=$data[9]->child_price;
+
+
 //$front_image=$data[7]->front_image;
 //$info_image=$data[8]->info_image;
 //$stage_image=$data[9]->stage_image;
@@ -52,6 +54,7 @@ $price_result3=$query->setMoviePrice($movie_id, $ticketTypeID_child, $child_pric
 $query1= new RoomSql;
 
 
+$formated_end_date = date("Y-m-d", strtotime("+1 day", strtotime($end_date)));
 
 
 
@@ -65,21 +68,23 @@ if($result!=''){
     $group_time_flag=$r[0]->time_flag;
     //echo  $group_time_flag;
     
-    for($j=$start_date;$j<=$end_date;$j++){
-           $rx=$query->findRoomByDate($room_id,$j);
-           $rrx=json_decode($rx);
-            if($rrx[0]->time_flag==$group_time_flag){
-                    $rrx[0]->group=$group_num;
-                    //echo $rrx[0]->time_flag;
-            }else{
-                $group_time_flag=$rrx[0]->time_flag;
-                $group_num++;
-               $rrx[0]->group=$group_num;
-            }
-   
-          $arr[] = $rrx[0];
-          //echo json_encode($rrx[0]);
-         }
+    for($j=$start_date;$j!=$formated_end_date;){
+		$rx=$query1->findRoomByDate($room_id,$j);
+		$rrx=json_decode($rx);
+		if($rrx[0]->time_flag==$group_time_flag){
+				$rrx[0]->group=$group_num;
+				//echo $rrx[0]->time_flag;
+		}else{
+			$group_time_flag=$rrx[0]->time_flag;
+			$group_num++;
+			$rrx[0]->group=$group_num;
+		}
+
+		$arr[] = $rrx[0];
+		//echo json_encode($rrx[0]);
+		$j = date("Y-m-d", strtotime("+1 day", strtotime($j)));
+	}
+
          
 }
 

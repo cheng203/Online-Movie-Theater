@@ -84,10 +84,6 @@ Class RoomSql{
         //$time_flag="000000";
         $sql = sprintf("INSERT into rooms_by_date values('%s', '%s', '%s')",$room_id,$date,$time_flag);
         return $this->conn->query($sql);
-
-        
-
-
     }
 
     function isRoomByDateCreated($room_id,$date){
