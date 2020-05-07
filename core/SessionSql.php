@@ -31,6 +31,13 @@ Class SessionSql{
 
     }
 
+    function findSessionByMovie($movie_id){
+         $sql = sprintf("SELECT room_id,date,time_flag, session_id from sessions where movie_id = '%s' ", $movie_id);
+        $result = $this->conn->query_json($sql);
+        return $result;
+
+    }
+
     function addSession($movie_id,$room_id,$date,$time_flag,$available)
     {   
      
@@ -44,6 +51,12 @@ Class SessionSql{
         return $this->conn->query($sql);
 
     }
+
+    /*function deleteSessionByMovieID($movie_id){
+        $sql = sprintf("DELETE from sessions WHERE movie_id = '%s'", $movie_id);
+        return $this->conn->query($sql);
+
+    }*/
 
     function modifySessionSeatsByID($session_id,$available){
 
