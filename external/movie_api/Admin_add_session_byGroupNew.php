@@ -11,22 +11,25 @@ $test = $_POST['sendData'];
 
 $data=json_decode($test);
 
-$room_id = $data[7]->room;
+$room_id = $data[10]->room;
 
 $name=$data[0]->movie_name;
+//echo $name;
 $type_name=$data[4]->category;
 $start_date=$data[1]->release_date;
 $end_date=$data[3]->off_date;
 $director=$data[5]->director;
-//$info=$_POST['info'];
 $duration=$data[2]->duration;
 $rating=$data[6]->rate;
+$adult_price=$data[7]->adult_price;
+$senior_price=$data[8]->senior_price;
+$child_price=$data[9]->child_price;
 //$front_image=$data[7]->front_image;
 //$info_image=$data[8]->info_image;
 //$stage_image=$data[9]->stage_image;
 //$shop_image=$data[10]->shop_image;
 $info="default";
-$return_time_flags=$data[8]->time;
+$return_time_flags=$data[11]->time;
 //echo $time_flags[1]->movie_time_flag;
 //echo $end_date;
 //Add movie and get movie id
@@ -38,6 +41,13 @@ $movie_id=$query->addMovieGetID($name,$type_name,$start_date,$end_date,$director
 //}else{
 	//echo "There is an ERROR !";
 //}
+$ticketTypeID_adult="1";
+$ticketTypeID_senior="2";
+$ticketTypeID_child="3";
+
+$price_result1=$query->setMoviePrice($movie_id, $ticketTypeID_adult, $adult_price);
+$price_result2=$query->setMoviePrice($movie_id, $ticketTypeID_senior, $senior_price);
+$price_result3=$query->setMoviePrice($movie_id, $ticketTypeID_child, $child_price);
 
 $query1= new RoomSql;
 $result1= $query1->findRoomByStartEndDate($room_id,$start_date,$end_date);
