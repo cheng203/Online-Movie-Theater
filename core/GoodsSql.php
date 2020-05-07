@@ -52,6 +52,22 @@ Class GoodsSql{
 
    }
 
+   function listGoods(){
+    $sql = sprintf("select * from `goods` natural join `image_library` where 1");
+    return $this->conn->query_json($sql);
+   }
+
+   function setGoodsImages($goodsImageList){
+    foreach($goodsImageList as $goods){
+        $imgidlist = explode(",", $goods->imgidlist)[0];
+        $sql = sprintf("update `goods` set `image_id`='%s' where `goods_id`='%s'",  $imgidlist, $goods->goods_id);
+        if(!$this->conn->query($sql)){
+            return false;
+        }
+    }        
+    return true;
+}
+
 
 }
 

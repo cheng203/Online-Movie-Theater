@@ -36,21 +36,19 @@
 }
 
 .card-style {
-    width: 18rem;
+    width: 32rem;
     margin: 0 auto;
     background-color: transparent;
+    border: 0px;
 }
 
 .card-text {
     color: #fff;
+    font-size: 30px;
 }
 
 .card-body {
     padding: 20px 0 0 0;
-}
-
-.card-style {
-    border: 0px;
 }
 
 .media-div {

@@ -15,9 +15,8 @@ Class OrderSql{
     function AddOrder($user_id,$number_tickets,$session_id,$total_amount)
     {
      
-        $sql = sprintf("INSERT into orders (user_id, number_tickets,session_id,total_amount) values ('%s','%s', '%s', '%s')",$user_id,$number_tickets,$session_id,$total_amount);
+        $sql = sprintf("INSERT into orders (order_id, user_id, number_tickets,session_id,total_amount) values (null, '%s','%s', '%s', '%s')",$user_id,$number_tickets,$session_id,$total_amount);
           $result=$this->conn->get_insert_id($sql);
-          
           return $result;
        
       

@@ -43,6 +43,10 @@ function pagination(data) {
             '</li>'
         )
     }
+    $(".page-item").on("click", function(data) {
+        var text = $(this).text();
+        display(data, text);
+    })
 
 }
 

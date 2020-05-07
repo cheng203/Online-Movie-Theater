@@ -99,7 +99,6 @@ $(document).ready(function() {
         '                                    <div class="movie-info-form-select">',
         '                                        Availale Time:',
         '                                        <select class="user-select-date">',
-        '                                            <option>--none--</option>',
         '                                        </select>',
         '                                    </div>',
         '                                    <div class="movie-info-form-select ">',

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+function checkOut(){
     var username = localStorage.getItem("username");
     if (username == null || username == "") {
         alert("Please sign in first");
@@ -18,6 +18,7 @@ $(document).ready(function() {
         var child_num = $(".child-count").val();
         sendData.movie.push({
             "movie_id": movie_id,
+            "session_id": localStorage.getItem("session_id"),
             "name": movie_name,
             "movie_date": movie_date,
             "movie_time_flag": movie_time_flag,
@@ -26,35 +27,40 @@ $(document).ready(function() {
             "child_num": child_num
         });
         //get goods info
-
-        var goods_id = $(".goods-name").attr("value");
-        var goods_name = $(".good-name").text();
-        var quantity = $(".goods-quantity").val();
-        for (var i = 0; i < goods_id.length; i++) {
+        $(".goods").each(function(index){
+            var goods_id = $(this).find(".goods-name").attr("value");
+            var goods_name = $(this).find(".good-name").text();
+            var quantity = $(this).find(".goods-quantity").val();
             sendData.goods.push({
-                "goods_id": goods_id[i],
-                "goods_name": goods_name[i],
-                "quantity": quantity[i]
+                "goods_id": goods_id,
+                "goods_name": goods_name,
+                "quantity": quantity
             });
-        }
+        })
+        
+        
         //get total cost info
         var total_cost = $(".sum-total").text();
+        total_cost = total_cost.substr(1, total_cost.length-1);
         sendData.total_cost.push({
             "total_cost": total_cost
         });
+
 
         $.ajax({
             type: "post",
             url: "external/shopping_api/addOrder.php",
             data: { "sendData": JSON.stringify(sendData) },
             success: function(data) {
+                console.log(data);
                 if (data == 1) {
                     alert("You purchase is successfully finished. Will direct to homepage.");
-                    window.location.href = "/index.html";
+                    window.location.href = "./index.html";
                 } else {
                     alert("Unfortunately, the movie you choose is just sold out. Please go back and select another available time.")
                 }
+
             }
         })
     }
-})
+}

@@ -10,16 +10,12 @@ $test = $_POST['sendData'];
 $data=json_decode($test);
 
 //get parameters
-//$user_id=$_SESSION["user_id"];
-$user_id="2";
-$movie_info=$data[0]->movie;
-$goods_info=$data[0]->goods;
+$user_id=$_SESSION["user_id"];
+$movie_info=$data->movie;
+$goods_info=$data->goods;
 
-$total_amount_info=$data[0]->total_cost;
+$total_amount_info=$data->total_cost;
 $total_amount=$total_amount_info[0]->total_cost;
-
-
-
 
 
 $session_id=$movie_info[0]->session_id;
@@ -44,7 +40,7 @@ $ticket_type_id_adult=1;
 $ticket_type_id_senior=2;
 $ticket_type_id_children=3;
 
-$number_tickets=$adult_quantity+$senior_quantity+$children_quantity;
+$number_tickets=$adult_quantity+$senior_quantity+$child_quantity;
 
 
 
@@ -88,7 +84,6 @@ if($movie_info!=""){
     }else{
           $query = new OrderSql();
           $order_id=$query->AddOrder($user_id,$number_tickets,$session_id,$total_amount);
-          //echo $order_id;
           $result2=$query1->modifySessionSeatsByID($session_id,$available_new);
           if($result2!=True){
             

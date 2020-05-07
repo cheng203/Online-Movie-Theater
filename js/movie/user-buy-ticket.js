@@ -2,8 +2,8 @@ $(document).ready(function() {
 
     //once user choose the date it want to buy ticket, information about available time about this movie will be retrieved
     $(".user-choose-date").on("change", function() {
-        var date = $(".user-choose-date");
-        var movie_id = $("#movie-title").attr("value");
+        var date = $(".user-choose-date").val();
+        var movie_id = localStorage.getItem("movie_id");
         var sendData = [{
             "movie_id": movie_id,
             "date": date
@@ -13,6 +13,7 @@ $(document).ready(function() {
             url: "external/room_session_api/findSessionForMovie.php",
             data: { "sendData": JSON.stringify(sendData) },
             success: function(data) {
+                data = JSON.parse(data);
                 res = [];
                 for (var i = 0; i < data.length; i++) {
                     //convert each movie time
@@ -32,26 +33,27 @@ $(document).ready(function() {
         var username = localStorage.getItem("username");
         //indicate if user has already have movie added to cart: true for yes, false for no
         var movie_flag = localStorage.getItem("movie_flag");
-        if (username == null || usernmae == "") {
+        movie_flag = "false";
+        if (username == null || username == "") {
             alert("Please sign in first");
             return;
         } else {
-            if (movie_flag != null && move_flag == "true") {
+            if (movie_flag != null && movie_flag == "true") {
                 alert("You have movie added in the cart. Please checkout that item first. Thanks!");
             } else {
                 //set movie_flag as true first to indicate that user has already select a movie and added in the cart
                 localStorage.setItem("movie_flag", "true");
 
                 var date = $(".user-choose-date");
-                var movie_id = $("#movie-title").attr("value");
+                var movie_id = localStorage.getItem("movie_id");
                 var movie_name = $(".movie-info").find("span")[0].innerHTML;
                 var adult_ticket = $(".adult-ticket-number option:selected").val();
                 var senior_ticket = $(".senior-ticket-number option:selected").val();
                 var child_ticket = $(".child-ticket-number option:selected").val();
                 var time = [];
                 time.push({
-                    "session_id": $(".user-select-date option:selected").attr("id"),
-                    "movie_time_flag": $(".user-select-date option:selected").attr("value"),
+                    "movie_time_flag": $(".user-select-date option:selected").attr("id"),
+                    "session_id": $(".user-select-date option:selected").attr("value"),
                 })
                 var sendData = [{
                     "username": username,
@@ -68,10 +70,10 @@ $(document).ready(function() {
                     type: 'post',
                     url: "external/shopping_api/addTicket.php",
                     data: { "sendData": JSON.stringify(sendData) },
-                    dataType: "json",
                     success: function(data) {
+                        console.log(data);
                         if (data == 1) {
-                            window.location.href = "/movie.html";
+                            window.location.href = "./shopping.html";
                         } else {
                             alert("Sorry, seats are just sold out.")
                         }

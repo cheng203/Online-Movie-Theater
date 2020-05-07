@@ -12,6 +12,7 @@ $loginStatus = 20;
 $result;
 if($query->checkPasswordHash($username, $password_hash_input)){
     //login success
+    $_SESSION["user_id"] = $query->getUserID($username);
     $loginStatus = 21;
     $_SESSION["login"] = true;
     $_SESSION["user_type"] = $query->getUserType($username);

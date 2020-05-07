@@ -11,6 +11,7 @@ session_start();
 $test = $_POST['sendData'];
 $data=json_decode($test);
 
+
 $user_name=$data[0]->username;
 
 $date=$data[0]->date;
@@ -34,6 +35,8 @@ $time = $time[0];
 $session_id=$time->session_id;
 //If there are enough available seats
 $session_query=new SessionSql;
+
+
 $session_info=json_decode($session_query->findSessionByID($session_id));
 $available_num=$session_info[0]->available;
 if($available_num<$total_ticket_number){

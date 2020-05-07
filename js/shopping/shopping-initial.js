@@ -1,4 +1,8 @@
 $(document).ready(function () {
+
+    $(".checkout-btn").click(checkOut);
+
+
     var username = localStorage.getItem("username");
     if (username == null || username == "") {
         var header = $(".display-4").find("span").html("please sign in first.");
@@ -15,10 +19,8 @@ $(document).ready(function () {
             },
 
             success: function (data) {
-                console.log(data);
                 data = JSON.parse(data);
                 data = data[0];
-                console.log(data);
                 $(".product_info").empty();
                 // path for small size picture
                 path = "thumb/thumb-";
@@ -34,6 +36,8 @@ $(document).ready(function () {
                 var senior_num = data.movie[0].senior_ticket_num;
                 var adult_num = data.movie[0].adult_ticket_num;
                 var child_num = data.movie[0].child_ticket_num;
+                localStorage.setItem("session_id", data.movie[0].session_id);
+
                 //add movie to the body
                 $(".product_info").append(
                     '<tr value="movie" class="movie">' +
@@ -94,50 +98,52 @@ $(document).ready(function () {
                     '</tr>'
                 );
                 //get good information
-                for (var i = 0; i < data.goods.length; i++) {
-                    var goods_id = data.goods[i].goods_id;
-                    var goods_name = data.goods[i].goods_name;
-                    var goods_img_url = path + data.goods[i].url;
-                    var price = data.goods[i].price;
-                    var quantity = data.goods[i].quantity;
-                    $(".product_info").append(
-                        '<tr value="goods" class="goods">' +
-                        '<th scope="row" class="border-0">' +
-                        '<div class="p-2">' +
-                        '<img src="./uploads/' + goods_img_url + '" alt="" width="70" class="img-fluid rounded shadow-sm">' +
-                        '<div class="ml-3 d-inline-block align-middle">' +
-                        '<h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle goods-name" value="' + goods_id + '">' + goods_name + '</a></h5>' +
-                        '</div>' +
-                        '</div>' +
-                        '</th>' +
-                        '<!-- display price -->' +
-                        '<td class="border-0 align-middle unit-price">' +
-                        '<ul class="price-display">' +
-                        '<li class="goods-price">$<strong>' + price + '</strong></li>' +
-                        '</ul>' +
-                        '</td>' +
-                        '<!-- display add/decrease button -->' +
-                        '<td class="border-0 align-middle">' +
-                        '<ul class="quantity-display">' +
-                        '<li>' +
-                        '<div class="p-num">' +
-                        '<div class="quantity-form">' +
-                        '<a href="javascript:;" class="decrement">-</a>' +
-                        '<input type="text" class="itxt quantity goods-quantity" value="' + quantity + '">' +
-                        '<a href="javascript:;" class="increment">+</a>' +
-                        '</div>' +
-                        '</div>' +
-                        '</li>' +
-                        '</ul>' +
-                        '</td>' +
-                        '<!-- display cost -->' +
-                        '<td class="border-0 align-middle cost goods-cost">$0</td>' +
-                        '<!-- display delete button -->' +
-                        '<td class="border-0 align-middle">' +
-                        '<a href="#" class="text-dark"><i class="fa fa-trash"></i></a>' +
-                        '</td>' +
-                        '</tr>'
-                    );
+                if(data.goods){
+                    for (var i = 0; i < data.goods.length; i++) {
+                        var goods_id = data.goods[i].goods_id;
+                        var goods_name = data.goods[i].goods_name;
+                        var goods_img_url = path + data.goods[i].url;
+                        var price = data.goods[i].price;
+                        var quantity = data.goods[i].quantity;
+                        $(".product_info").append(
+                            '<tr value="goods" class="goods">' +
+                            '<th scope="row" class="border-0">' +
+                            '<div class="p-2">' +
+                            '<img src="./uploads/' + goods_img_url + '" alt="" width="70" class="img-fluid rounded shadow-sm">' +
+                            '<div class="ml-3 d-inline-block align-middle">' +
+                            '<h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle goods-name" value="' + goods_id + '">' + goods_name + '</a></h5>' +
+                            '</div>' +
+                            '</div>' +
+                            '</th>' +
+                            '<!-- display price -->' +
+                            '<td class="border-0 align-middle unit-price">' +
+                            '<ul class="price-display">' +
+                            '<li class="goods-price">$<strong>' + price + '</strong></li>' +
+                            '</ul>' +
+                            '</td>' +
+                            '<!-- display add/decrease button -->' +
+                            '<td class="border-0 align-middle">' +
+                            '<ul class="quantity-display">' +
+                            '<li>' +
+                            '<div class="p-num">' +
+                            '<div class="quantity-form">' +
+                            '<a href="javascript:;" class="decrement">-</a>' +
+                            '<input type="text" class="itxt quantity goods-quantity" value="' + quantity + '">' +
+                            '<a href="javascript:;" class="increment">+</a>' +
+                            '</div>' +
+                            '</div>' +
+                            '</li>' +
+                            '</ul>' +
+                            '</td>' +
+                            '<!-- display cost -->' +
+                            '<td class="border-0 align-middle cost goods-cost">$0</td>' +
+                            '<!-- display delete button -->' +
+                            '<td class="border-0 align-middle">' +
+                            '<a href="#" class="text-dark"><i class="fa fa-trash"></i></a>' +
+                            '</td>' +
+                            '</tr>'
+                        );
+                    }
                 }
                 getCostFirst();
                 getSum();
