@@ -13,13 +13,15 @@ $(document).ready(function() {
                 type: "POST",
                 url: "external/movie_api/searchMoviebyStartString.php",
                 data: { "start_string": key },
-                dataType: "json",
                 success: function(data) {
-                    //expected to receive a list of movie-name including key
-                    for (var i = 0; i < data.length; i++) {
-                        $(".search-name").append(
-                            '<li class="list-group-item search-name-item">' + data[i].name + '</li>'
-                        )
+                    if(data!="Nothing"){
+                        data = JSON.parse(data);
+                        //expected to receive a list of movie-name including key
+                        for (var i = 0; i < data.length; i++) {
+                            $(".search-name").append(
+                                '<li class="list-group-item search-name-item">' + data[i].name + '</li>'
+                            )
+                        }
                     }
                 },
                 error: function() {
@@ -47,7 +49,7 @@ $(document).ready(function() {
                     $(".movie-list-body").append(
                         '<li class=" clearfix movie-list-body-li">' +
                         '<div style="float: left;">' +
-                        '<img src="/uploads/' + data[0].url + '">' +
+                        '<img src="./uploads/' + data[0].url + '">' +
                         '<button class="btn btn-light value="' + data[0].movie_id + '" alt="' + data[0].name + '">Go to Movie</button>' +
                         '</div>' +
                         '</li>'

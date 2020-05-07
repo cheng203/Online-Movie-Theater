@@ -19,7 +19,7 @@ Class GoodsSql{
     }*/
 
     function findGoodsByID($GoodsID){
-        $sql = sprintf("SELECT *  from goods where goods_id = '%s'", $GoodsID);
+        $sql = sprintf("SELECT *  from goods natural join image_library where goods_id = '%s'", $GoodsID);
         $result = $this->conn->query_json($sql);
         return $result;
     }

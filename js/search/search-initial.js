@@ -18,6 +18,30 @@ $(document).ready(function() {
                     '<li class="nav-item"><a class="nav-link movie-search-link" href="#">' + data[i].type_name + '</a></li>'
                 )
             }
+
+            $(".movie-search-link").on("click", function() {
+                //get selected movie type
+                var category = $(this).text();
+                if(category=="all"){
+                    window.location.href = "./search.html";
+                }{
+                    $.ajax({
+                        type: "POST",
+                        url: "external/movie_api/SearchMovieByCategory.php",
+                        data: { "type": category },
+                        success: function(data) {
+                            data = JSON.parse(data);
+                            //data has movie_id, movie_name, movie_url
+                            pagination(data);
+                            $(".pagination").on("click", "li", function() {
+                                display(data, $(this).text());
+                            })
+                        }
+                    })
+                }
+            })
+
+
         },
         error: function() {
             console.log("error");

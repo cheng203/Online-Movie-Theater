@@ -84,5 +84,6 @@ function getCostFirst() {
         $(".order-total").text("$" + sum);
         var ship = parseFloat($(".ship-total").text().substr(1));
         var total = sum + ship;
+        total = total.toFixed(2);
         $(".sum-total").text("$" + total);
     }

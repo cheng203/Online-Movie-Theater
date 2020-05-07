@@ -11,6 +11,7 @@ $(document).ready(function() {
         url: "external/movie_api/SelectFiveNewMovie.php",
         dataType: "text",
         success: function(data) {
+            console.log(data);
             data = JSON.parse(data);
             for (var i = 0; i < data.length; i++) {
                 // need to add the first carousel-item an active class to show

@@ -113,32 +113,25 @@ if($goodsInfo!=""){
      	$goods_name=$goods_result[0]->goods_name;
 
         $goods_id=$goods_id;
-     	$url=$goods_result[0]->image_id;
+     	$url=$goods_result[0]->image_name;
      	$price=$goods_result[0]->price;
         $quantity=$goodsInfo[$i]->quantity;
         // $goods_arr[]=$goods;
         
 
-        pushGoods($goods_name, $goods_id, $image_id, $price, $quantity);
+        pushGoods($goods_name, $goods_id, $url, $price, $quantity);
 
      }
      $return_data[0]->goods=$goods_arr;
 	
-
-
-
-
-
-
-
 }
 
-function pushGoods($goods_name, $goods_id, $image_id, $price, $quantity ){
+function pushGoods($goods_name, $goods_id, $url, $price, $quantity ){
     global $goods_arr;
     $goods;
     $goods->goods_name=$goods_name;
     $goods->goods_id=$goods_id;
-    $goods->url=$image_id;
+    $goods->url=$url;
     $goods->price=$price;
     $goods->quantity=$quantity;
     array_push($goods_arr, $goods);

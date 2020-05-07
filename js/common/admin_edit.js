@@ -53,10 +53,11 @@ $(document).ready(function() {
             url: "external/movie_api/Admin_add_session_byGroupNew.php",
             data: { "sendData": sendData },
             success: function(data) {
+                alert(data);
                 $("body").append(data);
                 //if added successfully, return alert admin and return back to main page
                 alert("You successfully added movie " + data + " to the system");
-                window.location.href = "./index.html";
+                // window.location.href = "./index.html";
             },
             error: function(e) {
                 console.log("error");

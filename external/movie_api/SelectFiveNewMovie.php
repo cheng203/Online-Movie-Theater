@@ -14,7 +14,7 @@ for($i=0;$i<$length;$i++){
 
     $new_result->url=$image[0]->image_name;
 
-    $arr[]=$new_result;        
+    $arr[]=$new_result;       
 }
 $result=json_encode($arr);
 

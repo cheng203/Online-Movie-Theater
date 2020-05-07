@@ -19,6 +19,7 @@ $(document).ready(function () {
             },
 
             success: function (data) {
+                console.log(data);
                 data = JSON.parse(data);
                 data = data[0];
                 $(".product_info").empty();
@@ -43,7 +44,7 @@ $(document).ready(function () {
                     '<tr value="movie" class="movie">' +
                     '<th scope="row" class="border-0">' +
                     '<div class="p-2">' +
-                    '<img src="uploads/' + movie_img_url + '" alt="" width="70" class="img-fluid rounded shadow-sm">' +
+                    '<img src="./uploads/' + movie_img_url + '" alt="" width="70" class="img-fluid rounded shadow-sm">' +
                     '<div class="ml-3 d-inline-block align-middle">' +
                     '<h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle movie-name" value = "' + movie_id + '">' + movie_name + '</a></h5><span class="text-muted font-weight-normal font-italic d-block">Time: <span class="movie-time" value="' + movie_date + '" alt ="' + movie_time + '">' + movie_date + ' ' + convertMovieTime(movie_time) + '</span></span>' +
                     '</div>' +
@@ -102,7 +103,8 @@ $(document).ready(function () {
                     for (var i = 0; i < data.goods.length; i++) {
                         var goods_id = data.goods[i].goods_id;
                         var goods_name = data.goods[i].goods_name;
-                        var goods_img_url = path + data.goods[i].url;
+                        console.log(data.goods[i]);
+                        var goods_img_url = data.goods[i].url;
                         var price = data.goods[i].price;
                         var quantity = data.goods[i].quantity;
                         $(".product_info").append(

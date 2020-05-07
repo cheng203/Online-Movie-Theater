@@ -31,11 +31,15 @@ $(document).ready(function() {
             "start_date": movie_start_date,
             "end_date": movie_end_date
         }];
+
+        console.log(sendData);
+
         $.ajax({
             type: 'post',
             url: 'external/room_session_api/Find_room_by_start_end_dateNew.php',
             data: { "sendData": JSON.stringify(sendData) },
             success: function(data) {
+                console.log(data);
                 data = JSON.parse(data);
                 $('body').append(data);
                 var segment = convert(data);

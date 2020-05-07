@@ -7,10 +7,7 @@ session_start();
 // }
 
 
-$test = $_POST['sendData'];
-$data=json_decode($test);
-
-$start_string=$data->start_string;
+$start_string = $_POST['start_string'];
 $query = new MovieSql();
 $result=$query->SearchMovieNameStartByString($start_string);
 if($result!=""){

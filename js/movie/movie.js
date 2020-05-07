@@ -40,10 +40,12 @@ $(document).ready(function() {
             data: {"sendData":JSON.stringify(sendData)},
           
             success: function(data) {
-                console.log(data);
-                localStorage.setItem("movie_name", "");
-                localStorage.setItem("movie_id", "");
-                //window.location.href = "./index.html";
+                if(data==1){
+                    localStorage.setItem("movie_name", "");
+                    localStorage.setItem("movie_id", "");
+                    alert("Deletion Success");
+                    window.location.href = "./index.html";
+                }
             },
             error: function() {
                 console.log("failed");

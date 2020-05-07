@@ -1,7 +1,10 @@
 function pagination(data) {
+    $(".pagination").empty();
+    $(".movie-list-body").empty();
     var dataL = data.length; //length of data received
     var numItem = 3; //number of item display in each page
     var pageNum = 0;
+    var displayData= data;
 
     if (dataL % numItem == 0) {
         pageNum = dataL / numItem;
@@ -31,7 +34,7 @@ function pagination(data) {
             '<li class="page-item next-item"><a class="page-link" href="#" value= "next">Next</a></li>'
         );
     }
-    var text = $(".pagination").find(".active").text();
+    var text = parseInt($(".pagination").find(".active").text()) - 1;
     var numLength = numItem * text + 3 > dataL ? dataL : numItem * text + 3;
     for (var i = numItem * text; i < numLength; i++) {
         $(".movie-list-body").append(
@@ -43,9 +46,9 @@ function pagination(data) {
             '</li>'
         )
     }
-    $(".page-item").on("click", function(data) {
+    $(".page-item").on("click", function() {
         var text = $(this).text();
-        display(data, text);
+        display(displayData, text);
     })
 
 }
@@ -109,4 +112,12 @@ function addPicture(data, text) {
             '</li>'
         )
     }
+
+    $(".go-to-movie").on("click", function() {
+        var movie_id = $(this).attr("value");
+        var movie_name = $(this).attr("alt");
+        localStorage.setItem("movie_id", movie_id);
+        localStorage.setItem("movie_name", movie_name);
+        window.location.href = "./movie.html";
+    })
 }
