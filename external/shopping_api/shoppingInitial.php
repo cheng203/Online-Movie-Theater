@@ -9,6 +9,8 @@ session_start();
     //die("You have no permission.");
 //}
 
+error_reporting(0);
+
 $return_data=array();
 //$user_id=$_SESSION["user_id"];
 
@@ -103,21 +105,21 @@ if($ticketInfo!=''){
 
 if($goodsInfo!=""){
      $length_of_food=count($goodsInfo);
-
+     $goods_arr = array();
      for($i=0;$i<$length_of_food;$i++){
-     	$goods_id=$goodsInfo[$i]->goods_id;
-     	
-
+        $goods_id=$goodsInfo[$i]->goods_id;
      	$query_food=new GoodsSql;
-
      	$goods_result=json_decode($query_food->findGoodsByID($goods_id));
-     	$goods->goods_name=$goods_result[0]->goods_name;
-     	
-     	$goods->url=$goods_result[0]->image_id;
-     	$goods->price=$goods_result[0]->price;
-        $goods->quantity=$goodsInfo[$i]->quantity;
-     	$goods_arr[]=$goods;
+     	$goods_name=$goods_result[0]->goods_name;
 
+        $goods_id=$goods_id;
+     	$url=$goods_result[0]->image_id;
+     	$price=$goods_result[0]->price;
+        $quantity=$goodsInfo[$i]->quantity;
+        // $goods_arr[]=$goods;
+        
+
+        pushGoods($goods_name, $goods_id, $image_id, $price, $quantity);
 
      }
      $return_data[0]->goods=$goods_arr;
@@ -130,6 +132,19 @@ if($goodsInfo!=""){
 
 
 }
+
+function pushGoods($goods_name, $goods_id, $image_id, $price, $quantity ){
+    global $goods_arr;
+    $goods;
+    $goods->goods_name=$goods_name;
+    $goods->goods_id=$goods_id;
+    $goods->url=$image_id;
+    $goods->price=$price;
+    $goods->quantity=$quantity;
+    array_push($goods_arr, $goods);
+}
+
+
 echo json_encode($return_data);
 
 

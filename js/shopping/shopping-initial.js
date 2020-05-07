@@ -1,21 +1,25 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var username = localStorage.getItem("username");
     if (username == null || username == "") {
-        var header = $(".display-4").find("span");
-        header.innerHTML = "please sign in first."
+        var header = $(".display-4").find("span").html("please sign in first.");
     } else {
-        var header = $(".display-4").find("span");
-        header.innerHTML = username;
+        var header = $(".display-4").find("span").html(username);
         var sendData = [{
             "username": username
         }]
         $.ajax({
             type: "post",
             url: "external/shopping_api/shoppingInitial.php",
-            data: { "sendData": JSON.stringify(sendData) },
+            data: {
+                "sendData": JSON.stringify(sendData)
+            },
 
-            success: function(data) {
-                $(".product_info").clear();
+            success: function (data) {
+                console.log(data);
+                data = JSON.parse(data);
+                data = data[0];
+                console.log(data);
+                $(".product_info").empty();
                 // path for small size picture
                 path = "thumb/thumb-";
                 //get information of movie
@@ -32,7 +36,7 @@ $(document).ready(function() {
                 var child_num = data.movie[0].child_ticket_num;
                 //add movie to the body
                 $(".product_info").append(
-                    '<tr value="movie">' +
+                    '<tr value="movie" class="movie">' +
                     '<th scope="row" class="border-0">' +
                     '<div class="p-2">' +
                     '<img src="uploads/' + movie_img_url + '" alt="" width="70" class="img-fluid rounded shadow-sm">' +
@@ -100,7 +104,7 @@ $(document).ready(function() {
                         '<tr value="goods" class="goods">' +
                         '<th scope="row" class="border-0">' +
                         '<div class="p-2">' +
-                        '<img src="/uploads/' + goods_img_url + '" alt="" width="70" class="img-fluid rounded shadow-sm">' +
+                        '<img src="./uploads/' + goods_img_url + '" alt="" width="70" class="img-fluid rounded shadow-sm">' +
                         '<div class="ml-3 d-inline-block align-middle">' +
                         '<h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle goods-name" value="' + goods_id + '">' + goods_name + '</a></h5>' +
                         '</div>' +
@@ -135,9 +139,46 @@ $(document).ready(function() {
                         '</tr>'
                     );
                 }
+                getCostFirst();
+                getSum();
+                // increment the quantity
+                $(".increment").on("click", function() {
+                        var amount = $(this).siblings(".itxt").val();
+                        amount++;
+                        $(this).siblings(".itxt").val(amount);
+                        getCost.call(this);
+                        getSum();
+                    })
+                    // decrement the quantity
+                $(".decrement").on("click", function() {
+                    var amount = $(this).siblings(".itxt").val();
+                    if (amount != 0) {
+                        amount--;
+                        $(this).siblings(".itxt").val(amount);
+                    }
+                    getCost.call(this);
+                    getSum();
+                })
+
+
+                $(".itxt").change(function() {
+                    getCost.call(this);
+                    getSum();
+                })
+
+                //delete an item
+                $(".fa").on("click", function() {
+                    $(this).parents("tr").remove();
+                    getSum();
+                })
             }
+            
         })
     }
+
+
+
+
 
 
     //testing

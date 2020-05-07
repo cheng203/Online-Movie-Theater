@@ -1,37 +1,4 @@
-$(document).ready(function() {
-    getCostFirst();
-    getSum();
-
-    // increment the quantity
-    $(".increment").on("click", function() {
-            var amount = $(this).siblings(".itxt").val();
-            amount++;
-            $(this).siblings(".itxt").val(amount);
-            getCost.call(this);
-            getSum();
-        })
-        // decrement the quantity
-    $(".decrement").on("click", function() {
-        var amount = $(this).siblings(".itxt").val();
-        if (amount != 0) {
-            amount--;
-            $(this).siblings(".itxt").val(amount);
-        }
-        getCost.call(this);
-        getSum();
-    })
-    $(".itxt").change(function() {
-        getCost.call(this);
-        getSum();
-    })
-    getSum();
-    //delete an item
-    $(".fa").on("click", function() {
-        $(this).parents("tr").remove();
-        getSum();
-    })
-
-    function getCostFirst() {
+function getCostFirst() {
         //before calculating, determine if there is a movie added
         // This is used to calculate the movie cost
         if ($(".product_info tr:first-child").attr("value") == "movie") {
@@ -50,6 +17,8 @@ $(document).ready(function() {
             for (var i = 0; i < all_price.length; i++) {
                 cur_cost += all_price[i] * all_count[i];
             }
+            
+            cur_cost = cur_cost.toFixed(2);
             unit_t[0].innerText = "$" + cur_cost;
         };
         if ($(".product_info tr:first-child").attr("value") == "goods" || $(".product_info tr:nth-child(2)" == "goods")) {
@@ -101,6 +70,7 @@ $(document).ready(function() {
             for (var i = 0; i < price.length; i++) {
                 cost_sum += price[i] * count[i];
             }
+            cost_sum = cost_sum.toFixed(2);
             $(this).parents(".border-0").siblings(".cost")[0].innerText = "$" + cost_sum;
         }
     }
@@ -116,4 +86,3 @@ $(document).ready(function() {
         var total = sum + ship;
         $(".sum-total").text("$" + total);
     }
-})

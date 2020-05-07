@@ -26,6 +26,7 @@ $(document).ready(function() {
             "child_num": child_num
         });
         //get goods info
+
         var goods_id = $(".goods-name").attr("value");
         var goods_name = $(".good-name").text();
         var quantity = $(".goods-quantity").val();
