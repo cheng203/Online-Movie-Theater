@@ -100,8 +100,7 @@ Class MovieSql{
     }
 
     function deleteMovieByID($movieID){
-        $sql = sprintf("delete from `movie_images` where movie_id = '%s'", $movieID);
-        $sql = sprintf("DELETE from movies WHERE movie_id = '%s'", $movieID);
+    	$sql = sprintf("DELETE from movies WHERE movie_id = '%s'", $movieID);
         return $this->conn->query($sql);
 
     }
@@ -118,7 +117,7 @@ Class MovieSql{
     }
 
    function listCategory(){
-    $sql=  $sql = sprintf("SELECT DISTINCT type_name from movies where 1");
+    $sql = sprintf("SELECT DISTINCT type_name from movies where 1");
         return $this->conn->query_json($sql);
    }
 
@@ -179,6 +178,17 @@ Class MovieSql{
         return $this->conn->query_json($sql);
     }
 
+
+   function deleteMovieImages($movie_id){
+    $sql = sprintf("DELETE from movie_images WHERE movie_id = '%s'", $movie_id);
+        return $this->conn->query($sql);
+
+   }
+
+   function deleteMoviePrices($movie_id){
+     $sql = sprintf("DELETE from ticket_price WHERE movie_id = '%s'", $movie_id);
+        return $this->conn->query($sql);
+   }
 
 
 }
