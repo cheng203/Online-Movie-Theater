@@ -50,7 +50,46 @@ $price_result2=$query->setMoviePrice($movie_id, $ticketTypeID_senior, $senior_pr
 $price_result3=$query->setMoviePrice($movie_id, $ticketTypeID_child, $child_price);
 
 $query1= new RoomSql;
-$result1= $query1->findRoomByStartEndDate($room_id,$start_date,$end_date);
+
+
+
+
+
+
+$arr=array();
+$result=$query1->findRoomByDate($room_id,$start_date);
+if($result!=''){
+	//echo "yes";
+	$group_num ="1";
+	$r=json_decode($result);
+    $group_time_flag=$r[0]->time_flag;
+    //echo  $group_time_flag;
+    
+    for($j=$start_date;$j<=$end_date;$j++){
+           $rx=$query->findRoomByDate($room_id,$j);
+           $rrx=json_decode($rx);
+            if($rrx[0]->time_flag==$group_time_flag){
+                    $rrx[0]->group=$group_num;
+                    //echo $rrx[0]->time_flag;
+            }else{
+                $group_time_flag=$rrx[0]->time_flag;
+                $group_num++;
+               $rrx[0]->group=$group_num;
+            }
+   
+          $arr[] = $rrx[0];
+          //echo json_encode($rrx[0]);
+         }
+         
+}
+
+
+
+
+
+
+
+$result1= json_encode($arr);
 //echo $result1;
 $result11=json_decode($result1);
 $array_length = count($result11,COUNT_NORMAL);
